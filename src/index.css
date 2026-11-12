@@ -1,0 +1,143 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --font-heading: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    --font-body: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    --font-mono: 'JetBrains Mono', monospace;
+
+    /* PathProof Warm Paper + Forest Green Design Tokens */
+    --color-paper: #F7F6F0;
+    --color-surface: #EFEEE5;
+    --color-card: #FFFFFF;
+    --color-border: #E5E4DA;
+    --color-forest: #173629;
+    --color-forest-dark: #0F241B;
+    --color-primary: #244B3A;
+    --color-primary-hover: #1E3F31;
+    --color-sage: #DCE8D9;
+    --color-sage-light: #EBF2E9;
+    --color-text-main: #202A23;
+    --color-text-muted: #657064;
+    --color-lime-accent: #D8E99A;
+  }
+
+  body {
+    font-family: var(--font-body);
+    background-color: #F7F6F0;
+    color: #202A23;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    scroll-behavior: smooth;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading);
+    letter-spacing: -0.025em;
+    color: #173629;
+  }
+
+  code, pre, kbd {
+    font-family: var(--font-mono);
+  }
+
+  /* High-visibility focus states */
+  :focus-visible {
+    outline: 2px solid #244B3A;
+    outline-offset: 2px;
+  }
+}
+
+/* Warm Paper & Forest Green utility classes */
+.bg-paper {
+  background-color: #F7F6F0;
+}
+.bg-surface {
+  background-color: #EFEEE5;
+}
+.bg-forest {
+  background-color: #173629;
+}
+.bg-forest-dark {
+  background-color: #0F241B;
+}
+.bg-primary-green {
+  background-color: #244B3A;
+}
+.bg-sage {
+  background-color: #DCE8D9;
+}
+.bg-sage-light {
+  background-color: #EBF2E9;
+}
+.border-paper {
+  border-color: #E5E4DA;
+}
+.text-forest {
+  color: #173629;
+}
+.text-primary-green {
+  color: #244B3A;
+}
+.text-main {
+  color: #202A23;
+}
+.text-muted {
+  color: #657064;
+}
+
+/* Tabular numerals for all metrics */
+.tabular-nums {
+  font-variant-numeric: tabular-nums;
+}
+
+@layer utilities {
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  /* Refined warm scrollbar */
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #EFEEE5;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #CBD5CD;
+    border-radius: 9999px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #9FAF9D;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Respect prefers-reduced-motion */
+@media (prefers-reduced-motion: reduce) {
+  *, ::before, ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

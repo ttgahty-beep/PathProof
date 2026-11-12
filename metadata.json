@@ -1,0 +1,6 @@
+{
+  "name": "PathProof — Career Discovery & Intelligence",
+  "description": "Evidence-based career decision and real-world readiness platform for university computing students in Pakistan, connecting academic coursework, self-reported skills, and curated job reality evidence.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
