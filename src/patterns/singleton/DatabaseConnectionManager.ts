@@ -5,6 +5,8 @@
  */
 
 import mysql from 'mysql2/promise';
+import fs from 'node:fs';
+import crypto from 'node:crypto';
 
 export interface DatabaseConfig {
   host: string;
@@ -16,6 +18,27 @@ export interface DatabaseConfig {
   waitForConnections: boolean;
   queueLimit: number;
   connectTimeout: number;
+  sslEnabled: boolean;
+  sslCaConfigured: boolean;
+  sslCaValidPem: boolean;
+  sslCaParseError?: string;
+  sslCaIsCa?: boolean;
+}
+
+function normalizePem(raw: string): string {
+  let cleaned = raw.trim().replace(/^["']|["']$/g, '').replace(/\\n/g, '\n').replace(/\r\n/g, '\n');
+  const matches = [...cleaned.matchAll(/-----BEGIN ([A-Z0-9 ]+)-----([\s\S]*?)-----END \1-----/g)];
+  if (matches.length > 0) {
+    return matches
+      .map((match) => {
+        const label = match[1].trim();
+        const base64Body = match[2].replace(/\s+/g, '');
+        const wrappedLines = base64Body.match(/.{1,64}/g) || [base64Body];
+        return `-----BEGIN ${label}-----\n${wrappedLines.join('\n')}\n-----END ${label}-----`;
+      })
+      .join('\n') + '\n';
+  }
+  return cleaned;
 }
 
 export interface QueryResult<T = any> {
@@ -32,6 +55,7 @@ export class DatabaseConnectionManager {
   private static instance: DatabaseConnectionManager | null = null;
   private pool: mysql.Pool | null = null;
   private config: DatabaseConfig;
+  private sslOptions: mysql.SslOptions | undefined = undefined;
   private isConnected = false;
   private isMockDriver = false;
 
@@ -43,16 +67,99 @@ export class DatabaseConnectionManager {
    * Private constructor prevents direct instantiation from outside.
    */
   private constructor() {
+    let host = process.env.MYSQL_HOST || '';
+    let port = process.env.MYSQL_PORT ? Number(process.env.MYSQL_PORT) : 0;
+    let user = process.env.MYSQL_USER || '';
+    let password = process.env.MYSQL_PASSWORD || '';
+    const explicitDbName = (process.env.DB_NAME || '').trim();
+    let mysqlDatabase = (process.env.MYSQL_DATABASE || '').trim();
+    let urlDatabase = '';
+    let urlSslMode = '';
+
+    // Parse DATABASE_URL if individual MYSQL_* vars are not provided
+    if ((!host || !user || !mysqlDatabase) && process.env.DATABASE_URL) {
+      try {
+        const parsed = new URL(process.env.DATABASE_URL);
+        if (!host && parsed.hostname) host = parsed.hostname;
+        if (!port && parsed.port) port = Number(parsed.port);
+        if (!user && parsed.username) user = decodeURIComponent(parsed.username);
+        if (!password && parsed.password) password = decodeURIComponent(parsed.password);
+        if (parsed.pathname) urlDatabase = parsed.pathname.replace(/^\//, '').trim();
+        urlSslMode = parsed.searchParams.get('ssl-mode') || parsed.searchParams.get('sslmode') || '';
+      } catch {
+        // Ignore invalid DATABASE_URL format
+      }
+    }
+
+    // PathProof must use `pathproof_db` (via DB_NAME), not Aiven's `defaultdb`
+    if (mysqlDatabase.toLowerCase() === 'defaultdb') mysqlDatabase = '';
+    if (urlDatabase.toLowerCase() === 'defaultdb') urlDatabase = '';
+
+    host = host || '127.0.0.1';
+    port = port || 3306;
+    user = user || 'root';
+    const database = explicitDbName || mysqlDatabase || urlDatabase || 'pathproof_db';
+
+    // Check SSL CA certificate configuration (inline PEM or file path)
+    const rawSslCa = process.env.MYSQL_SSL_CA || process.env.MYSQL_CA_CERT || process.env.DB_SSL_CA || '';
+    let caContent: string | undefined = undefined;
+    let sslCaValidPem = false;
+    let sslCaParseError: string | undefined = undefined;
+    let sslCaIsCa: boolean | undefined = undefined;
+
+    if (rawSslCa) {
+      if (rawSslCa.includes('BEGIN CERTIFICATE')) {
+        caContent = normalizePem(rawSslCa);
+      } else if (fs.existsSync(rawSslCa)) {
+        caContent = normalizePem(fs.readFileSync(rawSslCa, 'utf8'));
+      } else {
+        sslCaParseError = 'MYSQL_SSL_CA is neither a valid PEM certificate nor an existing file path.';
+      }
+    }
+
+    if (caContent) {
+      try {
+        const x509 = new crypto.X509Certificate(caContent);
+        sslCaValidPem = true;
+        sslCaIsCa = x509.ca;
+      } catch (certErr: any) {
+        sslCaValidPem = false;
+        sslCaParseError = certErr?.message || 'Failed to parse X.509 PEM certificate.';
+      }
+    }
+
+    const sslExplicitlyRequested =
+      Boolean(caContent) ||
+      process.env.MYSQL_SSL === 'true' ||
+      urlSslMode.toUpperCase() === 'REQUIRED' ||
+      urlSslMode.toUpperCase() === 'VERIFY_CA';
+
+    if (caContent && sslCaValidPem) {
+      this.sslOptions = {
+        ca: caContent,
+        rejectUnauthorized: process.env.MYSQL_SSL_REJECT_UNAUTHORIZED !== 'false',
+      };
+    } else if (process.env.MYSQL_SSL === 'true' || urlSslMode.toUpperCase() === 'REQUIRED') {
+      this.sslOptions = {
+        rejectUnauthorized: process.env.MYSQL_SSL_REJECT_UNAUTHORIZED === 'true',
+      };
+    }
+
     this.config = {
-      host: process.env.MYSQL_HOST || '127.0.0.1',
-      port: Number(process.env.MYSQL_PORT) || 3306,
-      user: process.env.MYSQL_USER || 'root',
-      password: process.env.MYSQL_PASSWORD || '',
-      database: process.env.MYSQL_DATABASE || 'pathproof_db',
+      host,
+      port,
+      user,
+      password,
+      database,
       connectionLimit: Number(process.env.MYSQL_CONNECTION_LIMIT) || 10,
       waitForConnections: true,
       queueLimit: 0,
       connectTimeout: 5000,
+      sslEnabled: sslExplicitlyRequested,
+      sslCaConfigured: Boolean(caContent),
+      sslCaValidPem,
+      sslCaParseError,
+      sslCaIsCa,
     };
 
     this.initializePool();
@@ -83,7 +190,7 @@ export class DatabaseConnectionManager {
    */
   private initializePool(): void {
     try {
-      this.pool = mysql.createPool({
+      const poolConfig: mysql.PoolOptions = {
         host: this.config.host,
         port: this.config.port,
         user: this.config.user,
@@ -94,13 +201,48 @@ export class DatabaseConnectionManager {
         queueLimit: this.config.queueLimit,
         connectTimeout: this.config.connectTimeout,
         charset: 'utf8mb4_unicode_ci',
-      });
+      };
+
+      if (this.sslOptions) {
+        poolConfig.ssl = this.sslOptions;
+      }
+
+      this.pool = mysql.createPool(poolConfig);
       this.isConnected = true;
     } catch (err) {
       console.warn('[DatabaseConnectionManager] Live MySQL pool initialization failed. Activating resilient in-memory relational driver.', err);
       this.isMockDriver = true;
       this.isConnected = true;
     }
+  }
+
+  public getPool(): mysql.Pool | null {
+    return this.pool;
+  }
+
+  /**
+   * Create a direct mysql2 connection reusing the Singleton's host, credentials, and SSL config.
+   * Passing includeDatabase=false allows executing server-level DDL like CREATE DATABASE IF NOT EXISTS.
+   */
+  public async createBootstrapConnection(includeDatabase = false): Promise<mysql.Connection> {
+    const connConfig: mysql.ConnectionOptions = {
+      host: this.config.host,
+      port: this.config.port,
+      user: this.config.user,
+      password: this.config.password,
+      connectTimeout: this.config.connectTimeout,
+      charset: 'utf8mb4_unicode_ci',
+    };
+
+    if (includeDatabase) {
+      connConfig.database = this.config.database;
+    }
+
+    if (this.sslOptions) {
+      connConfig.ssl = this.sslOptions;
+    }
+
+    return mysql.createConnection(connConfig);
   }
 
   public getConfig(): Readonly<DatabaseConfig> {

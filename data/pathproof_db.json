@@ -509,6 +509,86 @@
       "account_status": "ACTIVE",
       "created_at": "2026-11-12T13:26:13.365Z",
       "updated_at": "2026-11-12T13:26:13.365Z"
+    },
+    {
+      "user_id": 52,
+      "full_name": "Test Student",
+      "email": "student_1794575247050@test.edu.pk",
+      "password_hash": "HASH:SafePassword123!",
+      "role": "STUDENT",
+      "account_status": "ACTIVE",
+      "created_at": "2026-11-13T13:07:27.050Z",
+      "updated_at": "2026-11-13T13:07:27.050Z"
+    },
+    {
+      "user_id": 53,
+      "full_name": "First Student",
+      "email": "dup_1794575247058@test.edu.pk",
+      "password_hash": "HASH:SafePassword123!",
+      "role": "STUDENT",
+      "account_status": "ACTIVE",
+      "created_at": "2026-11-13T13:07:27.059Z",
+      "updated_at": "2026-11-13T13:07:27.059Z"
+    },
+    {
+      "user_id": 54,
+      "full_name": "Test Student",
+      "email": "student_1794575733484@test.edu.pk",
+      "password_hash": "HASH:SafePassword123!",
+      "role": "STUDENT",
+      "account_status": "ACTIVE",
+      "created_at": "2026-11-13T13:15:33.484Z",
+      "updated_at": "2026-11-13T13:15:33.484Z"
+    },
+    {
+      "user_id": 55,
+      "full_name": "First Student",
+      "email": "dup_1794575733495@test.edu.pk",
+      "password_hash": "HASH:SafePassword123!",
+      "role": "STUDENT",
+      "account_status": "ACTIVE",
+      "created_at": "2026-11-13T13:15:33.495Z",
+      "updated_at": "2026-11-13T13:15:33.495Z"
+    },
+    {
+      "user_id": 56,
+      "full_name": "Test Student",
+      "email": "student_1794577723237@test.edu.pk",
+      "password_hash": "HASH:SafePassword123!",
+      "role": "STUDENT",
+      "account_status": "ACTIVE",
+      "created_at": "2026-11-13T13:48:43.238Z",
+      "updated_at": "2026-11-13T13:48:43.238Z"
+    },
+    {
+      "user_id": 57,
+      "full_name": "First Student",
+      "email": "dup_1794577723248@test.edu.pk",
+      "password_hash": "HASH:SafePassword123!",
+      "role": "STUDENT",
+      "account_status": "ACTIVE",
+      "created_at": "2026-11-13T13:48:43.249Z",
+      "updated_at": "2026-11-13T13:48:43.249Z"
+    },
+    {
+      "user_id": 58,
+      "full_name": "Test Student",
+      "email": "student_1794579541276@test.edu.pk",
+      "password_hash": "HASH:SafePassword123!",
+      "role": "STUDENT",
+      "account_status": "ACTIVE",
+      "created_at": "2026-11-13T14:19:01.276Z",
+      "updated_at": "2026-11-13T14:19:01.276Z"
+    },
+    {
+      "user_id": 59,
+      "full_name": "First Student",
+      "email": "dup_1794579541285@test.edu.pk",
+      "password_hash": "HASH:SafePassword123!",
+      "role": "STUDENT",
+      "account_status": "ACTIVE",
+      "created_at": "2026-11-13T14:19:01.285Z",
+      "updated_at": "2026-11-13T14:19:01.285Z"
     }
   ],
   "student_profiles": [
@@ -523,7 +603,7 @@
       "budget_preference": "LOW_COST",
       "learning_preference": "PRACTICE",
       "created_at": "2026-10-10T10:30:00.000Z",
-      "updated_at": "2026-11-12T13:26:13.371Z"
+      "updated_at": "2026-11-13T14:19:01.296Z"
     },
     {
       "profile_id": 2,
@@ -1161,6 +1241,110 @@
       "learning_preference": "NOT_SPECIFIED",
       "created_at": "2026-11-12T13:26:13.365Z",
       "updated_at": "2026-11-12T13:26:13.365Z"
+    },
+    {
+      "profile_id": 51,
+      "user_id": 52,
+      "university_name": null,
+      "degree_program": null,
+      "current_semester": null,
+      "graduation_year": null,
+      "weekly_learning_hours": null,
+      "budget_preference": "NOT_SPECIFIED",
+      "learning_preference": "NOT_SPECIFIED",
+      "created_at": "2026-11-13T13:07:27.050Z",
+      "updated_at": "2026-11-13T13:07:27.050Z"
+    },
+    {
+      "profile_id": 52,
+      "user_id": 53,
+      "university_name": null,
+      "degree_program": null,
+      "current_semester": null,
+      "graduation_year": null,
+      "weekly_learning_hours": null,
+      "budget_preference": "NOT_SPECIFIED",
+      "learning_preference": "NOT_SPECIFIED",
+      "created_at": "2026-11-13T13:07:27.059Z",
+      "updated_at": "2026-11-13T13:07:27.059Z"
+    },
+    {
+      "profile_id": 53,
+      "user_id": 54,
+      "university_name": null,
+      "degree_program": null,
+      "current_semester": null,
+      "graduation_year": null,
+      "weekly_learning_hours": null,
+      "budget_preference": "NOT_SPECIFIED",
+      "learning_preference": "NOT_SPECIFIED",
+      "created_at": "2026-11-13T13:15:33.484Z",
+      "updated_at": "2026-11-13T13:15:33.484Z"
+    },
+    {
+      "profile_id": 54,
+      "user_id": 55,
+      "university_name": null,
+      "degree_program": null,
+      "current_semester": null,
+      "graduation_year": null,
+      "weekly_learning_hours": null,
+      "budget_preference": "NOT_SPECIFIED",
+      "learning_preference": "NOT_SPECIFIED",
+      "created_at": "2026-11-13T13:15:33.495Z",
+      "updated_at": "2026-11-13T13:15:33.495Z"
+    },
+    {
+      "profile_id": 55,
+      "user_id": 56,
+      "university_name": null,
+      "degree_program": null,
+      "current_semester": null,
+      "graduation_year": null,
+      "weekly_learning_hours": null,
+      "budget_preference": "NOT_SPECIFIED",
+      "learning_preference": "NOT_SPECIFIED",
+      "created_at": "2026-11-13T13:48:43.238Z",
+      "updated_at": "2026-11-13T13:48:43.238Z"
+    },
+    {
+      "profile_id": 56,
+      "user_id": 57,
+      "university_name": null,
+      "degree_program": null,
+      "current_semester": null,
+      "graduation_year": null,
+      "weekly_learning_hours": null,
+      "budget_preference": "NOT_SPECIFIED",
+      "learning_preference": "NOT_SPECIFIED",
+      "created_at": "2026-11-13T13:48:43.249Z",
+      "updated_at": "2026-11-13T13:48:43.249Z"
+    },
+    {
+      "profile_id": 57,
+      "user_id": 58,
+      "university_name": null,
+      "degree_program": null,
+      "current_semester": null,
+      "graduation_year": null,
+      "weekly_learning_hours": null,
+      "budget_preference": "NOT_SPECIFIED",
+      "learning_preference": "NOT_SPECIFIED",
+      "created_at": "2026-11-13T14:19:01.276Z",
+      "updated_at": "2026-11-13T14:19:01.276Z"
+    },
+    {
+      "profile_id": 58,
+      "user_id": 59,
+      "university_name": null,
+      "degree_program": null,
+      "current_semester": null,
+      "graduation_year": null,
+      "weekly_learning_hours": null,
+      "budget_preference": "NOT_SPECIFIED",
+      "learning_preference": "NOT_SPECIFIED",
+      "created_at": "2026-11-13T14:19:01.285Z",
+      "updated_at": "2026-11-13T14:19:01.285Z"
     }
   ],
   "academic_subjects": [
@@ -1670,7 +1854,7 @@
       "evidence_status": "SELF_REPORTED",
       "notes": "Basic TypeScript coursework",
       "created_at": "2026-11-05T15:32:41.706Z",
-      "updated_at": "2026-11-12T13:26:13.377Z"
+      "updated_at": "2026-11-13T14:19:01.301Z"
     }
   ],
   "career_categories": [
@@ -4441,11 +4625,47 @@
       "entity_id": "14",
       "summary": "Student confirmed Copilot roadmap: \"12-Week Junior Frontend Developer Preparation Roadmap\" with 4 milestones.",
       "created_at": "2026-11-12T13:26:13.449Z"
+    },
+    {
+      "audit_id": 16,
+      "admin_user_id": 2,
+      "action": "ROADMAP_CREATED",
+      "entity_type": "STUDENT_ROADMAP",
+      "entity_id": "15",
+      "summary": "Student confirmed Copilot roadmap: \"12-Week Junior Frontend Developer Preparation Roadmap\" with 4 milestones.",
+      "created_at": "2026-11-13T13:07:26.845Z"
+    },
+    {
+      "audit_id": 17,
+      "admin_user_id": 2,
+      "action": "ROADMAP_CREATED",
+      "entity_type": "STUDENT_ROADMAP",
+      "entity_id": "16",
+      "summary": "Student confirmed Copilot roadmap: \"12-Week Junior Frontend Developer Preparation Roadmap\" with 4 milestones.",
+      "created_at": "2026-11-13T13:15:33.561Z"
+    },
+    {
+      "audit_id": 18,
+      "admin_user_id": 2,
+      "action": "ROADMAP_CREATED",
+      "entity_type": "STUDENT_ROADMAP",
+      "entity_id": "17",
+      "summary": "Student confirmed Copilot roadmap: \"12-Week Junior Frontend Developer Preparation Roadmap\" with 4 milestones.",
+      "created_at": "2026-11-13T13:48:43.363Z"
+    },
+    {
+      "audit_id": 19,
+      "admin_user_id": 2,
+      "action": "ROADMAP_CREATED",
+      "entity_type": "STUDENT_ROADMAP",
+      "entity_id": "18",
+      "summary": "Student confirmed Copilot roadmap: \"12-Week Junior Frontend Developer Preparation Roadmap\" with 4 milestones.",
+      "created_at": "2026-11-13T14:19:01.457Z"
     }
   ],
   "sequences": {
-    "user_id": 52,
-    "profile_id": 51,
+    "user_id": 60,
+    "profile_id": 59,
     "subject_id": 15,
     "student_subject_id": 9,
     "skill_id": 25,
@@ -4457,14 +4677,98 @@
     "assessment_id": 5,
     "recommendation_id": 25,
     "comparison_id": 1,
-    "audit_id": 16,
-    "conversation_id": 46,
-    "message_id": 60,
-    "action_id": 15,
-    "roadmap_id": 15,
-    "milestone_id": 57
+    "audit_id": 20,
+    "conversation_id": 58,
+    "message_id": 76,
+    "action_id": 19,
+    "roadmap_id": 19,
+    "milestone_id": 73
   },
   "copilot_conversations": [
+    {
+      "conversation_id": 57,
+      "user_id": 2,
+      "title": "Create a 12-week roadmap for my frontend interns...",
+      "created_at": "2026-11-13T14:19:01.448Z",
+      "updated_at": "2026-11-13T14:19:01.452Z"
+    },
+    {
+      "conversation_id": 56,
+      "user_id": 2,
+      "title": "What skills am I missing for Frontend Developer?",
+      "created_at": "2026-11-13T14:19:01.438Z",
+      "updated_at": "2026-11-13T14:19:01.442Z"
+    },
+    {
+      "conversation_id": 55,
+      "user_id": 2,
+      "title": "Test Internship Exploration",
+      "created_at": "2026-11-13T14:19:01.432Z",
+      "updated_at": "2026-11-13T14:19:01.432Z"
+    },
+    {
+      "conversation_id": 54,
+      "user_id": 2,
+      "title": "Create a 12-week roadmap for my frontend interns...",
+      "created_at": "2026-11-13T13:48:43.354Z",
+      "updated_at": "2026-11-13T13:48:43.358Z"
+    },
+    {
+      "conversation_id": 53,
+      "user_id": 2,
+      "title": "What skills am I missing for Frontend Developer?",
+      "created_at": "2026-11-13T13:48:43.341Z",
+      "updated_at": "2026-11-13T13:48:43.347Z"
+    },
+    {
+      "conversation_id": 52,
+      "user_id": 2,
+      "title": "Test Internship Exploration",
+      "created_at": "2026-11-13T13:48:43.333Z",
+      "updated_at": "2026-11-13T13:48:43.333Z"
+    },
+    {
+      "conversation_id": 51,
+      "user_id": 2,
+      "title": "Create a 12-week roadmap for my frontend interns...",
+      "created_at": "2026-11-13T13:15:33.552Z",
+      "updated_at": "2026-11-13T13:15:33.556Z"
+    },
+    {
+      "conversation_id": 50,
+      "user_id": 2,
+      "title": "What skills am I missing for Frontend Developer?",
+      "created_at": "2026-11-13T13:15:33.540Z",
+      "updated_at": "2026-11-13T13:15:33.546Z"
+    },
+    {
+      "conversation_id": 49,
+      "user_id": 2,
+      "title": "Test Internship Exploration",
+      "created_at": "2026-11-13T13:15:33.531Z",
+      "updated_at": "2026-11-13T13:15:33.531Z"
+    },
+    {
+      "conversation_id": 48,
+      "user_id": 2,
+      "title": "Create a 12-week roadmap for my frontend interns...",
+      "created_at": "2026-11-13T13:07:26.830Z",
+      "updated_at": "2026-11-13T13:07:26.836Z"
+    },
+    {
+      "conversation_id": 47,
+      "user_id": 2,
+      "title": "What skills am I missing for Frontend Developer?",
+      "created_at": "2026-11-13T13:07:26.805Z",
+      "updated_at": "2026-11-13T13:07:26.809Z"
+    },
+    {
+      "conversation_id": 46,
+      "user_id": 2,
+      "title": "Test Internship Exploration",
+      "created_at": "2026-11-13T13:07:26.796Z",
+      "updated_at": "2026-11-13T13:07:26.796Z"
+    },
     {
       "conversation_id": 45,
       "user_id": 2,
@@ -6041,6 +6345,358 @@
       },
       "created_at": "2026-11-12T13:26:13.446Z",
       "is_fallback": true
+    },
+    {
+      "message_id": 60,
+      "conversation_id": 47,
+      "sender": "user",
+      "content": "What skills am I missing for Frontend Developer?",
+      "action_type": "NONE",
+      "action_payload": null,
+      "created_at": "2026-11-13T13:07:26.809Z"
+    },
+    {
+      "message_id": 61,
+      "conversation_id": 47,
+      "sender": "copilot",
+      "content": "### Skill Gap Intelligence for Frontend Developer\n\nBased on your **Semester 6** records at **NUST**:\n\n1. **Validated Foundation**:\n- **HTML & CSS** (Intermediate, Level 3): Meets or approaches entry baseline.\n- **JavaScript** (Intermediate, Level 3): Meets or approaches entry baseline.\n- **React.js** (Intermediate, Level 3): Meets or approaches entry baseline.\n- **Responsive Design & Tailwind CSS** (Intermediate, Level 3): Meets or approaches entry baseline.\n- **Git & Version Control** (Basic, Level 2): Meets or approaches entry baseline.\n- **SQL & Relational Databases** (Basic, Level 2): Meets or approaches entry baseline.\n- **RESTful API Design** (Basic, Level 2): Meets or approaches entry baseline.\n- **TypeScript** (Basic, Level 2): Meets or approaches entry baseline.\n\n2. **Priority Gaps for the Pakistani Market**:\n- **Next.js** (Missing): Frequently cited in current job postings from Systems Ltd and 10Pearls. Advancing this will directly increase your readiness ratio.\n- **Docker** (Missing): Frequently cited in current job postings from Systems Ltd and 10Pearls. Advancing this will directly increase your readiness ratio.\n- **Automated Testing (Jest/Playwright)** (Missing): Frequently cited in current job postings from Systems Ltd and 10Pearls. Advancing this will directly increase your readiness ratio.\n\n3. **Recommended Next Step**:\nDedicate 4–6 hours this week to build a typed project component and attach it as project evidence in your PathProof profile.",
+      "action_type": "NONE",
+      "action_payload": null,
+      "created_at": "2026-11-13T13:07:26.811Z",
+      "is_fallback": true
+    },
+    {
+      "message_id": 62,
+      "conversation_id": 48,
+      "sender": "user",
+      "content": "Create a 12-week roadmap for my frontend internship",
+      "action_type": "NONE",
+      "action_payload": null,
+      "created_at": "2026-11-13T13:07:26.836Z"
+    },
+    {
+      "message_id": 63,
+      "conversation_id": 48,
+      "sender": "copilot",
+      "content": "I have analyzed your **Semester 6** standing at **NUST** and generated a personalized 12-week preparation roadmap for **Junior Frontend Developer**.\n\n### Strategic Analysis\n- **Current Strengths**: Your profile reflects solid coursework (Programming Fundamentals, Object Oriented Programming, Data Structures & Algorithms) and self-reported skills (HTML & CSS Level 3, JavaScript Level 3, React.js Level 3).\n- **High-Impact Target**: Advancing your Next.js & TypeScript skills to Level 3 will give you the strongest competitive edge for Pakistani tech firms.\n\nReview the proposed milestones below. You can inspect the full breakdown and save it directly to your dashboard roadmaps.",
+      "action_type": "PROPOSE_ROADMAP",
+      "action_payload": {
+        "title": "12-Week Junior Frontend Developer Preparation Roadmap",
+        "target_role": "Junior Frontend Developer",
+        "total_weeks": 12,
+        "milestones": [
+          {
+            "week_number": 1,
+            "title": "TypeScript Foundations & Modern JavaScript",
+            "description": "Strengthen component type safety, interfaces, union types, and strict mode in React.",
+            "estimated_hours": 8,
+            "learning_activities": [
+              "Official TypeScript Handbook",
+              "Refactor 3 React components to strict TypeScript"
+            ],
+            "completion_criteria": "tsc passes with noImplicitAny and 0 type errors."
+          },
+          {
+            "week_number": 4,
+            "title": "Next.js App Router & Server Components",
+            "description": "Master client vs server component boundaries, layout hierarchies, and server actions.",
+            "estimated_hours": 10,
+            "learning_activities": [
+              "Complete Next.js official tutorial",
+              "Implement dynamic product/career dashboard"
+            ],
+            "completion_criteria": "Production build deployed with zero layout shift (CLS < 0.1)."
+          },
+          {
+            "week_number": 8,
+            "title": "State Architecture & API Cache Management",
+            "description": "Implement TanStack Query or Zustand for optimistic UI and server state syncing.",
+            "estimated_hours": 10,
+            "learning_activities": [
+              "Build an e-commerce catalog with search and debounce",
+              "Add error boundaries"
+            ],
+            "completion_criteria": "Smooth loading skeletons and resilient offline recovery."
+          },
+          {
+            "week_number": 12,
+            "title": "Portfolio Capstone Polish & Pakistani Tech Job Prep",
+            "description": "Conduct WCAG AA accessibility audit, bundle optimization, and interactive documentation.",
+            "estimated_hours": 12,
+            "learning_activities": [
+              "Lighthouse performance audit (score >= 90)",
+              "Prepare portfolio README dossier"
+            ],
+            "completion_criteria": "Live project ready for Systems Ltd, 10Pearls, or VentureDive applications."
+          }
+        ]
+      },
+      "created_at": "2026-11-13T13:07:26.837Z",
+      "is_fallback": true
+    },
+    {
+      "message_id": 64,
+      "conversation_id": 50,
+      "sender": "user",
+      "content": "What skills am I missing for Frontend Developer?",
+      "action_type": "NONE",
+      "action_payload": null,
+      "created_at": "2026-11-13T13:15:33.546Z"
+    },
+    {
+      "message_id": 65,
+      "conversation_id": 50,
+      "sender": "copilot",
+      "content": "### Skill Gap Intelligence for Frontend Developer\n\nBased on your **Semester 6** records at **NUST**:\n\n1. **Validated Foundation**:\n- **HTML & CSS** (Intermediate, Level 3): Meets or approaches entry baseline.\n- **JavaScript** (Intermediate, Level 3): Meets or approaches entry baseline.\n- **React.js** (Intermediate, Level 3): Meets or approaches entry baseline.\n- **Responsive Design & Tailwind CSS** (Intermediate, Level 3): Meets or approaches entry baseline.\n- **Git & Version Control** (Basic, Level 2): Meets or approaches entry baseline.\n- **SQL & Relational Databases** (Basic, Level 2): Meets or approaches entry baseline.\n- **RESTful API Design** (Basic, Level 2): Meets or approaches entry baseline.\n- **TypeScript** (Basic, Level 2): Meets or approaches entry baseline.\n\n2. **Priority Gaps for the Pakistani Market**:\n- **Next.js** (Missing): Frequently cited in current job postings from Systems Ltd and 10Pearls. Advancing this will directly increase your readiness ratio.\n- **Docker** (Missing): Frequently cited in current job postings from Systems Ltd and 10Pearls. Advancing this will directly increase your readiness ratio.\n- **Automated Testing (Jest/Playwright)** (Missing): Frequently cited in current job postings from Systems Ltd and 10Pearls. Advancing this will directly increase your readiness ratio.\n\n3. **Recommended Next Step**:\nDedicate 4–6 hours this week to build a typed project component and attach it as project evidence in your PathProof profile.",
+      "action_type": "NONE",
+      "action_payload": null,
+      "created_at": "2026-11-13T13:15:33.548Z",
+      "is_fallback": true
+    },
+    {
+      "message_id": 66,
+      "conversation_id": 51,
+      "sender": "user",
+      "content": "Create a 12-week roadmap for my frontend internship",
+      "action_type": "NONE",
+      "action_payload": null,
+      "created_at": "2026-11-13T13:15:33.556Z"
+    },
+    {
+      "message_id": 67,
+      "conversation_id": 51,
+      "sender": "copilot",
+      "content": "I have analyzed your **Semester 6** standing at **NUST** and generated a personalized 12-week preparation roadmap for **Junior Frontend Developer**.\n\n### Strategic Analysis\n- **Current Strengths**: Your profile reflects solid coursework (Programming Fundamentals, Object Oriented Programming, Data Structures & Algorithms) and self-reported skills (HTML & CSS Level 3, JavaScript Level 3, React.js Level 3).\n- **High-Impact Target**: Advancing your Next.js & TypeScript skills to Level 3 will give you the strongest competitive edge for Pakistani tech firms.\n\nReview the proposed milestones below. You can inspect the full breakdown and save it directly to your dashboard roadmaps.",
+      "action_type": "PROPOSE_ROADMAP",
+      "action_payload": {
+        "title": "12-Week Junior Frontend Developer Preparation Roadmap",
+        "target_role": "Junior Frontend Developer",
+        "total_weeks": 12,
+        "milestones": [
+          {
+            "week_number": 1,
+            "title": "TypeScript Foundations & Modern JavaScript",
+            "description": "Strengthen component type safety, interfaces, union types, and strict mode in React.",
+            "estimated_hours": 8,
+            "learning_activities": [
+              "Official TypeScript Handbook",
+              "Refactor 3 React components to strict TypeScript"
+            ],
+            "completion_criteria": "tsc passes with noImplicitAny and 0 type errors."
+          },
+          {
+            "week_number": 4,
+            "title": "Next.js App Router & Server Components",
+            "description": "Master client vs server component boundaries, layout hierarchies, and server actions.",
+            "estimated_hours": 10,
+            "learning_activities": [
+              "Complete Next.js official tutorial",
+              "Implement dynamic product/career dashboard"
+            ],
+            "completion_criteria": "Production build deployed with zero layout shift (CLS < 0.1)."
+          },
+          {
+            "week_number": 8,
+            "title": "State Architecture & API Cache Management",
+            "description": "Implement TanStack Query or Zustand for optimistic UI and server state syncing.",
+            "estimated_hours": 10,
+            "learning_activities": [
+              "Build an e-commerce catalog with search and debounce",
+              "Add error boundaries"
+            ],
+            "completion_criteria": "Smooth loading skeletons and resilient offline recovery."
+          },
+          {
+            "week_number": 12,
+            "title": "Portfolio Capstone Polish & Pakistani Tech Job Prep",
+            "description": "Conduct WCAG AA accessibility audit, bundle optimization, and interactive documentation.",
+            "estimated_hours": 12,
+            "learning_activities": [
+              "Lighthouse performance audit (score >= 90)",
+              "Prepare portfolio README dossier"
+            ],
+            "completion_criteria": "Live project ready for Systems Ltd, 10Pearls, or VentureDive applications."
+          }
+        ]
+      },
+      "created_at": "2026-11-13T13:15:33.557Z",
+      "is_fallback": true
+    },
+    {
+      "message_id": 68,
+      "conversation_id": 53,
+      "sender": "user",
+      "content": "What skills am I missing for Frontend Developer?",
+      "action_type": "NONE",
+      "action_payload": null,
+      "created_at": "2026-11-13T13:48:43.347Z"
+    },
+    {
+      "message_id": 69,
+      "conversation_id": 53,
+      "sender": "copilot",
+      "content": "### Skill Gap Intelligence for Frontend Developer\n\nBased on your **Semester 6** records at **NUST**:\n\n1. **Validated Foundation**:\n- **HTML & CSS** (Intermediate, Level 3): Meets or approaches entry baseline.\n- **JavaScript** (Intermediate, Level 3): Meets or approaches entry baseline.\n- **React.js** (Intermediate, Level 3): Meets or approaches entry baseline.\n- **Responsive Design & Tailwind CSS** (Intermediate, Level 3): Meets or approaches entry baseline.\n- **Git & Version Control** (Basic, Level 2): Meets or approaches entry baseline.\n- **SQL & Relational Databases** (Basic, Level 2): Meets or approaches entry baseline.\n- **RESTful API Design** (Basic, Level 2): Meets or approaches entry baseline.\n- **TypeScript** (Basic, Level 2): Meets or approaches entry baseline.\n\n2. **Priority Gaps for the Pakistani Market**:\n- **Next.js** (Missing): Frequently cited in current job postings from Systems Ltd and 10Pearls. Advancing this will directly increase your readiness ratio.\n- **Docker** (Missing): Frequently cited in current job postings from Systems Ltd and 10Pearls. Advancing this will directly increase your readiness ratio.\n- **Automated Testing (Jest/Playwright)** (Missing): Frequently cited in current job postings from Systems Ltd and 10Pearls. Advancing this will directly increase your readiness ratio.\n\n3. **Recommended Next Step**:\nDedicate 4–6 hours this week to build a typed project component and attach it as project evidence in your PathProof profile.",
+      "action_type": "NONE",
+      "action_payload": null,
+      "created_at": "2026-11-13T13:48:43.348Z",
+      "is_fallback": true
+    },
+    {
+      "message_id": 70,
+      "conversation_id": 54,
+      "sender": "user",
+      "content": "Create a 12-week roadmap for my frontend internship",
+      "action_type": "NONE",
+      "action_payload": null,
+      "created_at": "2026-11-13T13:48:43.358Z"
+    },
+    {
+      "message_id": 71,
+      "conversation_id": 54,
+      "sender": "copilot",
+      "content": "I have analyzed your **Semester 6** standing at **NUST** and generated a personalized 12-week preparation roadmap for **Junior Frontend Developer**.\n\n### Strategic Analysis\n- **Current Strengths**: Your profile reflects solid coursework (Programming Fundamentals, Object Oriented Programming, Data Structures & Algorithms) and self-reported skills (HTML & CSS Level 3, JavaScript Level 3, React.js Level 3).\n- **High-Impact Target**: Advancing your Next.js & TypeScript skills to Level 3 will give you the strongest competitive edge for Pakistani tech firms.\n\nReview the proposed milestones below. You can inspect the full breakdown and save it directly to your dashboard roadmaps.",
+      "action_type": "PROPOSE_ROADMAP",
+      "action_payload": {
+        "title": "12-Week Junior Frontend Developer Preparation Roadmap",
+        "target_role": "Junior Frontend Developer",
+        "total_weeks": 12,
+        "milestones": [
+          {
+            "week_number": 1,
+            "title": "TypeScript Foundations & Modern JavaScript",
+            "description": "Strengthen component type safety, interfaces, union types, and strict mode in React.",
+            "estimated_hours": 8,
+            "learning_activities": [
+              "Official TypeScript Handbook",
+              "Refactor 3 React components to strict TypeScript"
+            ],
+            "completion_criteria": "tsc passes with noImplicitAny and 0 type errors."
+          },
+          {
+            "week_number": 4,
+            "title": "Next.js App Router & Server Components",
+            "description": "Master client vs server component boundaries, layout hierarchies, and server actions.",
+            "estimated_hours": 10,
+            "learning_activities": [
+              "Complete Next.js official tutorial",
+              "Implement dynamic product/career dashboard"
+            ],
+            "completion_criteria": "Production build deployed with zero layout shift (CLS < 0.1)."
+          },
+          {
+            "week_number": 8,
+            "title": "State Architecture & API Cache Management",
+            "description": "Implement TanStack Query or Zustand for optimistic UI and server state syncing.",
+            "estimated_hours": 10,
+            "learning_activities": [
+              "Build an e-commerce catalog with search and debounce",
+              "Add error boundaries"
+            ],
+            "completion_criteria": "Smooth loading skeletons and resilient offline recovery."
+          },
+          {
+            "week_number": 12,
+            "title": "Portfolio Capstone Polish & Pakistani Tech Job Prep",
+            "description": "Conduct WCAG AA accessibility audit, bundle optimization, and interactive documentation.",
+            "estimated_hours": 12,
+            "learning_activities": [
+              "Lighthouse performance audit (score >= 90)",
+              "Prepare portfolio README dossier"
+            ],
+            "completion_criteria": "Live project ready for Systems Ltd, 10Pearls, or VentureDive applications."
+          }
+        ]
+      },
+      "created_at": "2026-11-13T13:48:43.359Z",
+      "is_fallback": true
+    },
+    {
+      "message_id": 72,
+      "conversation_id": 56,
+      "sender": "user",
+      "content": "What skills am I missing for Frontend Developer?",
+      "action_type": "NONE",
+      "action_payload": null,
+      "created_at": "2026-11-13T14:19:01.442Z"
+    },
+    {
+      "message_id": 73,
+      "conversation_id": 56,
+      "sender": "copilot",
+      "content": "### Skill Gap Intelligence for Frontend Developer\n\nBased on your **Semester 6** records at **NUST**:\n\n1. **Validated Foundation**:\n- **HTML & CSS** (Intermediate, Level 3): Meets or approaches entry baseline.\n- **JavaScript** (Intermediate, Level 3): Meets or approaches entry baseline.\n- **React.js** (Intermediate, Level 3): Meets or approaches entry baseline.\n- **Responsive Design & Tailwind CSS** (Intermediate, Level 3): Meets or approaches entry baseline.\n- **Git & Version Control** (Basic, Level 2): Meets or approaches entry baseline.\n- **SQL & Relational Databases** (Basic, Level 2): Meets or approaches entry baseline.\n- **RESTful API Design** (Basic, Level 2): Meets or approaches entry baseline.\n- **TypeScript** (Basic, Level 2): Meets or approaches entry baseline.\n\n2. **Priority Gaps for the Pakistani Market**:\n- **Next.js** (Missing): Frequently cited in current job postings from Systems Ltd and 10Pearls. Advancing this will directly increase your readiness ratio.\n- **Docker** (Missing): Frequently cited in current job postings from Systems Ltd and 10Pearls. Advancing this will directly increase your readiness ratio.\n- **Automated Testing (Jest/Playwright)** (Missing): Frequently cited in current job postings from Systems Ltd and 10Pearls. Advancing this will directly increase your readiness ratio.\n\n3. **Recommended Next Step**:\nDedicate 4–6 hours this week to build a typed project component and attach it as project evidence in your PathProof profile.",
+      "action_type": "NONE",
+      "action_payload": null,
+      "created_at": "2026-11-13T14:19:01.443Z",
+      "is_fallback": true
+    },
+    {
+      "message_id": 74,
+      "conversation_id": 57,
+      "sender": "user",
+      "content": "Create a 12-week roadmap for my frontend internship",
+      "action_type": "NONE",
+      "action_payload": null,
+      "created_at": "2026-11-13T14:19:01.452Z"
+    },
+    {
+      "message_id": 75,
+      "conversation_id": 57,
+      "sender": "copilot",
+      "content": "I have analyzed your **Semester 6** standing at **NUST** and generated a personalized 12-week preparation roadmap for **Junior Frontend Developer**.\n\n### Strategic Analysis\n- **Current Strengths**: Your profile reflects solid coursework (Programming Fundamentals, Object Oriented Programming, Data Structures & Algorithms) and self-reported skills (HTML & CSS Level 3, JavaScript Level 3, React.js Level 3).\n- **High-Impact Target**: Advancing your Next.js & TypeScript skills to Level 3 will give you the strongest competitive edge for Pakistani tech firms.\n\nReview the proposed milestones below. You can inspect the full breakdown and save it directly to your dashboard roadmaps.",
+      "action_type": "PROPOSE_ROADMAP",
+      "action_payload": {
+        "title": "12-Week Junior Frontend Developer Preparation Roadmap",
+        "target_role": "Junior Frontend Developer",
+        "total_weeks": 12,
+        "milestones": [
+          {
+            "week_number": 1,
+            "title": "TypeScript Foundations & Modern JavaScript",
+            "description": "Strengthen component type safety, interfaces, union types, and strict mode in React.",
+            "estimated_hours": 8,
+            "learning_activities": [
+              "Official TypeScript Handbook",
+              "Refactor 3 React components to strict TypeScript"
+            ],
+            "completion_criteria": "tsc passes with noImplicitAny and 0 type errors."
+          },
+          {
+            "week_number": 4,
+            "title": "Next.js App Router & Server Components",
+            "description": "Master client vs server component boundaries, layout hierarchies, and server actions.",
+            "estimated_hours": 10,
+            "learning_activities": [
+              "Complete Next.js official tutorial",
+              "Implement dynamic product/career dashboard"
+            ],
+            "completion_criteria": "Production build deployed with zero layout shift (CLS < 0.1)."
+          },
+          {
+            "week_number": 8,
+            "title": "State Architecture & API Cache Management",
+            "description": "Implement TanStack Query or Zustand for optimistic UI and server state syncing.",
+            "estimated_hours": 10,
+            "learning_activities": [
+              "Build an e-commerce catalog with search and debounce",
+              "Add error boundaries"
+            ],
+            "completion_criteria": "Smooth loading skeletons and resilient offline recovery."
+          },
+          {
+            "week_number": 12,
+            "title": "Portfolio Capstone Polish & Pakistani Tech Job Prep",
+            "description": "Conduct WCAG AA accessibility audit, bundle optimization, and interactive documentation.",
+            "estimated_hours": 12,
+            "learning_activities": [
+              "Lighthouse performance audit (score >= 90)",
+              "Prepare portfolio README dossier"
+            ],
+            "completion_criteria": "Live project ready for Systems Ltd, 10Pearls, or VentureDive applications."
+          }
+        ]
+      },
+      "created_at": "2026-11-13T14:19:01.452Z",
+      "is_fallback": true
     }
   ],
   "copilot_actions": [
@@ -6882,6 +7538,246 @@
       },
       "status": "PENDING",
       "created_at": "2026-11-12T13:26:13.445Z",
+      "confirmed_at": null
+    },
+    {
+      "action_id": 15,
+      "user_id": 2,
+      "conversation_id": 48,
+      "action_type": "PROPOSE_ROADMAP",
+      "payload": {
+        "title": "12-Week Junior Frontend Developer Preparation Roadmap",
+        "target_role": "Junior Frontend Developer",
+        "total_weeks": 12,
+        "milestones": [
+          {
+            "week_number": 1,
+            "title": "TypeScript Foundations & Modern JavaScript",
+            "description": "Strengthen component type safety, interfaces, union types, and strict mode in React.",
+            "estimated_hours": 8,
+            "learning_activities": [
+              "Official TypeScript Handbook",
+              "Refactor 3 React components to strict TypeScript"
+            ],
+            "completion_criteria": "tsc passes with noImplicitAny and 0 type errors."
+          },
+          {
+            "week_number": 4,
+            "title": "Next.js App Router & Server Components",
+            "description": "Master client vs server component boundaries, layout hierarchies, and server actions.",
+            "estimated_hours": 10,
+            "learning_activities": [
+              "Complete Next.js official tutorial",
+              "Implement dynamic product/career dashboard"
+            ],
+            "completion_criteria": "Production build deployed with zero layout shift (CLS < 0.1)."
+          },
+          {
+            "week_number": 8,
+            "title": "State Architecture & API Cache Management",
+            "description": "Implement TanStack Query or Zustand for optimistic UI and server state syncing.",
+            "estimated_hours": 10,
+            "learning_activities": [
+              "Build an e-commerce catalog with search and debounce",
+              "Add error boundaries"
+            ],
+            "completion_criteria": "Smooth loading skeletons and resilient offline recovery."
+          },
+          {
+            "week_number": 12,
+            "title": "Portfolio Capstone Polish & Pakistani Tech Job Prep",
+            "description": "Conduct WCAG AA accessibility audit, bundle optimization, and interactive documentation.",
+            "estimated_hours": 12,
+            "learning_activities": [
+              "Lighthouse performance audit (score >= 90)",
+              "Prepare portfolio README dossier"
+            ],
+            "completion_criteria": "Live project ready for Systems Ltd, 10Pearls, or VentureDive applications."
+          }
+        ]
+      },
+      "status": "PENDING",
+      "created_at": "2026-11-13T13:07:26.836Z",
+      "confirmed_at": null
+    },
+    {
+      "action_id": 16,
+      "user_id": 2,
+      "conversation_id": 51,
+      "action_type": "PROPOSE_ROADMAP",
+      "payload": {
+        "title": "12-Week Junior Frontend Developer Preparation Roadmap",
+        "target_role": "Junior Frontend Developer",
+        "total_weeks": 12,
+        "milestones": [
+          {
+            "week_number": 1,
+            "title": "TypeScript Foundations & Modern JavaScript",
+            "description": "Strengthen component type safety, interfaces, union types, and strict mode in React.",
+            "estimated_hours": 8,
+            "learning_activities": [
+              "Official TypeScript Handbook",
+              "Refactor 3 React components to strict TypeScript"
+            ],
+            "completion_criteria": "tsc passes with noImplicitAny and 0 type errors."
+          },
+          {
+            "week_number": 4,
+            "title": "Next.js App Router & Server Components",
+            "description": "Master client vs server component boundaries, layout hierarchies, and server actions.",
+            "estimated_hours": 10,
+            "learning_activities": [
+              "Complete Next.js official tutorial",
+              "Implement dynamic product/career dashboard"
+            ],
+            "completion_criteria": "Production build deployed with zero layout shift (CLS < 0.1)."
+          },
+          {
+            "week_number": 8,
+            "title": "State Architecture & API Cache Management",
+            "description": "Implement TanStack Query or Zustand for optimistic UI and server state syncing.",
+            "estimated_hours": 10,
+            "learning_activities": [
+              "Build an e-commerce catalog with search and debounce",
+              "Add error boundaries"
+            ],
+            "completion_criteria": "Smooth loading skeletons and resilient offline recovery."
+          },
+          {
+            "week_number": 12,
+            "title": "Portfolio Capstone Polish & Pakistani Tech Job Prep",
+            "description": "Conduct WCAG AA accessibility audit, bundle optimization, and interactive documentation.",
+            "estimated_hours": 12,
+            "learning_activities": [
+              "Lighthouse performance audit (score >= 90)",
+              "Prepare portfolio README dossier"
+            ],
+            "completion_criteria": "Live project ready for Systems Ltd, 10Pearls, or VentureDive applications."
+          }
+        ]
+      },
+      "status": "PENDING",
+      "created_at": "2026-11-13T13:15:33.556Z",
+      "confirmed_at": null
+    },
+    {
+      "action_id": 17,
+      "user_id": 2,
+      "conversation_id": 54,
+      "action_type": "PROPOSE_ROADMAP",
+      "payload": {
+        "title": "12-Week Junior Frontend Developer Preparation Roadmap",
+        "target_role": "Junior Frontend Developer",
+        "total_weeks": 12,
+        "milestones": [
+          {
+            "week_number": 1,
+            "title": "TypeScript Foundations & Modern JavaScript",
+            "description": "Strengthen component type safety, interfaces, union types, and strict mode in React.",
+            "estimated_hours": 8,
+            "learning_activities": [
+              "Official TypeScript Handbook",
+              "Refactor 3 React components to strict TypeScript"
+            ],
+            "completion_criteria": "tsc passes with noImplicitAny and 0 type errors."
+          },
+          {
+            "week_number": 4,
+            "title": "Next.js App Router & Server Components",
+            "description": "Master client vs server component boundaries, layout hierarchies, and server actions.",
+            "estimated_hours": 10,
+            "learning_activities": [
+              "Complete Next.js official tutorial",
+              "Implement dynamic product/career dashboard"
+            ],
+            "completion_criteria": "Production build deployed with zero layout shift (CLS < 0.1)."
+          },
+          {
+            "week_number": 8,
+            "title": "State Architecture & API Cache Management",
+            "description": "Implement TanStack Query or Zustand for optimistic UI and server state syncing.",
+            "estimated_hours": 10,
+            "learning_activities": [
+              "Build an e-commerce catalog with search and debounce",
+              "Add error boundaries"
+            ],
+            "completion_criteria": "Smooth loading skeletons and resilient offline recovery."
+          },
+          {
+            "week_number": 12,
+            "title": "Portfolio Capstone Polish & Pakistani Tech Job Prep",
+            "description": "Conduct WCAG AA accessibility audit, bundle optimization, and interactive documentation.",
+            "estimated_hours": 12,
+            "learning_activities": [
+              "Lighthouse performance audit (score >= 90)",
+              "Prepare portfolio README dossier"
+            ],
+            "completion_criteria": "Live project ready for Systems Ltd, 10Pearls, or VentureDive applications."
+          }
+        ]
+      },
+      "status": "PENDING",
+      "created_at": "2026-11-13T13:48:43.358Z",
+      "confirmed_at": null
+    },
+    {
+      "action_id": 18,
+      "user_id": 2,
+      "conversation_id": 57,
+      "action_type": "PROPOSE_ROADMAP",
+      "payload": {
+        "title": "12-Week Junior Frontend Developer Preparation Roadmap",
+        "target_role": "Junior Frontend Developer",
+        "total_weeks": 12,
+        "milestones": [
+          {
+            "week_number": 1,
+            "title": "TypeScript Foundations & Modern JavaScript",
+            "description": "Strengthen component type safety, interfaces, union types, and strict mode in React.",
+            "estimated_hours": 8,
+            "learning_activities": [
+              "Official TypeScript Handbook",
+              "Refactor 3 React components to strict TypeScript"
+            ],
+            "completion_criteria": "tsc passes with noImplicitAny and 0 type errors."
+          },
+          {
+            "week_number": 4,
+            "title": "Next.js App Router & Server Components",
+            "description": "Master client vs server component boundaries, layout hierarchies, and server actions.",
+            "estimated_hours": 10,
+            "learning_activities": [
+              "Complete Next.js official tutorial",
+              "Implement dynamic product/career dashboard"
+            ],
+            "completion_criteria": "Production build deployed with zero layout shift (CLS < 0.1)."
+          },
+          {
+            "week_number": 8,
+            "title": "State Architecture & API Cache Management",
+            "description": "Implement TanStack Query or Zustand for optimistic UI and server state syncing.",
+            "estimated_hours": 10,
+            "learning_activities": [
+              "Build an e-commerce catalog with search and debounce",
+              "Add error boundaries"
+            ],
+            "completion_criteria": "Smooth loading skeletons and resilient offline recovery."
+          },
+          {
+            "week_number": 12,
+            "title": "Portfolio Capstone Polish & Pakistani Tech Job Prep",
+            "description": "Conduct WCAG AA accessibility audit, bundle optimization, and interactive documentation.",
+            "estimated_hours": 12,
+            "learning_activities": [
+              "Lighthouse performance audit (score >= 90)",
+              "Prepare portfolio README dossier"
+            ],
+            "completion_criteria": "Live project ready for Systems Ltd, 10Pearls, or VentureDive applications."
+          }
+        ]
+      },
+      "status": "PENDING",
+      "created_at": "2026-11-13T14:19:01.452Z",
       "confirmed_at": null
     }
   ],
@@ -7893,6 +8789,294 @@
           "completed_at": null
         }
       ]
+    },
+    {
+      "roadmap_id": 15,
+      "user_id": 2,
+      "title": "12-Week Junior Frontend Developer Preparation Roadmap",
+      "career_id": null,
+      "target_role": "Junior Frontend Developer",
+      "total_weeks": 12,
+      "status": "ACTIVE",
+      "created_at": "2026-11-13T13:07:26.845Z",
+      "milestones": [
+        {
+          "milestone_id": 57,
+          "roadmap_id": 15,
+          "week_number": 1,
+          "title": "TypeScript Foundations & Modern JavaScript",
+          "description": "Strengthen component type safety, interfaces, union types, and strict mode in React.",
+          "estimated_hours": 8,
+          "learning_activities": [
+            "Official TypeScript Handbook",
+            "Refactor 3 React components to strict TypeScript"
+          ],
+          "completion_criteria": "tsc passes with noImplicitAny and 0 type errors.",
+          "is_completed": true,
+          "completed_at": "2026-11-13T13:07:26.849Z"
+        },
+        {
+          "milestone_id": 58,
+          "roadmap_id": 15,
+          "week_number": 4,
+          "title": "Next.js App Router & Server Components",
+          "description": "Master client vs server component boundaries, layout hierarchies, and server actions.",
+          "estimated_hours": 10,
+          "learning_activities": [
+            "Complete Next.js official tutorial",
+            "Implement dynamic product/career dashboard"
+          ],
+          "completion_criteria": "Production build deployed with zero layout shift (CLS < 0.1).",
+          "is_completed": false,
+          "completed_at": null
+        },
+        {
+          "milestone_id": 59,
+          "roadmap_id": 15,
+          "week_number": 8,
+          "title": "State Architecture & API Cache Management",
+          "description": "Implement TanStack Query or Zustand for optimistic UI and server state syncing.",
+          "estimated_hours": 10,
+          "learning_activities": [
+            "Build an e-commerce catalog with search and debounce",
+            "Add error boundaries"
+          ],
+          "completion_criteria": "Smooth loading skeletons and resilient offline recovery.",
+          "is_completed": false,
+          "completed_at": null
+        },
+        {
+          "milestone_id": 60,
+          "roadmap_id": 15,
+          "week_number": 12,
+          "title": "Portfolio Capstone Polish & Pakistani Tech Job Prep",
+          "description": "Conduct WCAG AA accessibility audit, bundle optimization, and interactive documentation.",
+          "estimated_hours": 12,
+          "learning_activities": [
+            "Lighthouse performance audit (score >= 90)",
+            "Prepare portfolio README dossier"
+          ],
+          "completion_criteria": "Live project ready for Systems Ltd, 10Pearls, or VentureDive applications.",
+          "is_completed": false,
+          "completed_at": null
+        }
+      ]
+    },
+    {
+      "roadmap_id": 16,
+      "user_id": 2,
+      "title": "12-Week Junior Frontend Developer Preparation Roadmap",
+      "career_id": null,
+      "target_role": "Junior Frontend Developer",
+      "total_weeks": 12,
+      "status": "ACTIVE",
+      "created_at": "2026-11-13T13:15:33.561Z",
+      "milestones": [
+        {
+          "milestone_id": 61,
+          "roadmap_id": 16,
+          "week_number": 1,
+          "title": "TypeScript Foundations & Modern JavaScript",
+          "description": "Strengthen component type safety, interfaces, union types, and strict mode in React.",
+          "estimated_hours": 8,
+          "learning_activities": [
+            "Official TypeScript Handbook",
+            "Refactor 3 React components to strict TypeScript"
+          ],
+          "completion_criteria": "tsc passes with noImplicitAny and 0 type errors.",
+          "is_completed": true,
+          "completed_at": "2026-11-13T13:15:33.566Z"
+        },
+        {
+          "milestone_id": 62,
+          "roadmap_id": 16,
+          "week_number": 4,
+          "title": "Next.js App Router & Server Components",
+          "description": "Master client vs server component boundaries, layout hierarchies, and server actions.",
+          "estimated_hours": 10,
+          "learning_activities": [
+            "Complete Next.js official tutorial",
+            "Implement dynamic product/career dashboard"
+          ],
+          "completion_criteria": "Production build deployed with zero layout shift (CLS < 0.1).",
+          "is_completed": false,
+          "completed_at": null
+        },
+        {
+          "milestone_id": 63,
+          "roadmap_id": 16,
+          "week_number": 8,
+          "title": "State Architecture & API Cache Management",
+          "description": "Implement TanStack Query or Zustand for optimistic UI and server state syncing.",
+          "estimated_hours": 10,
+          "learning_activities": [
+            "Build an e-commerce catalog with search and debounce",
+            "Add error boundaries"
+          ],
+          "completion_criteria": "Smooth loading skeletons and resilient offline recovery.",
+          "is_completed": false,
+          "completed_at": null
+        },
+        {
+          "milestone_id": 64,
+          "roadmap_id": 16,
+          "week_number": 12,
+          "title": "Portfolio Capstone Polish & Pakistani Tech Job Prep",
+          "description": "Conduct WCAG AA accessibility audit, bundle optimization, and interactive documentation.",
+          "estimated_hours": 12,
+          "learning_activities": [
+            "Lighthouse performance audit (score >= 90)",
+            "Prepare portfolio README dossier"
+          ],
+          "completion_criteria": "Live project ready for Systems Ltd, 10Pearls, or VentureDive applications.",
+          "is_completed": false,
+          "completed_at": null
+        }
+      ]
+    },
+    {
+      "roadmap_id": 17,
+      "user_id": 2,
+      "title": "12-Week Junior Frontend Developer Preparation Roadmap",
+      "career_id": null,
+      "target_role": "Junior Frontend Developer",
+      "total_weeks": 12,
+      "status": "ACTIVE",
+      "created_at": "2026-11-13T13:48:43.363Z",
+      "milestones": [
+        {
+          "milestone_id": 65,
+          "roadmap_id": 17,
+          "week_number": 1,
+          "title": "TypeScript Foundations & Modern JavaScript",
+          "description": "Strengthen component type safety, interfaces, union types, and strict mode in React.",
+          "estimated_hours": 8,
+          "learning_activities": [
+            "Official TypeScript Handbook",
+            "Refactor 3 React components to strict TypeScript"
+          ],
+          "completion_criteria": "tsc passes with noImplicitAny and 0 type errors.",
+          "is_completed": true,
+          "completed_at": "2026-11-13T13:48:43.369Z"
+        },
+        {
+          "milestone_id": 66,
+          "roadmap_id": 17,
+          "week_number": 4,
+          "title": "Next.js App Router & Server Components",
+          "description": "Master client vs server component boundaries, layout hierarchies, and server actions.",
+          "estimated_hours": 10,
+          "learning_activities": [
+            "Complete Next.js official tutorial",
+            "Implement dynamic product/career dashboard"
+          ],
+          "completion_criteria": "Production build deployed with zero layout shift (CLS < 0.1).",
+          "is_completed": false,
+          "completed_at": null
+        },
+        {
+          "milestone_id": 67,
+          "roadmap_id": 17,
+          "week_number": 8,
+          "title": "State Architecture & API Cache Management",
+          "description": "Implement TanStack Query or Zustand for optimistic UI and server state syncing.",
+          "estimated_hours": 10,
+          "learning_activities": [
+            "Build an e-commerce catalog with search and debounce",
+            "Add error boundaries"
+          ],
+          "completion_criteria": "Smooth loading skeletons and resilient offline recovery.",
+          "is_completed": false,
+          "completed_at": null
+        },
+        {
+          "milestone_id": 68,
+          "roadmap_id": 17,
+          "week_number": 12,
+          "title": "Portfolio Capstone Polish & Pakistani Tech Job Prep",
+          "description": "Conduct WCAG AA accessibility audit, bundle optimization, and interactive documentation.",
+          "estimated_hours": 12,
+          "learning_activities": [
+            "Lighthouse performance audit (score >= 90)",
+            "Prepare portfolio README dossier"
+          ],
+          "completion_criteria": "Live project ready for Systems Ltd, 10Pearls, or VentureDive applications.",
+          "is_completed": false,
+          "completed_at": null
+        }
+      ]
+    },
+    {
+      "roadmap_id": 18,
+      "user_id": 2,
+      "title": "12-Week Junior Frontend Developer Preparation Roadmap",
+      "career_id": null,
+      "target_role": "Junior Frontend Developer",
+      "total_weeks": 12,
+      "status": "ACTIVE",
+      "created_at": "2026-11-13T14:19:01.457Z",
+      "milestones": [
+        {
+          "milestone_id": 69,
+          "roadmap_id": 18,
+          "week_number": 1,
+          "title": "TypeScript Foundations & Modern JavaScript",
+          "description": "Strengthen component type safety, interfaces, union types, and strict mode in React.",
+          "estimated_hours": 8,
+          "learning_activities": [
+            "Official TypeScript Handbook",
+            "Refactor 3 React components to strict TypeScript"
+          ],
+          "completion_criteria": "tsc passes with noImplicitAny and 0 type errors.",
+          "is_completed": true,
+          "completed_at": "2026-11-13T14:19:01.461Z"
+        },
+        {
+          "milestone_id": 70,
+          "roadmap_id": 18,
+          "week_number": 4,
+          "title": "Next.js App Router & Server Components",
+          "description": "Master client vs server component boundaries, layout hierarchies, and server actions.",
+          "estimated_hours": 10,
+          "learning_activities": [
+            "Complete Next.js official tutorial",
+            "Implement dynamic product/career dashboard"
+          ],
+          "completion_criteria": "Production build deployed with zero layout shift (CLS < 0.1).",
+          "is_completed": false,
+          "completed_at": null
+        },
+        {
+          "milestone_id": 71,
+          "roadmap_id": 18,
+          "week_number": 8,
+          "title": "State Architecture & API Cache Management",
+          "description": "Implement TanStack Query or Zustand for optimistic UI and server state syncing.",
+          "estimated_hours": 10,
+          "learning_activities": [
+            "Build an e-commerce catalog with search and debounce",
+            "Add error boundaries"
+          ],
+          "completion_criteria": "Smooth loading skeletons and resilient offline recovery.",
+          "is_completed": false,
+          "completed_at": null
+        },
+        {
+          "milestone_id": 72,
+          "roadmap_id": 18,
+          "week_number": 12,
+          "title": "Portfolio Capstone Polish & Pakistani Tech Job Prep",
+          "description": "Conduct WCAG AA accessibility audit, bundle optimization, and interactive documentation.",
+          "estimated_hours": 12,
+          "learning_activities": [
+            "Lighthouse performance audit (score >= 90)",
+            "Prepare portfolio README dossier"
+          ],
+          "completion_criteria": "Live project ready for Systems Ltd, 10Pearls, or VentureDive applications.",
+          "is_completed": false,
+          "completed_at": null
+        }
+      ]
     }
   ],
   "student_roadmap_milestones": [
@@ -8724,6 +9908,246 @@
     {
       "milestone_id": 56,
       "roadmap_id": 14,
+      "week_number": 12,
+      "title": "Portfolio Capstone Polish & Pakistani Tech Job Prep",
+      "description": "Conduct WCAG AA accessibility audit, bundle optimization, and interactive documentation.",
+      "estimated_hours": 12,
+      "learning_activities": [
+        "Lighthouse performance audit (score >= 90)",
+        "Prepare portfolio README dossier"
+      ],
+      "completion_criteria": "Live project ready for Systems Ltd, 10Pearls, or VentureDive applications.",
+      "is_completed": false,
+      "completed_at": null
+    },
+    {
+      "milestone_id": 57,
+      "roadmap_id": 15,
+      "week_number": 1,
+      "title": "TypeScript Foundations & Modern JavaScript",
+      "description": "Strengthen component type safety, interfaces, union types, and strict mode in React.",
+      "estimated_hours": 8,
+      "learning_activities": [
+        "Official TypeScript Handbook",
+        "Refactor 3 React components to strict TypeScript"
+      ],
+      "completion_criteria": "tsc passes with noImplicitAny and 0 type errors.",
+      "is_completed": true,
+      "completed_at": "2026-11-13T13:07:26.849Z"
+    },
+    {
+      "milestone_id": 58,
+      "roadmap_id": 15,
+      "week_number": 4,
+      "title": "Next.js App Router & Server Components",
+      "description": "Master client vs server component boundaries, layout hierarchies, and server actions.",
+      "estimated_hours": 10,
+      "learning_activities": [
+        "Complete Next.js official tutorial",
+        "Implement dynamic product/career dashboard"
+      ],
+      "completion_criteria": "Production build deployed with zero layout shift (CLS < 0.1).",
+      "is_completed": false,
+      "completed_at": null
+    },
+    {
+      "milestone_id": 59,
+      "roadmap_id": 15,
+      "week_number": 8,
+      "title": "State Architecture & API Cache Management",
+      "description": "Implement TanStack Query or Zustand for optimistic UI and server state syncing.",
+      "estimated_hours": 10,
+      "learning_activities": [
+        "Build an e-commerce catalog with search and debounce",
+        "Add error boundaries"
+      ],
+      "completion_criteria": "Smooth loading skeletons and resilient offline recovery.",
+      "is_completed": false,
+      "completed_at": null
+    },
+    {
+      "milestone_id": 60,
+      "roadmap_id": 15,
+      "week_number": 12,
+      "title": "Portfolio Capstone Polish & Pakistani Tech Job Prep",
+      "description": "Conduct WCAG AA accessibility audit, bundle optimization, and interactive documentation.",
+      "estimated_hours": 12,
+      "learning_activities": [
+        "Lighthouse performance audit (score >= 90)",
+        "Prepare portfolio README dossier"
+      ],
+      "completion_criteria": "Live project ready for Systems Ltd, 10Pearls, or VentureDive applications.",
+      "is_completed": false,
+      "completed_at": null
+    },
+    {
+      "milestone_id": 61,
+      "roadmap_id": 16,
+      "week_number": 1,
+      "title": "TypeScript Foundations & Modern JavaScript",
+      "description": "Strengthen component type safety, interfaces, union types, and strict mode in React.",
+      "estimated_hours": 8,
+      "learning_activities": [
+        "Official TypeScript Handbook",
+        "Refactor 3 React components to strict TypeScript"
+      ],
+      "completion_criteria": "tsc passes with noImplicitAny and 0 type errors.",
+      "is_completed": true,
+      "completed_at": "2026-11-13T13:15:33.566Z"
+    },
+    {
+      "milestone_id": 62,
+      "roadmap_id": 16,
+      "week_number": 4,
+      "title": "Next.js App Router & Server Components",
+      "description": "Master client vs server component boundaries, layout hierarchies, and server actions.",
+      "estimated_hours": 10,
+      "learning_activities": [
+        "Complete Next.js official tutorial",
+        "Implement dynamic product/career dashboard"
+      ],
+      "completion_criteria": "Production build deployed with zero layout shift (CLS < 0.1).",
+      "is_completed": false,
+      "completed_at": null
+    },
+    {
+      "milestone_id": 63,
+      "roadmap_id": 16,
+      "week_number": 8,
+      "title": "State Architecture & API Cache Management",
+      "description": "Implement TanStack Query or Zustand for optimistic UI and server state syncing.",
+      "estimated_hours": 10,
+      "learning_activities": [
+        "Build an e-commerce catalog with search and debounce",
+        "Add error boundaries"
+      ],
+      "completion_criteria": "Smooth loading skeletons and resilient offline recovery.",
+      "is_completed": false,
+      "completed_at": null
+    },
+    {
+      "milestone_id": 64,
+      "roadmap_id": 16,
+      "week_number": 12,
+      "title": "Portfolio Capstone Polish & Pakistani Tech Job Prep",
+      "description": "Conduct WCAG AA accessibility audit, bundle optimization, and interactive documentation.",
+      "estimated_hours": 12,
+      "learning_activities": [
+        "Lighthouse performance audit (score >= 90)",
+        "Prepare portfolio README dossier"
+      ],
+      "completion_criteria": "Live project ready for Systems Ltd, 10Pearls, or VentureDive applications.",
+      "is_completed": false,
+      "completed_at": null
+    },
+    {
+      "milestone_id": 65,
+      "roadmap_id": 17,
+      "week_number": 1,
+      "title": "TypeScript Foundations & Modern JavaScript",
+      "description": "Strengthen component type safety, interfaces, union types, and strict mode in React.",
+      "estimated_hours": 8,
+      "learning_activities": [
+        "Official TypeScript Handbook",
+        "Refactor 3 React components to strict TypeScript"
+      ],
+      "completion_criteria": "tsc passes with noImplicitAny and 0 type errors.",
+      "is_completed": true,
+      "completed_at": "2026-11-13T13:48:43.369Z"
+    },
+    {
+      "milestone_id": 66,
+      "roadmap_id": 17,
+      "week_number": 4,
+      "title": "Next.js App Router & Server Components",
+      "description": "Master client vs server component boundaries, layout hierarchies, and server actions.",
+      "estimated_hours": 10,
+      "learning_activities": [
+        "Complete Next.js official tutorial",
+        "Implement dynamic product/career dashboard"
+      ],
+      "completion_criteria": "Production build deployed with zero layout shift (CLS < 0.1).",
+      "is_completed": false,
+      "completed_at": null
+    },
+    {
+      "milestone_id": 67,
+      "roadmap_id": 17,
+      "week_number": 8,
+      "title": "State Architecture & API Cache Management",
+      "description": "Implement TanStack Query or Zustand for optimistic UI and server state syncing.",
+      "estimated_hours": 10,
+      "learning_activities": [
+        "Build an e-commerce catalog with search and debounce",
+        "Add error boundaries"
+      ],
+      "completion_criteria": "Smooth loading skeletons and resilient offline recovery.",
+      "is_completed": false,
+      "completed_at": null
+    },
+    {
+      "milestone_id": 68,
+      "roadmap_id": 17,
+      "week_number": 12,
+      "title": "Portfolio Capstone Polish & Pakistani Tech Job Prep",
+      "description": "Conduct WCAG AA accessibility audit, bundle optimization, and interactive documentation.",
+      "estimated_hours": 12,
+      "learning_activities": [
+        "Lighthouse performance audit (score >= 90)",
+        "Prepare portfolio README dossier"
+      ],
+      "completion_criteria": "Live project ready for Systems Ltd, 10Pearls, or VentureDive applications.",
+      "is_completed": false,
+      "completed_at": null
+    },
+    {
+      "milestone_id": 69,
+      "roadmap_id": 18,
+      "week_number": 1,
+      "title": "TypeScript Foundations & Modern JavaScript",
+      "description": "Strengthen component type safety, interfaces, union types, and strict mode in React.",
+      "estimated_hours": 8,
+      "learning_activities": [
+        "Official TypeScript Handbook",
+        "Refactor 3 React components to strict TypeScript"
+      ],
+      "completion_criteria": "tsc passes with noImplicitAny and 0 type errors.",
+      "is_completed": true,
+      "completed_at": "2026-11-13T14:19:01.461Z"
+    },
+    {
+      "milestone_id": 70,
+      "roadmap_id": 18,
+      "week_number": 4,
+      "title": "Next.js App Router & Server Components",
+      "description": "Master client vs server component boundaries, layout hierarchies, and server actions.",
+      "estimated_hours": 10,
+      "learning_activities": [
+        "Complete Next.js official tutorial",
+        "Implement dynamic product/career dashboard"
+      ],
+      "completion_criteria": "Production build deployed with zero layout shift (CLS < 0.1).",
+      "is_completed": false,
+      "completed_at": null
+    },
+    {
+      "milestone_id": 71,
+      "roadmap_id": 18,
+      "week_number": 8,
+      "title": "State Architecture & API Cache Management",
+      "description": "Implement TanStack Query or Zustand for optimistic UI and server state syncing.",
+      "estimated_hours": 10,
+      "learning_activities": [
+        "Build an e-commerce catalog with search and debounce",
+        "Add error boundaries"
+      ],
+      "completion_criteria": "Smooth loading skeletons and resilient offline recovery.",
+      "is_completed": false,
+      "completed_at": null
+    },
+    {
+      "milestone_id": 72,
+      "roadmap_id": 18,
       "week_number": 12,
       "title": "Portfolio Capstone Polish & Pakistani Tech Job Prep",
       "description": "Conduct WCAG AA accessibility audit, bundle optimization, and interactive documentation.",

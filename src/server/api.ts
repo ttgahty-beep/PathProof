@@ -986,8 +986,38 @@ export function createApiRouter(): Router {
           port: config.port,
           database: config.database,
           connectionLimit: config.connectionLimit,
+          sslEnabled: config.sslEnabled,
+          sslCaConfigured: config.sslCaConfigured,
           isMockFallbackActive: dbMgr.isUsingMockDriver(),
         },
+        meta: { requestId: req.requestId },
+      });
+    } catch (err) {
+      handleError(err, req, res);
+    }
+  });
+
+  api.get('/patterns/singleton/diagnostics', async (req: AuthenticatedRequest, res: Response) => {
+    try {
+      const { runDatabaseDiagnostics } = await import('../../lib/db-test.ts');
+      const report = await runDatabaseDiagnostics({ logToConsole: true });
+      res.status(report.select1Check.passed ? 200 : 503).json({
+        success: report.select1Check.passed,
+        data: report,
+        meta: { requestId: req.requestId },
+      });
+    } catch (err) {
+      handleError(err, req, res);
+    }
+  });
+
+  api.post('/patterns/singleton/initialize', async (req: AuthenticatedRequest, res: Response) => {
+    try {
+      const { initializeAndVerifyPathProofDb } = await import('../../lib/db-setup.ts');
+      const result = await initializeAndVerifyPathProofDb();
+      res.status(200).json({
+        success: result.tablesVerification.allPresent && result.poolVerification.select1Passed,
+        data: result,
         meta: { requestId: req.requestId },
       });
     } catch (err) {
