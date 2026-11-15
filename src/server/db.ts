@@ -168,7 +168,11 @@ class Database {
         if (!this.data.sequences.roadmap_id) this.data.sequences.roadmap_id = 1;
         if (!this.data.sequences.milestone_id) this.data.sequences.milestone_id = 1;
         this.isLoaded = true;
-        if (this.syncCareerCatalog()) {
+        let changed = this.syncCareerCatalog();
+        if (this.syncRoadmapMilestones()) {
+          changed = true;
+        }
+        if (changed) {
           this.save();
         }
       } else {
@@ -250,6 +254,23 @@ class Database {
       expanded.nextCareerId
     );
     return true;
+  }
+
+  private syncRoadmapMilestones(): boolean {
+    let changed = false;
+    const existingIds = new Set(this.data.student_roadmap_milestones.map((m) => m.milestone_id));
+    for (const roadmap of this.data.student_roadmaps) {
+      if (Array.isArray(roadmap.milestones)) {
+        for (const milestone of roadmap.milestones) {
+          if (!existingIds.has(milestone.milestone_id)) {
+            this.data.student_roadmap_milestones.push({ ...milestone });
+            existingIds.add(milestone.milestone_id);
+            changed = true;
+          }
+        }
+      }
+    }
+    return changed;
   }
 
   public seedInitialData(): void {
@@ -1424,6 +1445,8 @@ class Database {
         ],
       },
     ];
+    this.data.student_roadmap_milestones = [];
+    this.syncRoadmapMilestones();
     this.data.sequences.roadmap_id = 2;
     this.data.sequences.milestone_id = 5;
   }

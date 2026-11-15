@@ -370,6 +370,7 @@ export interface CopilotMessage {
   sender: CopilotSender;
   content: string;
   action_type: CopilotActionType;
+  action_id?: number | null;
   action_payload?: RoadmapPayload | null;
   created_at: string;
   is_fallback?: boolean;

@@ -515,11 +515,13 @@ export const DashboardLayout: React.FC<DashboardLayoutProps> = ({
           {children}
         </main>
 
-        {/* Floating Copilot Drawer Widget */}
-        <FloatingCopilotDrawer
-          currentUser={currentUser}
-          onOpenFullTab={() => onSelectTab('copilot')}
-        />
+        {/* Floating Copilot Drawer Widget (hidden when already in full-page Copilot tab) */}
+        {activeTab !== 'copilot' && (
+          <FloatingCopilotDrawer
+            currentUser={currentUser}
+            onOpenFullTab={() => onSelectTab('copilot')}
+          />
+        )}
       </div>
     </div>
   );

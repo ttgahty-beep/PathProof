@@ -16,21 +16,24 @@ async function startServer() {
   const app = express();
   const PORT = process.env.PORT ? parseInt(process.env.PORT, 10) : 3000;
 
-  // Initialize persistent database
+  // Initialize persistent database synchronously so API is immediately ready
   db.init();
 
-  // Initialize and seed relational MySQL connection manager & tables
-  try {
-    const { runDatabaseSeed } = await import('./scripts/seed_db.ts');
-    await runDatabaseSeed();
-  } catch (seedErr) {
-    console.warn('[PathProof] Relational database seed warning:', seedErr);
-  }
-
-  app.use(express.json());
+  app.use(express.json({ limit: '1mb' }));
 
   // Mount versioned REST API
   app.use('/api/v1', createApiRouter());
+
+  // Never fall through unmatched /api/* requests to SPA HTML
+  app.use('/api', (req, res) => {
+    res.status(404).json({
+      success: false,
+      error: {
+        code: 'NOT_FOUND',
+        message: `API endpoint not found: ${req.method} ${req.originalUrl}`,
+      },
+    });
+  });
 
   const isProd = process.env.NODE_ENV === 'production';
 
@@ -54,6 +57,14 @@ async function startServer() {
 
   app.listen(PORT, '0.0.0.0', () => {
     console.log(`[PathProof] Full-stack application ready at http://0.0.0.0:${PORT}`);
+
+    // Initialize and seed relational MySQL connection manager & tables asynchronously
+    // so Cloud Run / container startup probes pass immediately without waiting on remote DB timeouts.
+    import('./scripts/seed_db.ts')
+      .then(({ runDatabaseSeed }) => runDatabaseSeed())
+      .catch((seedErr) => {
+        console.warn('[PathProof] Relational database seed warning:', seedErr);
+      });
   });
 }
 

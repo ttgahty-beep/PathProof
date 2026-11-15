@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { apiClient } from '../services/apiClient.ts';
 import { CopilotMessage, RoadmapPayload, SafeUser } from '../types/index.ts';
 import { ActionReviewModal } from './ActionReviewModal.tsx';
+import { CopilotMessageContent } from './CopilotMessageContent.tsx';
 import {
   MessageSquare,
   X,
@@ -13,6 +14,7 @@ import {
   Sparkles,
   ArrowRight,
   Check,
+  Plus,
 } from 'lucide-react';
 
 interface Props {
@@ -29,27 +31,34 @@ export const FloatingCopilotDrawer: React.FC<Props> = ({ currentUser, onOpenFull
 
   // Modal review state
   const [selectedRoadmapPayload, setSelectedRoadmapPayload] = useState<RoadmapPayload | null>(null);
+  const [selectedActionId, setSelectedActionId] = useState<number | null>(null);
   const [showActionModal, setShowActionModal] = useState(false);
   const [saveSuccessMsg, setSaveSuccessMsg] = useState<string | null>(null);
 
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
 
+  // Reset drawer state when persona changes
   useEffect(() => {
-    if (isOpen && messages.length === 0) {
+    setActiveConvId(null);
+    setMessages([]);
+  }, [currentUser?.user_id]);
+
+  useEffect(() => {
+    if (isOpen && messages.length === 0 && currentUser?.role === 'STUDENT') {
       loadInitialChat();
     }
     if (isOpen) {
       setTimeout(() => inputRef.current?.focus(), 150);
     }
-  }, [isOpen, currentUser]);
+  }, [isOpen, currentUser?.user_id]);
 
   useEffect(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
   }, [messages, isLoading]);
 
   const loadInitialChat = async () => {
-    if (!currentUser) return;
+    if (!currentUser || currentUser.role !== 'STUDENT') return;
     try {
       const convs = await apiClient.getCopilotConversations();
       if (convs.length > 0) {
@@ -59,6 +68,18 @@ export const FloatingCopilotDrawer: React.FC<Props> = ({ currentUser, onOpenFull
       }
     } catch (err) {
       console.warn('Floating copilot initial chat load error:', err);
+    }
+  };
+
+  const handleStartNewChat = async () => {
+    try {
+      const conv = await apiClient.createCopilotConversation('Quick Copilot Chat');
+      setActiveConvId(conv.conversation_id);
+      setMessages([]);
+      setTimeout(() => inputRef.current?.focus(), 100);
+    } catch {
+      setActiveConvId(null);
+      setMessages([]);
     }
   };
 
@@ -72,6 +93,7 @@ export const FloatingCopilotDrawer: React.FC<Props> = ({ currentUser, onOpenFull
     try {
       const convId = activeConvId || 0;
       const res = await apiClient.sendMessageToCopilot(convId, text);
+      setActiveConvId(res.userMessage.conversation_id);
       setMessages((prev) => [...prev, res.userMessage, res.assistantMessage]);
     } catch (err: any) {
       const errorMsg: CopilotMessage = {
@@ -101,12 +123,13 @@ export const FloatingCopilotDrawer: React.FC<Props> = ({ currentUser, onOpenFull
   const handleOpenActionReview = (msg: CopilotMessage) => {
     if (msg.action_payload) {
       setSelectedRoadmapPayload(msg.action_payload);
+      setSelectedActionId(msg.action_id || msg.message_id);
       setShowActionModal(true);
     }
   };
 
   const handleConfirmAction = async (editedPayload: RoadmapPayload) => {
-    await apiClient.confirmCopilotAction(1, editedPayload);
+    await apiClient.confirmCopilotAction(selectedActionId || 1, editedPayload);
     setSaveSuccessMsg(`Roadmap "${editedPayload.title}" confirmed and saved!`);
     setTimeout(() => setSaveSuccessMsg(null), 5000);
   };
@@ -155,19 +178,32 @@ export const FloatingCopilotDrawer: React.FC<Props> = ({ currentUser, onOpenFull
 
             <div className="flex items-center gap-1.5">
               <button
+                type="button"
+                onClick={handleStartNewChat}
+                className="p-1.5 text-[#A3B8AC] hover:text-white hover:bg-[#244B3A] rounded-lg transition-colors cursor-pointer"
+                title="Start new chat"
+                aria-label="Start new chat"
+              >
+                <Plus className="w-4 h-4" />
+              </button>
+              <button
+                type="button"
                 onClick={() => {
                   setIsOpen(false);
                   onOpenFullTab();
                 }}
                 className="p-1.5 text-[#A3B8AC] hover:text-white hover:bg-[#244B3A] rounded-lg transition-colors cursor-pointer"
                 title="Expand to full workspace tab"
+                aria-label="Expand to full workspace tab"
               >
                 <Maximize2 className="w-4 h-4" />
               </button>
               <button
+                type="button"
                 onClick={() => setIsOpen(false)}
                 className="p-1.5 text-[#A3B8AC] hover:text-white hover:bg-[#244B3A] rounded-lg transition-colors cursor-pointer"
                 title="Close drawer"
+                aria-label="Close drawer"
               >
                 <X className="w-4 h-4" />
               </button>
@@ -229,9 +265,7 @@ export const FloatingCopilotDrawer: React.FC<Props> = ({ currentUser, onOpenFull
                         : 'bg-white text-[#202A23] border border-[#E5E4DA]'
                     }`}
                   >
-                    <div className="whitespace-pre-line leading-relaxed font-sans">
-                      {msg.content}
-                    </div>
+                    <CopilotMessageContent content={msg.content} isUser={isUser} />
 
                     {msg.action_type === 'PROPOSE_ROADMAP' && msg.action_payload && (
                       <div className="p-2.5 bg-[#F7F6F0] border border-[#244B3A]/30 rounded-lg space-y-1.5 mt-2">

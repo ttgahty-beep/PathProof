@@ -7,6 +7,7 @@ import {
   SafeUser,
 } from '../types/index.ts';
 import { ActionReviewModal } from './ActionReviewModal.tsx';
+import { CopilotMessageContent } from './CopilotMessageContent.tsx';
 import {
   Send,
   Plus,
@@ -37,24 +38,36 @@ export const CopilotView: React.FC<Props> = ({ currentUser, onNavigateToTab }) =
   const [messages, setMessages] = useState<CopilotMessage[]>([]);
   const [inputMessage, setInputMessage] = useState('');
   const [isLoading, setIsLoading] = useState(false);
+  const [isInitialLoading, setIsInitialLoading] = useState(false);
+  const [loadError, setLoadError] = useState<string | null>(null);
   const [contextData, setContextData] = useState<any>(null);
   const [copiedMsgId, setCopiedMsgId] = useState<number | null>(null);
   const [feedbackGiven, setFeedbackGiven] = useState<Record<number, boolean>>({});
+  const [confirmDeleteConvId, setConfirmDeleteConvId] = useState<number | null>(null);
 
   // Action review modal state
   const [selectedRoadmapPayload, setSelectedRoadmapPayload] = useState<RoadmapPayload | null>(null);
-  const [selectedActionMsgId, setSelectedActionMsgId] = useState<number | null>(null);
+  const [selectedActionId, setSelectedActionId] = useState<number | null>(null);
   const [showActionModal, setShowActionModal] = useState(false);
   const [saveSuccessMsg, setSaveSuccessMsg] = useState<string | null>(null);
 
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const textareaRef = useRef<HTMLTextAreaElement>(null);
 
-  // Load conversations on mount
+  // Reset and reload conversations & context whenever authenticated user changes
   useEffect(() => {
-    loadConversations();
-    loadContext();
-  }, [currentUser]);
+    setConversations([]);
+    setActiveConvId(null);
+    setMessages([]);
+    setContextData(null);
+    setLoadError(null);
+    setConfirmDeleteConvId(null);
+
+    if (currentUser?.user_id && currentUser.role === 'STUDENT') {
+      loadConversations();
+      loadContext();
+    }
+  }, [currentUser?.user_id, currentUser?.role]);
 
   // Scroll to bottom when messages update
   useEffect(() => {
@@ -62,7 +75,7 @@ export const CopilotView: React.FC<Props> = ({ currentUser, onNavigateToTab }) =
   }, [messages, isLoading]);
 
   const loadContext = async () => {
-    if (!currentUser) return;
+    if (!currentUser || currentUser.role !== 'STUDENT') return;
     try {
       const data = await apiClient.getCopilotStudentContext();
       setContextData(data);
@@ -72,59 +85,74 @@ export const CopilotView: React.FC<Props> = ({ currentUser, onNavigateToTab }) =
   };
 
   const loadConversations = async () => {
-    if (!currentUser) return;
+    if (!currentUser || currentUser.role !== 'STUDENT') return;
+    setIsInitialLoading(true);
+    setLoadError(null);
     try {
       const list = await apiClient.getCopilotConversations();
       setConversations(list);
-      if (list.length > 0 && !activeConvId) {
-        selectConversation(list[0].conversation_id);
-      } else if (list.length === 0) {
-        handleCreateNewConversation();
+      if (list.length > 0) {
+        await selectConversation(list[0].conversation_id);
+      } else {
+        await handleCreateNewConversation();
       }
-    } catch (err) {
+    } catch (err: any) {
       console.error('Failed to load conversations:', err);
+      setLoadError(err?.message || 'Could not load Copilot conversations. Please try again.');
+    } finally {
+      setIsInitialLoading(false);
     }
   };
 
   const selectConversation = async (convId: number) => {
     try {
       setActiveConvId(convId);
+      setConfirmDeleteConvId(null);
       const res = await apiClient.getCopilotConversation(convId);
       setMessages(res.messages);
-    } catch (err) {
+    } catch (err: any) {
       console.error('Failed to select conversation:', err);
+      setLoadError(err?.message || 'Failed to load conversation history.');
     }
   };
 
   const handleCreateNewConversation = async () => {
     try {
+      setLoadError(null);
       const newConv = await apiClient.createCopilotConversation('New Career Mentorship');
-      setConversations((prev) => [newConv, ...prev]);
+      setConversations((prev) => [newConv, ...prev.filter((c) => c.conversation_id !== newConv.conversation_id)]);
       setActiveConvId(newConv.conversation_id);
       setMessages([]);
       setTimeout(() => textareaRef.current?.focus(), 100);
-    } catch (err) {
+    } catch (err: any) {
       console.error('Failed to create conversation:', err);
+      setLoadError(err?.message || 'Could not start a new conversation.');
     }
   };
 
   const handleDeleteConversation = async (e: React.MouseEvent, convId: number) => {
     e.stopPropagation();
-    if (!confirm('Are you sure you want to delete this conversation?')) return;
+    if (confirmDeleteConvId !== convId) {
+      setConfirmDeleteConvId(convId);
+      return;
+    }
+
+    setConfirmDeleteConvId(null);
     try {
       await apiClient.deleteCopilotConversation(convId);
-      setConversations((prev) => prev.filter((c) => c.conversation_id !== convId));
+      const remaining = conversations.filter((c) => c.conversation_id !== convId);
+      setConversations(remaining);
       if (activeConvId === convId) {
-        const remaining = conversations.filter((c) => c.conversation_id !== convId);
         if (remaining.length > 0) {
-          selectConversation(remaining[0].conversation_id);
+          await selectConversation(remaining[0].conversation_id);
         } else {
           setActiveConvId(null);
           setMessages([]);
         }
       }
-    } catch (err) {
+    } catch (err: any) {
       console.error('Failed to delete conversation:', err);
+      setLoadError(err?.message || 'Could not delete conversation.');
     }
   };
 
@@ -134,33 +162,26 @@ export const CopilotView: React.FC<Props> = ({ currentUser, onNavigateToTab }) =
 
     setInputMessage('');
     setIsLoading(true);
+    setLoadError(null);
 
     try {
       const convId = activeConvId || 0;
       const res = await apiClient.sendMessageToCopilot(convId, text);
+      const resolvedConvId = res.userMessage.conversation_id;
 
       setMessages((prev) => [...prev, res.userMessage, res.assistantMessage]);
+      setActiveConvId(resolvedConvId);
 
-      // Update conversation title if new
-      if (activeConvId) {
-        setConversations((prev) =>
-          prev.map((c) =>
-            c.conversation_id === activeConvId
-              ? { ...c, updated_at: new Date().toISOString() }
-              : c
-          )
-        );
-      } else {
-        loadConversations();
-      }
+      // Keep sidebar conversation list & title fresh
+      const list = await apiClient.getCopilotConversations();
+      setConversations(list);
     } catch (err: any) {
       console.error('Failed to send message:', err);
-      // Append an informative error message
       const errorMsg: CopilotMessage = {
         message_id: Date.now(),
         conversation_id: activeConvId || 0,
         sender: 'copilot',
-        content: `I encountered an unexpected issue processing your request: "${err.message || 'Server error'}". Please check your network connection or try asking again.`,
+        content: `I encountered an unexpected issue processing your request: "${err.message || 'Server error'}". Please try asking again.`,
         action_type: 'NONE',
         action_payload: null,
         created_at: new Date().toISOString(),
@@ -180,8 +201,27 @@ export const CopilotView: React.FC<Props> = ({ currentUser, onNavigateToTab }) =
     }
   };
 
-  const handleCopyMessage = (msgId: number, content: string) => {
-    navigator.clipboard.writeText(content);
+  const handleCopyMessage = async (msgId: number, content: string) => {
+    try {
+      if (navigator.clipboard && typeof navigator.clipboard.writeText === 'function') {
+        await navigator.clipboard.writeText(content);
+      } else {
+        throw new Error('Clipboard unavailable');
+      }
+    } catch {
+      try {
+        const helper = document.createElement('textarea');
+        helper.value = content;
+        helper.style.position = 'fixed';
+        helper.style.opacity = '0';
+        document.body.appendChild(helper);
+        helper.select();
+        document.execCommand('copy');
+        document.body.removeChild(helper);
+      } catch {
+        // Ignore if blocked in strict sandbox
+      }
+    }
     setCopiedMsgId(msgId);
     setTimeout(() => setCopiedMsgId(null), 2000);
   };
@@ -189,21 +229,16 @@ export const CopilotView: React.FC<Props> = ({ currentUser, onNavigateToTab }) =
   const handleOpenActionReview = (msg: CopilotMessage) => {
     if (msg.action_payload) {
       setSelectedRoadmapPayload(msg.action_payload);
-      setSelectedActionMsgId(msg.message_id);
+      setSelectedActionId(msg.action_id || msg.message_id);
       setShowActionModal(true);
     }
   };
 
   const handleConfirmAction = async (editedPayload: RoadmapPayload) => {
-    try {
-      // Find actionId or confirm with payload
-      const actionId = selectedActionMsgId || 1;
-      await apiClient.confirmCopilotAction(actionId, editedPayload);
-      setSaveSuccessMsg(`Roadmap "${editedPayload.title}" has been successfully added to your dashboard!`);
-      setTimeout(() => setSaveSuccessMsg(null), 6000);
-    } catch (err: any) {
-      throw err;
-    }
+    const actionId = selectedActionId || 1;
+    await apiClient.confirmCopilotAction(actionId, editedPayload);
+    setSaveSuccessMsg(`Roadmap "${editedPayload.title}" has been successfully added to your dashboard!`);
+    setTimeout(() => setSaveSuccessMsg(null), 6000);
   };
 
   const suggestedPrompts = [
@@ -227,7 +262,7 @@ export const CopilotView: React.FC<Props> = ({ currentUser, onNavigateToTab }) =
                 PathProof Copilot
               </span>
               <span className="text-2xs text-[#A3B8AC]">·</span>
-              <span className="text-2xs font-mono text-[#244B3A]">Gemini 3.8 Flash Powered</span>
+              <span className="text-2xs font-mono text-[#244B3A]">Gemini 4 Hydrogen Powered</span>
             </div>
             <h1 className="text-2xl font-bold tracking-tight text-[#173629]">
               Your Personal Career Mentor
@@ -247,12 +282,28 @@ export const CopilotView: React.FC<Props> = ({ currentUser, onNavigateToTab }) =
                 <span>{contextData.university}</span> · <span>Semester {contextData.currentSemester}</span>
               </div>
               <div className="text-2xs text-[#244B3A] font-medium font-mono tabular-nums">
-                Top Fit: {contextData.topAlignments[0]?.careerTitle || 'Frontend Developer'} ({contextData.topAlignments[0]?.alignmentScore || 85}%)
+                Top Fit: {contextData.topAlignments[0]?.careerTitle || 'Frontend Developer'} ({contextData.topAlignments[0]?.alignmentScore ?? 85}%)
               </div>
             </div>
           )}
         </div>
       </div>
+
+      {loadError && (
+        <div className="bg-rose-50 border border-rose-200 text-rose-800 px-4 py-3 rounded-lg text-xs flex items-center justify-between gap-3">
+          <div className="flex items-center gap-2">
+            <AlertCircle className="w-4 h-4 shrink-0" />
+            <span>{loadError}</span>
+          </div>
+          <button
+            type="button"
+            onClick={() => loadConversations()}
+            className="px-3 py-1 bg-rose-700 hover:bg-rose-800 text-white font-semibold rounded-md cursor-pointer shrink-0"
+          >
+            Retry
+          </button>
+        </div>
+      )}
 
       {saveSuccessMsg && (
         <div className="bg-[#DCE8D9] border border-[#244B3A]/30 text-[#173629] px-4 py-3 rounded-lg text-sm flex items-center justify-between shadow-xs animate-in fade-in">
@@ -297,6 +348,7 @@ export const CopilotView: React.FC<Props> = ({ currentUser, onNavigateToTab }) =
             ) : (
               conversations.map((conv) => {
                 const isActive = conv.conversation_id === activeConvId;
+                const isPendingDelete = confirmDeleteConvId === conv.conversation_id;
                 return (
                   <div
                     key={conv.conversation_id}
@@ -312,17 +364,43 @@ export const CopilotView: React.FC<Props> = ({ currentUser, onNavigateToTab }) =
                       <span className="truncate">{conv.title}</span>
                     </div>
 
-                    <button
-                      onClick={(e) => handleDeleteConversation(e, conv.conversation_id)}
-                      className={`opacity-0 group-hover:opacity-100 p-1 rounded transition-opacity ${
-                        isActive
-                          ? 'text-[#DCE8D9] hover:text-white hover:bg-[#244B3A]'
-                          : 'text-[#A3B8AC] hover:text-rose-600'
-                      }`}
-                      title="Delete conversation"
-                    >
-                      <Trash2 className="w-3.5 h-3.5" />
-                    </button>
+                    {isPendingDelete ? (
+                      <div className="flex items-center gap-1 shrink-0" onClick={(e) => e.stopPropagation()}>
+                        <button
+                          type="button"
+                          onClick={(e) => handleDeleteConversation(e, conv.conversation_id)}
+                          className="px-1.5 py-0.5 rounded bg-rose-600 hover:bg-rose-700 text-white text-[10px] font-bold cursor-pointer"
+                          aria-label={`Confirm delete ${conv.title}`}
+                        >
+                          Delete
+                        </button>
+                        <button
+                          type="button"
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            setConfirmDeleteConvId(null);
+                          }}
+                          className="px-1.5 py-0.5 rounded bg-[#E5E4DA] text-[#202A23] text-[10px] font-semibold cursor-pointer"
+                          aria-label="Cancel delete"
+                        >
+                          Cancel
+                        </button>
+                      </div>
+                    ) : (
+                      <button
+                        type="button"
+                        onClick={(e) => handleDeleteConversation(e, conv.conversation_id)}
+                        className={`opacity-70 sm:opacity-0 sm:group-hover:opacity-100 focus:opacity-100 p-1 rounded transition-opacity cursor-pointer ${
+                          isActive
+                            ? 'text-[#DCE8D9] hover:text-white hover:bg-[#244B3A]'
+                            : 'text-[#657064] hover:text-rose-600'
+                        }`}
+                        title="Delete conversation"
+                        aria-label={`Delete conversation ${conv.title}`}
+                      >
+                        <Trash2 className="w-3.5 h-3.5" />
+                      </button>
+                    )}
                   </div>
                 );
               })
@@ -424,10 +502,8 @@ export const CopilotView: React.FC<Props> = ({ currentUser, onNavigateToTab }) =
                       </div>
                     )}
 
-                    {/* Markdown-like prose rendering */}
-                    <div className="whitespace-pre-line leading-relaxed font-sans">
-                      {msg.content}
-                    </div>
+                    {/* Markdown prose rendering */}
+                    <CopilotMessageContent content={msg.content} isUser={isUser} />
 
                     {/* Action Card: Proposed Roadmap */}
                     {msg.action_type === 'PROPOSE_ROADMAP' && msg.action_payload && (

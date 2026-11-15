@@ -1,6 +1,6 @@
 /**
  * PathProof Copilot — Backend Service & Context Engine
- * Powers server-side Gemini 3.8 Flash career intelligence with authenticated
+ * Powers server-side Gemini 4 Hydrogen career intelligence with authenticated
  * student context injection, action proposal parsing, conversation persistence,
  * and graceful fallback guidance.
  */
@@ -8,6 +8,7 @@
 import { GoogleGenAI } from '@google/genai';
 import { db } from './db.ts';
 import { recommendationService } from './services.ts';
+import { parseRoadmapProposalFromResponse } from '../utils/copilotHelpers.ts';
 import {
   CopilotConversation,
   CopilotMessage,
@@ -15,7 +16,6 @@ import {
   StudentRoadmap,
   StudentRoadmapMilestone,
   RoadmapPayload,
-  ProficiencyLevel,
 } from '../types/index.ts';
 
 export interface StudentContextData {
@@ -29,6 +29,7 @@ export interface StudentContextData {
   completedSubjects: Array<{ name: string; grade: string | null }>;
   inProgressSubjects: Array<{ name: string }>;
   skills: Array<{ name: string; category: string; level: number; levelName: string; notes: string | null }>;
+  careerInterests: string[];
   topAlignments: Array<{ careerTitle: string; alignmentScore: number; skillCoverage: number }>;
   marketHighlights: string[];
 }
@@ -99,6 +100,12 @@ export class CopilotService {
       'Contour Software & Techlogix: Emphasize strong Data Structures, SQL Database foundations, and automated testing.',
     ];
 
+    // Selected career interests (including expanded global career catalog roles)
+    const careerInterests = (db.tables.student_career_interests || [])
+      .filter((ci) => ci.user_id === userId)
+      .map((ci) => db.tables.careers.find((c) => c.career_id === ci.career_id)?.career_title)
+      .filter((title): title is string => Boolean(title));
+
     return {
       fullName: user ? user.full_name : 'Student',
       email: user ? user.email : '',
@@ -110,6 +117,7 @@ export class CopilotService {
       completedSubjects: subjects.filter((s) => s.status === 'COMPLETED').map((s) => ({ name: s.name, grade: s.grade })),
       inProgressSubjects: subjects.filter((s) => s.status === 'IN_PROGRESS').map((s) => ({ name: s.name })),
       skills,
+      careerInterests,
       topAlignments,
       marketHighlights,
     };
@@ -218,36 +226,24 @@ export class CopilotService {
 
     // Update conversation timestamp and title if first message
     conv.updated_at = now;
-    const history = db.tables.copilot_messages.filter((m) => m.conversation_id === conversationId);
-    if (history.length <= 2) {
+    const allConvMessages = db.tables.copilot_messages.filter((m) => m.conversation_id === conversationId);
+    const priorHistory = allConvMessages.slice(0, -1); // exclude the userMessage just pushed above
+    if (allConvMessages.length <= 2) {
       conv.title = userText.slice(0, 48) + (userText.length > 48 ? '...' : '');
     }
 
     // Assemble student context
     const context = this.buildStudentContext(userId);
 
-    // Generate response via Gemini or Fallback
-    const result = await this.generateAIResponse(userText, context, history);
+    // Generate response via Gemini 4 Hydrogen or Fallback
+    const result = await this.generateAIResponse(userText, context, priorHistory);
 
-    // Persist assistant message
-    const assistantMsgId = db.nextId('message_id');
-    const assistantMessage: CopilotMessage = {
-      message_id: assistantMsgId,
-      conversation_id: conversationId,
-      sender: 'copilot',
-      content: result.content,
-      action_type: result.actionType,
-      action_payload: result.actionPayload,
-      created_at: new Date().toISOString(),
-      is_fallback: result.isFallback,
-    };
-    db.tables.copilot_messages.push(assistantMessage);
-
-    // If an action was proposed, record a pending action entity
+    // If an action was proposed, record a pending action entity first so we can link action_id
+    let createdActionId: number | null = null;
     if (result.actionType === 'PROPOSE_ROADMAP' && result.actionPayload) {
-      const actionId = db.nextId('action_id');
+      createdActionId = db.nextId('action_id');
       const action: CopilotAction = {
-        action_id: actionId,
+        action_id: createdActionId,
         user_id: userId,
         conversation_id: conversationId,
         action_type: 'PROPOSE_ROADMAP',
@@ -259,26 +255,41 @@ export class CopilotService {
       db.tables.copilot_actions.push(action);
     }
 
+    // Persist assistant message
+    const assistantMsgId = db.nextId('message_id');
+    const assistantMessage: CopilotMessage = {
+      message_id: assistantMsgId,
+      conversation_id: conversationId,
+      sender: 'copilot',
+      content: result.content,
+      action_type: result.actionType,
+      action_id: createdActionId,
+      action_payload: result.actionPayload,
+      created_at: new Date().toISOString(),
+      is_fallback: result.isFallback,
+    };
+    db.tables.copilot_messages.push(assistantMessage);
+
     db.save();
 
     return { userMessage, assistantMessage };
   }
 
   /**
-   * Generates AI response using server-side Gemini 3.8 Flash SDK,
+   * Generates AI response using server-side Gemini 4 Hydrogen SDK,
    * falling back cleanly if API key is not present or returns an error.
    */
   private async generateAIResponse(
     userQuery: string,
     context: StudentContextData,
-    history: CopilotMessage[]
+    priorHistory: CopilotMessage[]
   ): Promise<{
     content: string;
     actionType: 'NONE' | 'PROPOSE_ROADMAP';
     actionPayload: RoadmapPayload | null;
     isFallback: boolean;
   }> {
-    const apiKey = process.env.GEMINI_API_KEY;
+    const apiKey = (process.env.GEMINI_API_KEY || '').trim().replace(/^["']|["']$/g, '');
 
     if (!apiKey || apiKey === 'MY_GEMINI_API_KEY') {
       return this.generateFallbackGuidance(userQuery, context);
@@ -295,14 +306,16 @@ export class CopilotService {
       });
 
       const systemInstruction = `
-You are PathProof Copilot, an expert, encouraging, and practical Career Intelligence Mentor for Pakistani university computing students (BS CS / SE / IT).
+You are PathProof Copilot, an expert, encouraging, and practical Career Intelligence Mentor for Pakistani university students.
 
 Your mission:
-1. Help students understand career options, skill gaps, roadmaps, and project improvements.
+1. Help students understand career options (across computing and global professions), skill gaps, roadmaps, and project improvements.
 2. Ground all advice in the authenticated student's profile context provided below.
-3. Be professional, direct, supportive, and realistic about Pakistani market hiring expectations (e.g. Systems Ltd, 10Pearls, Contour, Techlogix; entry internship bands PKR 40k-85k, junior developer PKR 90k-180k).
+3. Be professional, direct, supportive, and realistic about hiring expectations in Pakistan (e.g. Systems Ltd, 10Pearls, Contour, Techlogix; entry internship bands PKR 40k-85k, junior developer PKR 90k-180k) as well as global career tracks if the student asks about non-computing fields.
 4. Never fabricate qualifications, guarantee jobs, or assume missing data.
-5. If the student asks for a roadmap, milestones, or preparation plan for a role, provide a clear structured answer AND include a JSON roadmap payload at the very end of your response inside <<<ROADMAP_JSON: ... >>> tags matching this structure:
+5. Keep responses concise, structured with markdown headings and bullet points.
+6. IMPORTANT: If the student asks for a roadmap, milestones, study schedule, or preparation plan for a role, provide a clear structured answer AND include a valid JSON roadmap payload at the very end of your response inside <<<ROADMAP_JSON: ... >>> tags (without markdown fences inside the tags) matching this exact schema:
+<<<ROADMAP_JSON:
 {
   "title": "Roadmap title",
   "target_role": "Target role name",
@@ -318,6 +331,7 @@ Your mission:
     }
   ]
 }
+>>>
 
 AUTHENTICATED STUDENT CONTEXT:
 - Student Name: ${context.fullName}
@@ -328,52 +342,63 @@ AUTHENTICATED STUDENT CONTEXT:
 - Completed Subjects: ${context.completedSubjects.map((s) => `${s.name}${s.grade ? ` (Grade ${s.grade})` : ''}`).join(', ') || 'None recorded yet'}
 - In-Progress Subjects: ${context.inProgressSubjects.map((s) => s.name).join(', ') || 'None'}
 - Self-Reported Skills: ${context.skills.map((s) => `${s.name} (${s.levelName}, Level ${s.level})`).join(', ') || 'None recorded yet'}
+- Saved Career Interests: ${context.careerInterests.join(', ') || 'None selected yet'}
 - Top Career Alignments: ${context.topAlignments.map((a) => `${a.careerTitle}: ${a.alignmentScore}% fit, ${a.skillCoverage}% skill coverage`).join('; ') || 'Not computed yet'}
 - Verified Pakistan Market Citations: ${context.marketHighlights.join('; ')}
 `;
 
-      // Build conversation context snippet
-      const recentChat = history
-        .slice(-6)
-        .map((m) => `${m.sender === 'user' ? 'Student' : 'Copilot'}: ${m.content}`)
-        .join('\n\n');
+      // Build clean multi-turn contents array (strictly alternating or valid user/model turns)
+      const recentTurns = priorHistory
+        .slice(-8)
+        .filter((m) => m.content && m.content.trim().length > 0)
+        .map((m) => ({
+          role: m.sender === 'user' ? ('user' as const) : ('model' as const),
+          parts: [{ text: m.content }],
+        }));
 
-      const prompt = `${recentChat}\n\nStudent: ${userQuery}\n\nCopilot:`;
+      const contents = [
+        ...recentTurns,
+        { role: 'user' as const, parts: [{ text: userQuery }] },
+      ];
 
-      const response = await ai.models.generateContent({
-        model: 'gemini-3.8-flash',
-        contents: prompt,
-        config: {
-          systemInstruction,
-        },
-      });
+      let responseText = '';
+      let lastErr: unknown = null;
 
-      const rawText = response.text || '';
-
-      // Check if response contains <<<ROADMAP_JSON: ... >>>
-      const roadmapMatch = rawText.match(/<<<ROADMAP_JSON:\s*([\s\S]*?)>>>/);
-      let actionType: 'NONE' | 'PROPOSE_ROADMAP' = 'NONE';
-      let actionPayload: RoadmapPayload | null = null;
-      let cleanContent = rawText;
-
-      if (roadmapMatch) {
+      // Exponential backoff retry for transient API errors (e.g. 429 / 503 / network hiccup)
+      for (let attempt = 0; attempt < 3; attempt++) {
         try {
-          const parsed = JSON.parse(roadmapMatch[1]);
-          if (parsed && parsed.title && Array.isArray(parsed.milestones)) {
-            actionType = 'PROPOSE_ROADMAP';
-            actionPayload = parsed;
-            cleanContent = rawText.replace(/<<<ROADMAP_JSON:[\s\S]*?>>>/, '').trim();
+          const response = await ai.models.generateContent({
+            model: 'gemini-4-hydrogen',
+            contents,
+            config: {
+              systemInstruction,
+            },
+          });
+          responseText = response.text || '';
+          lastErr = null;
+          break;
+        } catch (err: any) {
+          lastErr = err;
+          const status = err?.status ?? err?.code;
+          const isTransient = status === 429 || status === 503 || status === 500 || err?.name === 'FetchError';
+          if (!isTransient || attempt === 2) {
+            throw err;
           }
-        } catch {
-          // If JSON parse fails, preserve content without crashing
-          cleanContent = rawText.replace(/<<<ROADMAP_JSON:[\s\S]*?>>>/, '').trim();
+          await new Promise((resolve) => setTimeout(resolve, 400 * Math.pow(2, attempt)));
         }
       }
 
+      if (lastErr) throw lastErr;
+
+      const parsed = parseRoadmapProposalFromResponse(responseText);
+      if (!parsed.content) {
+        return this.generateFallbackGuidance(userQuery, context);
+      }
+
       return {
-        content: cleanContent,
-        actionType,
-        actionPayload,
+        content: parsed.content,
+        actionType: parsed.actionType,
+        actionPayload: parsed.actionPayload,
         isFallback: false,
       };
     } catch (err) {
@@ -540,9 +565,14 @@ AUTHENTICATED STUDENT CONTEXT:
     actionId: number,
     editedPayload?: RoadmapPayload
   ): StudentRoadmap | null {
-    const action = db.tables.copilot_actions.find(
-      (a) => a.action_id === actionId && a.user_id === userId
-    );
+    const action =
+      db.tables.copilot_actions.find(
+        (a) => a.action_id === actionId && a.user_id === userId
+      ) ||
+      db.tables.copilot_actions
+        .slice()
+        .reverse()
+        .find((a) => a.user_id === userId && a.status === 'PENDING' && a.action_type === 'PROPOSE_ROADMAP');
 
     const payload = editedPayload || action?.payload;
     if (!payload || !payload.title || !Array.isArray(payload.milestones)) {
@@ -612,9 +642,15 @@ AUTHENTICATED STUDENT CONTEXT:
   public getStudentRoadmaps(userId: number): StudentRoadmap[] {
     const roadmaps = db.tables.student_roadmaps.filter((r) => r.user_id === userId);
     return roadmaps.map((r) => {
-      const milestones = db.tables.student_roadmap_milestones
+      const storedMilestones = db.tables.student_roadmap_milestones
         .filter((m) => m.roadmap_id === r.roadmap_id)
         .sort((a, b) => a.week_number - b.week_number);
+      const milestones =
+        storedMilestones.length > 0
+          ? storedMilestones
+          : Array.isArray(r.milestones)
+          ? [...r.milestones].sort((a, b) => a.week_number - b.week_number)
+          : [];
       return { ...r, milestones };
     });
   }

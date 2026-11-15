@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { createPortal } from 'react-dom';
 import { RoadmapPayload, RoadmapMilestone } from '../types/index.ts';
 import { X, Calendar, Clock, CheckCircle2, Plus, Trash2, ArrowRight } from 'lucide-react';
 
@@ -9,6 +10,17 @@ interface Props {
   onConfirm: (editedPayload: RoadmapPayload) => Promise<void>;
 }
 
+const DEFAULT_MILESTONES: RoadmapMilestone[] = [
+  {
+    week_number: 1,
+    title: 'Core Foundations & Setup',
+    description: 'Establish repository structure, linting rules, and foundational study schedule.',
+    estimated_hours: 8,
+    learning_activities: ['Study core documentation', 'Complete initial hands-on exercise'],
+    completion_criteria: 'Initial milestone verified and committed to GitHub.',
+  },
+];
+
 export const ActionReviewModal: React.FC<Props> = ({ isOpen, payload, onClose, onConfirm }) => {
   const [title, setTitle] = useState(payload.title || 'Personalized Career Roadmap');
   const [targetRole, setTargetRole] = useState(payload.target_role || 'Computing Professional');
@@ -16,19 +28,24 @@ export const ActionReviewModal: React.FC<Props> = ({ isOpen, payload, onClose, o
   const [milestones, setMilestones] = useState<RoadmapMilestone[]>(
     payload.milestones && payload.milestones.length > 0
       ? JSON.parse(JSON.stringify(payload.milestones))
-      : [
-          {
-            week_number: 1,
-            title: 'Core Foundations & Setup',
-            description: 'Establish repository structure, linting rules, and foundational study schedule.',
-            estimated_hours: 8,
-            learning_activities: ['Study core documentation', 'Complete initial hands-on exercise'],
-            completion_criteria: 'Initial milestone verified and committed to GitHub.',
-          },
-        ]
+      : DEFAULT_MILESTONES
   );
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [error, setError] = useState<string | null>(null);
+
+  useEffect(() => {
+    if (isOpen && payload) {
+      setTitle(payload.title || 'Personalized Career Roadmap');
+      setTargetRole(payload.target_role || 'Computing Professional');
+      setTotalWeeks(payload.total_weeks || 12);
+      setMilestones(
+        payload.milestones && payload.milestones.length > 0
+          ? JSON.parse(JSON.stringify(payload.milestones))
+          : DEFAULT_MILESTONES
+      );
+      setError(null);
+    }
+  }, [isOpen, payload]);
 
   if (!isOpen) return null;
 
@@ -79,11 +96,11 @@ export const ActionReviewModal: React.FC<Props> = ({ isOpen, payload, onClose, o
     }
   };
 
-  return (
+  return createPortal(
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-xs">
       <div className="relative w-full max-w-3xl max-h-[90vh] flex flex-col bg-[#F7F6F0] rounded-xl border border-[#E5E4DA] shadow-2xl overflow-hidden animate-in fade-in zoom-in-95 duration-150">
         {/* Header */}
-        <div className="px-6 py-4 bg-[#173629] text-[#DCE8D9] flex items-center justify-between border-b border-[#0F241B]">
+        <div className="shrink-0 px-6 py-4 bg-[#173629] text-[#DCE8D9] flex items-center justify-between border-b border-[#0F241B]">
           <div>
             <div className="flex items-center space-x-2">
               <span className="w-2 h-2 rounded-full bg-[#D8E99A]" />
@@ -105,7 +122,7 @@ export const ActionReviewModal: React.FC<Props> = ({ isOpen, payload, onClose, o
         </div>
 
         {/* Form Body */}
-        <div className="p-6 overflow-y-auto space-y-6 text-[#202A23]">
+        <div className="flex-1 min-h-0 p-6 overflow-y-auto space-y-6 text-[#202A23]">
           <div className="bg-white p-4 rounded-lg border border-[#E5E4DA] space-y-4">
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div>
@@ -247,12 +264,12 @@ export const ActionReviewModal: React.FC<Props> = ({ isOpen, payload, onClose, o
         </div>
 
         {/* Footer */}
-        <div className="px-6 py-4 bg-[#EFEEE5] border-t border-[#E5E4DA] flex items-center justify-between">
+        <div className="shrink-0 px-6 py-4 bg-[#EFEEE5] border-t border-[#E5E4DA] flex items-center justify-between gap-4">
           <p className="text-xs text-[#657064]">
             Action verified by PathProof Backend Engine. No database changes occur until you confirm.
           </p>
 
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-3 shrink-0">
             <button
               type="button"
               onClick={onClose}
@@ -280,6 +297,7 @@ export const ActionReviewModal: React.FC<Props> = ({ isOpen, payload, onClose, o
           </div>
         </div>
       </div>
-    </div>
+    </div>,
+    document.body
   );
 };

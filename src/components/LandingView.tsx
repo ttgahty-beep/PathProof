@@ -882,7 +882,7 @@ export const LandingView: React.FC<LandingViewProps> = ({
                       </div>
                     </div>
                     <span className="text-3xs font-mono bg-[#1C3B2D] text-[#A8BDAE] px-2 py-0.5 rounded">
-                      GEMINI FLASH 3.8
+                      GEMINI 4 HYDROGEN
                     </span>
                   </div>
 

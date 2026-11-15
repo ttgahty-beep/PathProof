@@ -49,6 +49,46 @@
       "account_status": "ACTIVE",
       "created_at": "2026-11-15T10:30:02.659Z",
       "updated_at": "2026-11-15T10:30:02.659Z"
+    },
+    {
+      "user_id": 6,
+      "full_name": "Test Student",
+      "email": "student_1794768594902@test.edu.pk",
+      "password_hash": "HASH:SafePassword123!",
+      "role": "STUDENT",
+      "account_status": "ACTIVE",
+      "created_at": "2026-11-15T18:49:54.902Z",
+      "updated_at": "2026-11-15T18:49:54.902Z"
+    },
+    {
+      "user_id": 7,
+      "full_name": "First Student",
+      "email": "dup_1794768594915@test.edu.pk",
+      "password_hash": "HASH:SafePassword123!",
+      "role": "STUDENT",
+      "account_status": "ACTIVE",
+      "created_at": "2026-11-15T18:49:54.915Z",
+      "updated_at": "2026-11-15T18:49:54.915Z"
+    },
+    {
+      "user_id": 8,
+      "full_name": "Test Student",
+      "email": "student_1794769099771@test.edu.pk",
+      "password_hash": "HASH:SafePassword123!",
+      "role": "STUDENT",
+      "account_status": "ACTIVE",
+      "created_at": "2026-11-15T18:58:19.771Z",
+      "updated_at": "2026-11-15T18:58:19.771Z"
+    },
+    {
+      "user_id": 9,
+      "full_name": "First Student",
+      "email": "dup_1794769099783@test.edu.pk",
+      "password_hash": "HASH:SafePassword123!",
+      "role": "STUDENT",
+      "account_status": "ACTIVE",
+      "created_at": "2026-11-15T18:58:19.784Z",
+      "updated_at": "2026-11-15T18:58:19.784Z"
     }
   ],
   "student_profiles": [
@@ -63,7 +103,7 @@
       "budget_preference": "LOW_COST",
       "learning_preference": "PRACTICE",
       "created_at": "2026-10-10T10:30:00.000Z",
-      "updated_at": "2026-11-15T10:30:02.668Z"
+      "updated_at": "2026-11-15T18:58:19.795Z"
     },
     {
       "profile_id": 2,
@@ -103,6 +143,58 @@
       "learning_preference": "NOT_SPECIFIED",
       "created_at": "2026-11-15T10:30:02.659Z",
       "updated_at": "2026-11-15T10:30:02.659Z"
+    },
+    {
+      "profile_id": 5,
+      "user_id": 6,
+      "university_name": null,
+      "degree_program": null,
+      "current_semester": null,
+      "graduation_year": null,
+      "weekly_learning_hours": null,
+      "budget_preference": "NOT_SPECIFIED",
+      "learning_preference": "NOT_SPECIFIED",
+      "created_at": "2026-11-15T18:49:54.902Z",
+      "updated_at": "2026-11-15T18:49:54.902Z"
+    },
+    {
+      "profile_id": 6,
+      "user_id": 7,
+      "university_name": null,
+      "degree_program": null,
+      "current_semester": null,
+      "graduation_year": null,
+      "weekly_learning_hours": null,
+      "budget_preference": "NOT_SPECIFIED",
+      "learning_preference": "NOT_SPECIFIED",
+      "created_at": "2026-11-15T18:49:54.915Z",
+      "updated_at": "2026-11-15T18:49:54.915Z"
+    },
+    {
+      "profile_id": 7,
+      "user_id": 8,
+      "university_name": null,
+      "degree_program": null,
+      "current_semester": null,
+      "graduation_year": null,
+      "weekly_learning_hours": null,
+      "budget_preference": "NOT_SPECIFIED",
+      "learning_preference": "NOT_SPECIFIED",
+      "created_at": "2026-11-15T18:58:19.771Z",
+      "updated_at": "2026-11-15T18:58:19.771Z"
+    },
+    {
+      "profile_id": 8,
+      "user_id": 9,
+      "university_name": null,
+      "degree_program": null,
+      "current_semester": null,
+      "graduation_year": null,
+      "weekly_learning_hours": null,
+      "budget_preference": "NOT_SPECIFIED",
+      "learning_preference": "NOT_SPECIFIED",
+      "created_at": "2026-11-15T18:58:19.784Z",
+      "updated_at": "2026-11-15T18:58:19.784Z"
     }
   ],
   "academic_subjects": [
@@ -612,7 +704,7 @@
       "evidence_status": "SELF_REPORTED",
       "notes": "Basic TypeScript coursework",
       "created_at": "2026-11-15T10:30:02.674Z",
-      "updated_at": "2026-11-15T10:30:02.674Z"
+      "updated_at": "2026-11-15T18:58:19.814Z"
     }
   ],
   "career_categories": [
@@ -5613,6 +5705,20 @@
       "algorithm_version": "p1.0",
       "profile_completeness": 100,
       "created_at": "2026-11-15T10:29:32.464Z"
+    },
+    {
+      "assessment_id": 2,
+      "user_id": 2,
+      "algorithm_version": "p1.0",
+      "profile_completeness": 100,
+      "created_at": "2026-11-15T18:48:46.224Z"
+    },
+    {
+      "assessment_id": 3,
+      "user_id": 3,
+      "algorithm_version": "p1.0",
+      "profile_completeness": 20,
+      "created_at": "2026-11-15T18:57:25.240Z"
     }
   ],
   "career_recommendations": [
@@ -5818,6 +5924,389 @@
           "At least 3 activity ratings needed for activity alignment."
         ]
       }
+    },
+    {
+      "recommendation_id": 7,
+      "assessment_id": 2,
+      "career_id": 1,
+      "academic_score": 88.5,
+      "interest_score": 91.4,
+      "activity_score": 93.3,
+      "alignment_score": 91,
+      "skill_coverage_score": 100,
+      "available_dimensions": 3,
+      "rank_position": 1,
+      "explanation_json": {
+        "academicReasons": [
+          "Your completed course \"Web Technologies\" directly maps to this career.",
+          "Your in-progress course \"Human-Computer Interaction\" provides foundational credit for this role.",
+          "Your completed course \"Programming Fundamentals\" directly maps to this career.",
+          "Your completed course \"Software Engineering\" directly maps to this career.",
+          "Your completed course \"Data Structures & Algorithms\" directly maps to this career."
+        ],
+        "interestReasons": [
+          "You rated \"Visual & Aesthetic Design\" highly (5/5).",
+          "You rated \"Logical Problem Solving\" highly (4/5)."
+        ],
+        "activityReasons": [
+          "You strongly prefer the work activity \"Writing Frontend Code & UI\" (5/5).",
+          "You strongly prefer the work activity \"Wireframing & Prototyping\" (4/5)."
+        ],
+        "skillReasons": [
+          "You meet or exceed the target level for \"HTML & CSS\".",
+          "You meet or exceed the target level for \"JavaScript\".",
+          "You meet or exceed the target level for \"React.js\"."
+        ],
+        "evidenceNotes": [
+          "\"React.js\" appeared in 4 of 4 verified entry-level postings (100% of project sample)."
+        ],
+        "missingInputs": []
+      }
+    },
+    {
+      "recommendation_id": 8,
+      "assessment_id": 2,
+      "career_id": 5,
+      "academic_score": 77.8,
+      "interest_score": 86.7,
+      "activity_score": 80,
+      "alignment_score": 82.4,
+      "skill_coverage_score": 27.6,
+      "available_dimensions": 3,
+      "rank_position": 2,
+      "explanation_json": {
+        "academicReasons": [
+          "Your in-progress course \"Human-Computer Interaction\" provides foundational credit for this role.",
+          "Your completed course \"Web Technologies\" directly maps to this career.",
+          "Your completed course \"Software Engineering\" directly maps to this career."
+        ],
+        "interestReasons": [
+          "You rated \"Visual & Aesthetic Design\" highly (5/5)."
+        ],
+        "activityReasons": [
+          "You strongly prefer the work activity \"Wireframing & Prototyping\" (4/5)."
+        ],
+        "skillReasons": [
+          "Required skill \"UI Wireframing & Prototyping (Figma)\" is currently unrecorded in your profile.",
+          "Required skill \"User Research & Usability Evaluation\" is currently unrecorded in your profile.",
+          "Required skill \"Information Architecture & User Flows\" is currently unrecorded in your profile."
+        ],
+        "evidenceNotes": [
+          "\"UI Wireframing & Prototyping (Figma)\" appeared in 4 of 4 verified entry-level postings (100% of project sample)."
+        ],
+        "missingInputs": []
+      }
+    },
+    {
+      "recommendation_id": 9,
+      "assessment_id": 2,
+      "career_id": 2,
+      "academic_score": 70,
+      "interest_score": 80,
+      "activity_score": 60,
+      "alignment_score": 72,
+      "skill_coverage_score": 60.5,
+      "available_dimensions": 3,
+      "rank_position": 3,
+      "explanation_json": {
+        "academicReasons": [
+          "Your completed course \"Database Systems\" directly maps to this career.",
+          "Your completed course \"Object Oriented Programming\" directly maps to this career.",
+          "Your completed course \"Data Structures & Algorithms\" directly maps to this career."
+        ],
+        "interestReasons": [
+          "You rated \"Logical Problem Solving\" highly (4/5)."
+        ],
+        "activityReasons": [],
+        "skillReasons": [
+          "Required skill \"Node.js & Express\" is currently unrecorded in your profile.",
+          "\"SQL & Relational Databases\" is developing (Level 2 vs Target 3).",
+          "\"RESTful API Design\" is developing (Level 2 vs Target 3)."
+        ],
+        "evidenceNotes": [
+          "\"SQL & Relational Databases\" appeared in 4 of 4 verified entry-level postings (100% of project sample)."
+        ],
+        "missingInputs": []
+      }
+    },
+    {
+      "recommendation_id": 10,
+      "assessment_id": 2,
+      "career_id": 4,
+      "academic_score": 54.2,
+      "interest_score": 80,
+      "activity_score": null,
+      "alignment_score": 69.7,
+      "skill_coverage_score": 17.2,
+      "available_dimensions": 2,
+      "rank_position": 4,
+      "explanation_json": {
+        "academicReasons": [
+          "Your completed course \"Database Systems\" directly maps to this career.",
+          "Your completed course \"Programming Fundamentals\" directly maps to this career."
+        ],
+        "interestReasons": [
+          "You rated \"Logical Problem Solving\" highly (4/5)."
+        ],
+        "activityReasons": [],
+        "skillReasons": [
+          "\"SQL & Relational Databases\" is developing (Level 2 vs Target 3).",
+          "Required skill \"Data Analysis with Pandas/Python\" is currently unrecorded in your profile.",
+          "Required skill \"Data Visualization & BI (PowerBI/Tableau)\" is currently unrecorded in your profile."
+        ],
+        "evidenceNotes": [
+          "\"SQL & Relational Databases\" appeared in 4 of 4 verified entry-level postings (100% of project sample)."
+        ],
+        "missingInputs": [
+          "At least 3 activity ratings needed for activity alignment."
+        ]
+      }
+    },
+    {
+      "recommendation_id": 11,
+      "assessment_id": 2,
+      "career_id": 3,
+      "academic_score": 66.7,
+      "interest_score": 68.6,
+      "activity_score": null,
+      "alignment_score": 67.8,
+      "skill_coverage_score": 23.5,
+      "available_dimensions": 2,
+      "rank_position": 5,
+      "explanation_json": {
+        "academicReasons": [
+          "Your completed course \"Software Engineering\" directly maps to this career.",
+          "Your completed course \"Database Systems\" directly maps to this career.",
+          "Your completed course \"Programming Fundamentals\" directly maps to this career."
+        ],
+        "interestReasons": [
+          "You rated \"Logical Problem Solving\" highly (4/5)."
+        ],
+        "activityReasons": [],
+        "skillReasons": [
+          "Required skill \"Manual Testing & Test Case Design\" is currently unrecorded in your profile.",
+          "Required skill \"API Testing & Postman\" is currently unrecorded in your profile.",
+          "Required skill \"Defect Tracking & Bug Reporting\" is currently unrecorded in your profile."
+        ],
+        "evidenceNotes": [
+          "\"Manual Testing & Test Case Design\" appeared in 4 of 4 verified entry-level postings (100% of project sample)."
+        ],
+        "missingInputs": [
+          "At least 3 activity ratings needed for activity alignment."
+        ]
+      }
+    },
+    {
+      "recommendation_id": 12,
+      "assessment_id": 2,
+      "career_id": 6,
+      "academic_score": 16,
+      "interest_score": 80,
+      "activity_score": null,
+      "alignment_score": 54.4,
+      "skill_coverage_score": 0,
+      "available_dimensions": 2,
+      "rank_position": 6,
+      "explanation_json": {
+        "academicReasons": [
+          "Your completed course \"Programming Fundamentals\" directly maps to this career."
+        ],
+        "interestReasons": [
+          "You rated \"Logical Problem Solving\" highly (4/5)."
+        ],
+        "activityReasons": [],
+        "skillReasons": [
+          "Required skill \"Network Security Fundamentals\" is currently unrecorded in your profile.",
+          "Required skill \"Vulnerability Assessment & OWASP Top 10\" is currently unrecorded in your profile.",
+          "Required skill \"Linux CLI & Administration\" is currently unrecorded in your profile."
+        ],
+        "evidenceNotes": [
+          "\"Network Security Fundamentals\" appeared in 3 of 3 verified entry-level postings (100% of project sample)."
+        ],
+        "missingInputs": [
+          "At least 3 activity ratings needed for activity alignment."
+        ]
+      }
+    },
+    {
+      "recommendation_id": 13,
+      "assessment_id": 3,
+      "career_id": 2,
+      "academic_score": null,
+      "interest_score": null,
+      "activity_score": null,
+      "alignment_score": null,
+      "skill_coverage_score": 0,
+      "available_dimensions": 0,
+      "rank_position": 1,
+      "explanation_json": {
+        "academicReasons": [],
+        "interestReasons": [],
+        "activityReasons": [],
+        "skillReasons": [
+          "Required skill \"Node.js & Express\" is currently unrecorded in your profile.",
+          "Required skill \"SQL & Relational Databases\" is currently unrecorded in your profile.",
+          "Required skill \"RESTful API Design\" is currently unrecorded in your profile."
+        ],
+        "evidenceNotes": [
+          "\"SQL & Relational Databases\" appeared in 4 of 4 verified entry-level postings (100% of project sample)."
+        ],
+        "missingInputs": [
+          "Academic coursework records needed for subject alignment.",
+          "At least 3 interest ratings needed for interest alignment.",
+          "At least 3 activity ratings needed for activity alignment."
+        ]
+      }
+    },
+    {
+      "recommendation_id": 14,
+      "assessment_id": 3,
+      "career_id": 6,
+      "academic_score": null,
+      "interest_score": null,
+      "activity_score": null,
+      "alignment_score": null,
+      "skill_coverage_score": 0,
+      "available_dimensions": 0,
+      "rank_position": 2,
+      "explanation_json": {
+        "academicReasons": [],
+        "interestReasons": [],
+        "activityReasons": [],
+        "skillReasons": [
+          "Required skill \"Network Security Fundamentals\" is currently unrecorded in your profile.",
+          "Required skill \"Vulnerability Assessment & OWASP Top 10\" is currently unrecorded in your profile.",
+          "Required skill \"Linux CLI & Administration\" is currently unrecorded in your profile."
+        ],
+        "evidenceNotes": [
+          "\"Network Security Fundamentals\" appeared in 3 of 3 verified entry-level postings (100% of project sample)."
+        ],
+        "missingInputs": [
+          "Academic coursework records needed for subject alignment.",
+          "At least 3 interest ratings needed for interest alignment.",
+          "At least 3 activity ratings needed for activity alignment."
+        ]
+      }
+    },
+    {
+      "recommendation_id": 15,
+      "assessment_id": 3,
+      "career_id": 4,
+      "academic_score": null,
+      "interest_score": null,
+      "activity_score": null,
+      "alignment_score": null,
+      "skill_coverage_score": 0,
+      "available_dimensions": 0,
+      "rank_position": 3,
+      "explanation_json": {
+        "academicReasons": [],
+        "interestReasons": [],
+        "activityReasons": [],
+        "skillReasons": [
+          "Required skill \"SQL & Relational Databases\" is currently unrecorded in your profile.",
+          "Required skill \"Data Analysis with Pandas/Python\" is currently unrecorded in your profile.",
+          "Required skill \"Data Visualization & BI (PowerBI/Tableau)\" is currently unrecorded in your profile."
+        ],
+        "evidenceNotes": [
+          "\"SQL & Relational Databases\" appeared in 4 of 4 verified entry-level postings (100% of project sample)."
+        ],
+        "missingInputs": [
+          "Academic coursework records needed for subject alignment.",
+          "At least 3 interest ratings needed for interest alignment.",
+          "At least 3 activity ratings needed for activity alignment."
+        ]
+      }
+    },
+    {
+      "recommendation_id": 16,
+      "assessment_id": 3,
+      "career_id": 1,
+      "academic_score": null,
+      "interest_score": null,
+      "activity_score": null,
+      "alignment_score": null,
+      "skill_coverage_score": 0,
+      "available_dimensions": 0,
+      "rank_position": 4,
+      "explanation_json": {
+        "academicReasons": [],
+        "interestReasons": [],
+        "activityReasons": [],
+        "skillReasons": [
+          "Required skill \"HTML & CSS\" is currently unrecorded in your profile.",
+          "Required skill \"JavaScript\" is currently unrecorded in your profile.",
+          "Required skill \"React.js\" is currently unrecorded in your profile."
+        ],
+        "evidenceNotes": [
+          "\"React.js\" appeared in 4 of 4 verified entry-level postings (100% of project sample)."
+        ],
+        "missingInputs": [
+          "Academic coursework records needed for subject alignment.",
+          "At least 3 interest ratings needed for interest alignment.",
+          "At least 3 activity ratings needed for activity alignment."
+        ]
+      }
+    },
+    {
+      "recommendation_id": 17,
+      "assessment_id": 3,
+      "career_id": 3,
+      "academic_score": null,
+      "interest_score": null,
+      "activity_score": null,
+      "alignment_score": null,
+      "skill_coverage_score": 0,
+      "available_dimensions": 0,
+      "rank_position": 5,
+      "explanation_json": {
+        "academicReasons": [],
+        "interestReasons": [],
+        "activityReasons": [],
+        "skillReasons": [
+          "Required skill \"Manual Testing & Test Case Design\" is currently unrecorded in your profile.",
+          "Required skill \"API Testing & Postman\" is currently unrecorded in your profile.",
+          "Required skill \"Defect Tracking & Bug Reporting\" is currently unrecorded in your profile."
+        ],
+        "evidenceNotes": [
+          "\"Manual Testing & Test Case Design\" appeared in 4 of 4 verified entry-level postings (100% of project sample)."
+        ],
+        "missingInputs": [
+          "Academic coursework records needed for subject alignment.",
+          "At least 3 interest ratings needed for interest alignment.",
+          "At least 3 activity ratings needed for activity alignment."
+        ]
+      }
+    },
+    {
+      "recommendation_id": 18,
+      "assessment_id": 3,
+      "career_id": 5,
+      "academic_score": null,
+      "interest_score": null,
+      "activity_score": null,
+      "alignment_score": null,
+      "skill_coverage_score": 0,
+      "available_dimensions": 0,
+      "rank_position": 6,
+      "explanation_json": {
+        "academicReasons": [],
+        "interestReasons": [],
+        "activityReasons": [],
+        "skillReasons": [
+          "Required skill \"UI Wireframing & Prototyping (Figma)\" is currently unrecorded in your profile.",
+          "Required skill \"User Research & Usability Evaluation\" is currently unrecorded in your profile.",
+          "Required skill \"Information Architecture & User Flows\" is currently unrecorded in your profile."
+        ],
+        "evidenceNotes": [
+          "\"UI Wireframing & Prototyping (Figma)\" appeared in 4 of 4 verified entry-level postings (100% of project sample)."
+        ],
+        "missingInputs": [
+          "Academic coursework records needed for subject alignment.",
+          "At least 3 interest ratings needed for interest alignment.",
+          "At least 3 activity ratings needed for activity alignment."
+        ]
+      }
     }
   ],
   "career_comparison_sessions": [],
@@ -5858,9 +6347,122 @@
       "entity_id": "4",
       "summary": "Student confirmed Copilot roadmap: \"12-Week Junior Frontend Developer Preparation Roadmap\" with 4 milestones.",
       "created_at": "2026-11-15T10:30:02.770Z"
+    },
+    {
+      "audit_id": 5,
+      "admin_user_id": 2,
+      "action": "ROADMAP_CREATED",
+      "entity_type": "STUDENT_ROADMAP",
+      "entity_id": "5",
+      "summary": "Student confirmed Copilot roadmap: \"12-Week Junior Frontend Developer Preparation Roadmap\" with 4 milestones.",
+      "created_at": "2026-11-15T18:49:56.759Z"
+    },
+    {
+      "audit_id": 6,
+      "admin_user_id": 2,
+      "action": "ROADMAP_CREATED",
+      "entity_type": "STUDENT_ROADMAP",
+      "entity_id": "6",
+      "summary": "Student confirmed Copilot roadmap: \"12-Week Backend Developer Roadmap (Node.js & TypeScript)\" with 12 milestones.",
+      "created_at": "2026-11-15T18:52:15.679Z"
+    },
+    {
+      "audit_id": 7,
+      "admin_user_id": 2,
+      "action": "ROADMAP_CREATED",
+      "entity_type": "STUDENT_ROADMAP",
+      "entity_id": "7",
+      "summary": "Student confirmed Copilot roadmap: \"12-Week Node.js & TypeScript Backend Developer Roadmap\" with 12 milestones.",
+      "created_at": "2026-11-15T18:54:25.174Z"
+    },
+    {
+      "audit_id": 8,
+      "admin_user_id": 2,
+      "action": "ROADMAP_CREATED",
+      "entity_type": "STUDENT_ROADMAP",
+      "entity_id": "8",
+      "summary": "Student confirmed Copilot roadmap: \"12-Week Junior Frontend Developer Preparation Roadmap\" with 4 milestones.",
+      "created_at": "2026-11-15T18:58:19.879Z"
     }
   ],
   "copilot_conversations": [
+    {
+      "conversation_id": 22,
+      "user_id": 2,
+      "title": "Create a 12-week roadmap for my frontend interns...",
+      "created_at": "2026-11-15T18:58:19.867Z",
+      "updated_at": "2026-11-15T18:58:19.873Z"
+    },
+    {
+      "conversation_id": 21,
+      "user_id": 2,
+      "title": "What skills am I missing for Frontend Developer?",
+      "created_at": "2026-11-15T18:58:19.852Z",
+      "updated_at": "2026-11-15T18:58:19.859Z"
+    },
+    {
+      "conversation_id": 20,
+      "user_id": 2,
+      "title": "Test Internship Exploration",
+      "created_at": "2026-11-15T18:58:19.844Z",
+      "updated_at": "2026-11-15T18:58:19.844Z"
+    },
+    {
+      "conversation_id": 19,
+      "user_id": 3,
+      "title": "New Career Mentorship",
+      "created_at": "2026-11-15T18:57:25.252Z",
+      "updated_at": "2026-11-15T18:57:25.252Z"
+    },
+    {
+      "conversation_id": 17,
+      "user_id": 2,
+      "title": "Create a 12-week roadmap for Backend Developer",
+      "created_at": "2026-11-15T18:51:51.182Z",
+      "updated_at": "2026-11-15T18:56:55.321Z"
+    },
+    {
+      "conversation_id": 16,
+      "user_id": 2,
+      "title": "What skills am I missing for Frontend Developer?",
+      "created_at": "2026-11-15T18:50:36.278Z",
+      "updated_at": "2026-11-15T18:50:36.278Z"
+    },
+    {
+      "conversation_id": 15,
+      "user_id": 2,
+      "title": "Create a 12-week roadmap for my frontend interns...",
+      "created_at": "2026-11-15T18:49:56.748Z",
+      "updated_at": "2026-11-15T18:49:56.753Z"
+    },
+    {
+      "conversation_id": 14,
+      "user_id": 2,
+      "title": "What skills am I missing for Frontend Developer?",
+      "created_at": "2026-11-15T18:49:56.735Z",
+      "updated_at": "2026-11-15T18:49:56.741Z"
+    },
+    {
+      "conversation_id": 13,
+      "user_id": 2,
+      "title": "Test Internship Exploration",
+      "created_at": "2026-11-15T18:49:56.728Z",
+      "updated_at": "2026-11-15T18:49:56.728Z"
+    },
+    {
+      "conversation_id": 12,
+      "user_id": 2,
+      "title": "Skill Gap Inquiry",
+      "created_at": "2026-11-15T18:49:54.865Z",
+      "updated_at": "2026-11-15T18:49:54.865Z"
+    },
+    {
+      "conversation_id": 11,
+      "user_id": 2,
+      "title": "Test Internship Exploration",
+      "created_at": "2026-11-15T18:49:54.856Z",
+      "updated_at": "2026-11-15T18:49:54.856Z"
+    },
     {
       "conversation_id": 10,
       "user_id": 2,
@@ -6265,6 +6867,396 @@
       },
       "created_at": "2026-11-15T10:30:02.765Z",
       "is_fallback": true
+    },
+    {
+      "message_id": 15,
+      "conversation_id": 14,
+      "sender": "user",
+      "content": "What skills am I missing for Frontend Developer?",
+      "action_type": "NONE",
+      "action_payload": null,
+      "created_at": "2026-11-15T18:49:56.741Z"
+    },
+    {
+      "message_id": 16,
+      "conversation_id": 14,
+      "sender": "copilot",
+      "content": "### Skill Gap Intelligence for Frontend Developer\n\nBased on your **Semester 6** records at **NUST**:\n\n1. **Validated Foundation**:\n- **HTML & CSS** (Intermediate, Level 3): Meets or approaches entry baseline.\n- **JavaScript** (Intermediate, Level 3): Meets or approaches entry baseline.\n- **React.js** (Intermediate, Level 3): Meets or approaches entry baseline.\n- **Responsive Design & Tailwind CSS** (Intermediate, Level 3): Meets or approaches entry baseline.\n- **Git & Version Control** (Basic, Level 2): Meets or approaches entry baseline.\n- **SQL & Relational Databases** (Basic, Level 2): Meets or approaches entry baseline.\n- **RESTful API Design** (Basic, Level 2): Meets or approaches entry baseline.\n- **TypeScript** (Basic, Level 2): Meets or approaches entry baseline.\n\n2. **Priority Gaps for the Pakistani Market**:\n- **Next.js** (Missing): Frequently cited in current job postings from Systems Ltd and 10Pearls. Advancing this will directly increase your readiness ratio.\n- **Docker** (Missing): Frequently cited in current job postings from Systems Ltd and 10Pearls. Advancing this will directly increase your readiness ratio.\n- **Automated Testing (Jest/Playwright)** (Missing): Frequently cited in current job postings from Systems Ltd and 10Pearls. Advancing this will directly increase your readiness ratio.\n\n3. **Recommended Next Step**:\nDedicate 4–6 hours this week to build a typed project component and attach it as project evidence in your PathProof profile.",
+      "action_type": "NONE",
+      "action_id": null,
+      "action_payload": null,
+      "created_at": "2026-11-15T18:49:56.742Z",
+      "is_fallback": true
+    },
+    {
+      "message_id": 17,
+      "conversation_id": 15,
+      "sender": "user",
+      "content": "Create a 12-week roadmap for my frontend internship",
+      "action_type": "NONE",
+      "action_payload": null,
+      "created_at": "2026-11-15T18:49:56.753Z"
+    },
+    {
+      "message_id": 18,
+      "conversation_id": 15,
+      "sender": "copilot",
+      "content": "I have analyzed your **Semester 6** standing at **NUST** and generated a personalized 12-week preparation roadmap for **Junior Frontend Developer**.\n\n### Strategic Analysis\n- **Current Strengths**: Your profile reflects solid coursework (Programming Fundamentals, Object Oriented Programming, Data Structures & Algorithms) and self-reported skills (HTML & CSS Level 3, JavaScript Level 3, React.js Level 3).\n- **High-Impact Target**: Advancing your Next.js & TypeScript skills to Level 3 will give you the strongest competitive edge for Pakistani tech firms.\n\nReview the proposed milestones below. You can inspect the full breakdown and save it directly to your dashboard roadmaps.",
+      "action_type": "PROPOSE_ROADMAP",
+      "action_id": 4,
+      "action_payload": {
+        "title": "12-Week Junior Frontend Developer Preparation Roadmap",
+        "target_role": "Junior Frontend Developer",
+        "total_weeks": 12,
+        "milestones": [
+          {
+            "week_number": 1,
+            "title": "TypeScript Foundations & Modern JavaScript",
+            "description": "Strengthen component type safety, interfaces, union types, and strict mode in React.",
+            "estimated_hours": 8,
+            "learning_activities": [
+              "Official TypeScript Handbook",
+              "Refactor 3 React components to strict TypeScript"
+            ],
+            "completion_criteria": "tsc passes with noImplicitAny and 0 type errors."
+          },
+          {
+            "week_number": 4,
+            "title": "Next.js App Router & Server Components",
+            "description": "Master client vs server component boundaries, layout hierarchies, and server actions.",
+            "estimated_hours": 10,
+            "learning_activities": [
+              "Complete Next.js official tutorial",
+              "Implement dynamic product/career dashboard"
+            ],
+            "completion_criteria": "Production build deployed with zero layout shift (CLS < 0.1)."
+          },
+          {
+            "week_number": 8,
+            "title": "State Architecture & API Cache Management",
+            "description": "Implement TanStack Query or Zustand for optimistic UI and server state syncing.",
+            "estimated_hours": 10,
+            "learning_activities": [
+              "Build an e-commerce catalog with search and debounce",
+              "Add error boundaries"
+            ],
+            "completion_criteria": "Smooth loading skeletons and resilient offline recovery."
+          },
+          {
+            "week_number": 12,
+            "title": "Portfolio Capstone Polish & Pakistani Tech Job Prep",
+            "description": "Conduct WCAG AA accessibility audit, bundle optimization, and interactive documentation.",
+            "estimated_hours": 12,
+            "learning_activities": [
+              "Lighthouse performance audit (score >= 90)",
+              "Prepare portfolio README dossier"
+            ],
+            "completion_criteria": "Live project ready for Systems Ltd, 10Pearls, or VentureDive applications."
+          }
+        ]
+      },
+      "created_at": "2026-11-15T18:49:56.753Z",
+      "is_fallback": true
+    },
+    {
+      "message_id": 19,
+      "conversation_id": 16,
+      "sender": "user",
+      "content": "What skills am I missing for Frontend Developer?",
+      "action_type": "NONE",
+      "action_payload": null,
+      "created_at": "2026-11-15T18:50:36.278Z"
+    },
+    {
+      "message_id": 20,
+      "conversation_id": 16,
+      "sender": "copilot",
+      "content": "### Skill Gap Intelligence for Frontend Developer\n\nBased on your **Semester 6** records at **NUST**:\n\n1. **Validated Foundation**:\n- **HTML & CSS** (Intermediate, Level 3): Meets or approaches entry baseline.\n- **JavaScript** (Intermediate, Level 3): Meets or approaches entry baseline.\n- **React.js** (Intermediate, Level 3): Meets or approaches entry baseline.\n- **Responsive Design & Tailwind CSS** (Intermediate, Level 3): Meets or approaches entry baseline.\n- **Git & Version Control** (Basic, Level 2): Meets or approaches entry baseline.\n- **SQL & Relational Databases** (Basic, Level 2): Meets or approaches entry baseline.\n- **RESTful API Design** (Basic, Level 2): Meets or approaches entry baseline.\n- **TypeScript** (Basic, Level 2): Meets or approaches entry baseline.\n\n2. **Priority Gaps for the Pakistani Market**:\n- **Next.js** (Missing): Frequently cited in current job postings from Systems Ltd and 10Pearls. Advancing this will directly increase your readiness ratio.\n- **Docker** (Missing): Frequently cited in current job postings from Systems Ltd and 10Pearls. Advancing this will directly increase your readiness ratio.\n- **Automated Testing (Jest/Playwright)** (Missing): Frequently cited in current job postings from Systems Ltd and 10Pearls. Advancing this will directly increase your readiness ratio.\n\n3. **Recommended Next Step**:\nDedicate 4–6 hours this week to build a typed project component and attach it as project evidence in your PathProof profile.",
+      "action_type": "NONE",
+      "action_id": null,
+      "action_payload": null,
+      "created_at": "2026-11-15T18:50:36.286Z",
+      "is_fallback": true
+    },
+    {
+      "message_id": 21,
+      "conversation_id": 17,
+      "sender": "user",
+      "content": "Create a 12-week roadmap for Backend Developer",
+      "action_type": "NONE",
+      "action_payload": null,
+      "created_at": "2026-11-15T18:51:52.912Z"
+    },
+    {
+      "message_id": 22,
+      "conversation_id": 17,
+      "sender": "copilot",
+      "content": "Assalam-o-Alaikum Hamza! Moving toward **Backend Developer** is a smart strategic move for you. You already have a **72% fit (60.5% skill coverage)** backed by strong academic grades—especially your **A in Database Systems**, **A in Web Technologies**, and **A- in OOP**—plus existing skills in **JavaScript, TypeScript, SQL, and RESTful API Design**.\n\nBecause you can dedicate **15 hours per week**, we can leverage your JavaScript/TypeScript background to build production-grade backend skills using **Node.js, TypeScript, PostgreSQL, Docker, and Automated Testing**—a stack directly aligned with what **10Pearls, Systems Limited, Contour Software, and Techlogix** look for in Associate/Junior Backend hires (typically PKR 90k–180k, or PKR 40k–85k for internships).\n\n---\n\n### 12-Week Backend Developer Roadmap (15 hrs/week)\n\n#### Phase 1: Server-Side Core & API Architecture (Weeks 1–3)\n* **Week 1: Node.js Internals & TypeScript Backend Setup** — Master the event loop, streams, async patterns, and configure a clean Express.js + TypeScript project structure.\n* **Week 2: RESTful API Best Practices & Validation** — Level up your basic REST skills with proper HTTP semantics, middleware pipelines, centralized error handling, and Zod/Joi schema validation.\n* **Week 3: Git Workflows & API Documentation** — Upgrade your Git workflow (feature branches, rebasing, PRs) and document APIs using OpenAPI/Swagger.\n\n#### Phase 2: Databases, ORMs & Security (Weeks 4–6)\n* **Week 4: Advanced PostgreSQL & Indexing** — Build on your A grade in Database Systems by applying query optimization, `EXPLAIN ANALYZE`, transactions, and indexing in PostgreSQL.\n* **Week 5: Data Modeling with Prisma/TypeORM & Migrations** — Implement schema migrations, relations, and clean repository patterns in TypeScript.\n* **Week 6: Authentication, Authorization & Web Security** — Implement JWT (access/refresh tokens), bcrypt password hashing, RBAC, rate limiting, and OWASP API security basics.\n\n#### Phase 3: Testing, Caching & Background Jobs (Weeks 7–9)\n* **Week 7: Automated Unit & Integration Testing** — Address a key hiring requirement at **Contour Software & Techlogix** by writing unit tests (Jest) and API integration tests (Supertest).\n* **Week 8: Caching with Redis & Asynchronous Processing** — Implement Redis caching strategies and background job queues (BullMQ) for tasks like emails or heavy processing.\n* **Week 9: Real-Time Communication & File Storage** — Add WebSockets (Socket.io) and S3-compatible object storage handling for uploads.\n\n#### Phase 4: DevOps, Capstone & Pakistan Market Readiness (Weeks 10–12)\n* **Week 10: Dockerization & CI/CD Pipelines** — Address **10Pearls'** demand for Docker/Node.js by containerizing your API + PostgreSQL + Redis with Docker Compose and setting up GitHub Actions.\n* **Week 11: Capstone Backend Project & Cloud Deployment** — Deploy a scalable, well-documented backend service (e.g., a multi-tenant SaaS or booking API) to AWS/Railway/Render with structured logging.\n* **Week 12: DSA Refresh, System Design & Mock Interviews** — Practice LeetCode Medium problems (building on your B+ in DSA), review system design basics (load balancing, DB scaling), and prepare for technical interviews.\n\n---\n\n### Practical Tips for Semester 6\n* **Leverage Your Frontend Strength:** Since you already have a 91% fit in Frontend, consider connecting one of your existing React projects to the backend you build in Weeks 1–11—full-stack capability makes your CV stand out even for backend roles.\n* **Target Summer Internships Early:** By Week 8, update your CV and GitHub to start applying for Summer/Part-time internships at Islamabad/Lahore/Karachi houses.",
+      "action_type": "PROPOSE_ROADMAP",
+      "action_id": 5,
+      "action_payload": {
+        "title": "12-Week Backend Developer Roadmap (Node.js & TypeScript)",
+        "target_role": "Backend Developer",
+        "total_weeks": 12,
+        "milestones": [
+          {
+            "week_number": 1,
+            "title": "Node.js Runtime & TypeScript Backend Setup",
+            "description": "Understand Node.js event loop, non-blocking I/O, and set up a structured Express.js server using TypeScript.",
+            "estimated_hours": 14,
+            "learning_activities": [
+              "Study Node.js event loop, async/await, and streams",
+              "Configure TypeScript, ESLint, Prettier, and Express.js boilerplate",
+              "Build a modular health-check and logging server"
+            ],
+            "completion_criteria": "A working TypeScript Express boilerplate pushed to GitHub with layered folder structure (routes, controllers, services)."
+          },
+          {
+            "week_number": 2,
+            "title": "Production RESTful API Design & Validation",
+            "description": "Advance from basic REST API design to production-ready endpoints with strict input validation and centralized error handling.",
+            "estimated_hours": 15,
+            "learning_activities": [
+              "Implement pagination, filtering, sorting, and proper HTTP status codes",
+              "Integrate Zod for request body, query, and parameter validation",
+              "Build a global error-handling middleware"
+            ],
+            "completion_criteria": "CRUD API with full Zod validation and consistent JSON error responses."
+          },
+          {
+            "week_number": 3,
+            "title": "Professional Git Workflows & OpenAPI Documentation",
+            "description": "Level up Git skills for team environments and generate interactive API documentation.",
+            "estimated_hours": 12,
+            "learning_activities": [
+              "Practice feature-branching, rebasing, and resolving merge conflicts",
+              "Document endpoints using Swagger/OpenAPI specification",
+              "Write Postman/Insomnia test collections for all endpoints"
+            ],
+            "completion_criteria": "Live Swagger UI endpoint documenting all API routes and a clean Git commit history with PR workflow."
+          },
+          {
+            "week_number": 4,
+            "title": "Advanced PostgreSQL & Query Optimization",
+            "description": "Apply relational database theory to real-world PostgreSQL performance tuning, indexing, and transactions.",
+            "estimated_hours": 15,
+            "learning_activities": [
+              "Set up PostgreSQL locally and practice complex joins and CTEs",
+              "Analyze slow queries using EXPLAIN ANALYZE and add B-tree/composite indexes",
+              "Implement ACID transactions for multi-step data operations"
+            ],
+            "completion_criteria": "SQL schema and benchmark report showing query speed improvement after indexing."
+          },
+          {
+            "week_number": 5,
+            "title": "ORMs, Schema Migrations & Data Access Layer",
+            "description": "Use Prisma or TypeORM with TypeScript to manage database schemas, migrations, and clean data access.",
+            "estimated_hours": 15,
+            "learning_activities": [
+              "Model one-to-many and many-to-many relations in Prisma",
+              "Write and run versioned database migrations and seed scripts",
+              "Refactor raw queries into a type-safe service/repository layer"
+            ],
+            "completion_criteria": "Database-backed API running via Prisma migrations with reproducible seed data."
+          },
+          {
+            "week_number": 6,
+            "title": "Authentication, RBAC & Backend Security",
+            "description": "Implement secure user authentication, role-based access control, and defend against common OWASP API vulnerabilities.",
+            "estimated_hours": 15,
+            "learning_activities": [
+              "Implement password hashing with bcrypt/argon2 and JWT access/refresh token rotation",
+              "Build role-based authorization middleware (Admin, User)",
+              "Configure Helmet, CORS, and Express rate limiting"
+            ],
+            "completion_criteria": "Protected API routes supporting signup, login, token refresh, and role-restricted access."
+          },
+          {
+            "week_number": 7,
+            "title": "Automated Unit & Integration Testing",
+            "description": "Build confidence in code quality through automated testing, a top requirement at Contour Software and Techlogix.",
+            "estimated_hours": 15,
+            "learning_activities": [
+              "Write unit tests for business logic services using Jest",
+              "Write API integration tests using Supertest against a test database",
+              "Measure code coverage and mock external dependencies"
+            ],
+            "completion_criteria": "Test suite achieving at least 75% coverage on core services and auth endpoints."
+          },
+          {
+            "week_number": 8,
+            "title": "Redis Caching & Asynchronous Job Queues",
+            "description": "Improve API scalability and response times using in-memory caching and background workers.",
+            "estimated_hours": 14,
+            "learning_activities": [
+              "Integrate Redis for read-heavy endpoint caching and cache invalidation",
+              "Set up BullMQ to process asynchronous jobs such as email notifications",
+              "Implement retry policies and dead-letter handling for failed jobs"
+            ],
+            "completion_criteria": "API endpoint demonstrating cache hit/miss behavior and an active background worker queue."
+          },
+          {
+            "week_number": 9,
+            "title": "Real-Time Features & Cloud File Storage",
+            "description": "Handle WebSockets for real-time updates and secure file uploads via S3-compatible storage.",
+            "estimated_hours": 14,
+            "learning_activities": [
+              "Build a real-time notification module using Socket.io",
+              "Implement secure file upload validation and pre-signed URLs for S3/Cloudflare R2",
+              "Add structured JSON logging with Pino or Winston"
+            ],
+            "completion_criteria": "Working WebSocket event flow and verified file upload endpoint with structured logs."
+          },
+          {
+            "week_number": 10,
+            "title": "Docker, Docker Compose & CI/CD Pipelines",
+            "description": "Containerize the entire backend stack for consistent deployments, aligning with 10Pearls hiring expectations.",
+            "estimated_hours": 15,
+            "learning_activities": [
+              "Write a multi-stage Dockerfile for the Node.js/TypeScript service",
+              "Orchestrate API, PostgreSQL, and Redis services via Docker Compose",
+              "Set up GitHub Actions to run linting, type-checking, and automated tests on every push"
+            ],
+            "completion_criteria": "Full stack boots cleanly via single docker compose up command and passes GitHub Actions CI."
+          },
+          {
+            "week_number": 11,
+            "title": "Capstone Backend Deployment & Monitoring",
+            "description": "Deploy a portfolio-ready capstone API to the cloud with production environment configuration.",
+            "estimated_hours": 15,
+            "learning_activities": [
+              "Finalize capstone API (e.g., Campus Event & Ticketing or SaaS Task API)",
+              "Deploy to AWS EC2/ECS, Render, or Railway with managed PostgreSQL and Redis",
+              "Write a comprehensive README with architecture diagram and API usage guide"
+            ],
+            "completion_criteria": "Live, publicly accessible HTTPS API with passing CI badge and complete architecture README."
+          },
+          {
+            "week_number": 12,
+            "title": "DSA Refresh, System Design & Interview Prep",
+            "description": "Prepare for technical screenings at top Pakistani software houses with DSA practice and backend system design.",
+            "estimated_hours": 15,
+            "learning_activities": [
+              "Solve 15-20 targeted LeetCode Easy/Medium problems (Arrays, HashMaps, Trees, Graphs)",
+              "Study backend system design fundamentals: load balancing, DB sharding, and rate limiters",
+              "Tailor resume highlighting backend projects and conduct two mock technical interviews"
+            ],
+            "completion_criteria": "Updated backend-focused CV, 15+ solved DSA problems, and completed mock interview review."
+          }
+        ]
+      },
+      "created_at": "2026-11-15T18:52:09.944Z",
+      "is_fallback": false
+    },
+    {
+      "message_id": 25,
+      "conversation_id": 17,
+      "sender": "user",
+      "content": "Analyze my career readiness",
+      "action_type": "NONE",
+      "action_payload": null,
+      "created_at": "2026-11-15T18:56:55.321Z"
+    },
+    {
+      "message_id": 26,
+      "conversation_id": 17,
+      "sender": "copilot",
+      "content": "### Career Readiness Snapshot\n\nAs a **Semester 6 BS Software Engineering student at NUST**, you are entering the prime window for summer internships (**PKR 40k–85k/month**) and building momentum toward junior developer placements (**PKR 90k–180k/month**) before graduation.\n\nOverall, your readiness is **strongest for Frontend Engineering internships right now**, while **Full-Stack / Backend roles are within realistic reach** if you use your **15 hrs/week** strategically over the next 2–3 months.\n\n---\n\n### 1. Your Key Strengths\n* **Strong Academic Core:** Your grades in **Programming Fundamentals (A)**, **Database Systems (A)**, **Web Technologies (A)**, and **OOP (A-)** show solid foundational engineering capability, supported by a respectable **B+ in Data Structures & Algorithms**.\n* **Immediate Frontend Market Fit:** You have a **91% fit and 100% skill coverage** for **Frontend Developer**. Your Intermediate (Level 3) skills in **HTML/CSS, JavaScript, React.js, and Tailwind CSS** map directly to local market demand (such as **Systems Limited**).\n* **Database Advantage:** Most junior frontend-leaning students struggle with databases, whereas your **A in Database Systems** gives you a clear edge if you pivot toward Full-Stack or Backend roles.\n\n---\n\n### 2. Readiness Gaps to Address\n* **Level 2 Bottleneck on High-Impact Skills:** **TypeScript, Git, SQL, and RESTful API Design** are currently at **Basic (Level 2)**. In Pakistani software houses, TypeScript and Git proficiency are expected at a comfortable working level even for interns.\n* **Missing Engineering & DevOps Practices:** Your profile does not yet show experience in:\n  * **Automated Testing** (emphasized by **Contour Software & Techlogix**)\n  * **Docker / Cloud / Node.js** (actively sought by **10Pearls** for Full-Stack & Cloud Associate interns)\n  * **Next.js** (high demand alongside React at **Systems Limited**)\n* **Unclear Target Focus & Unverified Portfolio:** You currently have **no saved career interests** selected, and your profile does not list completed portfolio projects or internship experience yet. Technical recruiters screen heavily for live GitHub repos and deployed apps.\n* **UI/UX Readiness Gap:** While you have an **82% conceptual fit** for UI/UX Designer (and are currently taking **Human-Computer Interaction**), your **27.6% skill coverage** means you are not yet competitive for dedicated UI/UX roles without formal design tooling and case studies.\n\n---\n\n### 3. Role-by-Role Readiness Breakdown\n\n| Target Role | Alignment & Coverage | Readiness Status | Market Outlook |\n| :--- | :--- | :--- | :--- |\n| **Frontend Developer** | 91% fit / 100% coverage | **Internship Ready (with polish)** | Strongest immediate path; upgrade TypeScript and add Next.js to stand out. |\n| **Backend Developer** | 72% fit / 60.5% coverage | **Developing (Needs 8–12 weeks)** | Strong DB/OOP base, but requires a backend framework (e.g., Node.js), testing, and Docker. |\n| **UI/UX Designer** | 82% fit / 27.6% coverage | **Early Stage** | Best treated as a complementary strength alongside Frontend rather than your primary track right now. |\n\n---\n\n### 4. Recommended Next Steps (Next 4–6 Weeks)\n1. **Pick a Primary Track:** Decide whether you want to pursue **Frontend/Full-Stack** (fastest route to an internship this summer) or **Backend Developer** (great long-term depth), and save it in your career interests.\n2. **Level Up Your \"Basic\" Skills:** Move **TypeScript** and **Git** from Level 2 to Level 3 by building a real project using strict TypeScript, feature branches, and clean PR workflows.\n3. **Close 1–2 Hiring Gaps:**\n   * If targeting **Frontend**: Add **Next.js** + **unit/component testing** (Jest/React Testing Library).\n   * If targeting **Backend/Full-Stack**: Add **Node.js + PostgreSQL + Docker + automated API testing**.\n4. **Keep DSA Interview-Ready:** Refresh your **B+ DSA** foundation with regular problem-solving practice, as **Contour Software, Techlogix, and 10Pearls** regularly use coding assessments and SQL queries in internship screening.\n\nIf you share what projects you currently have on your resume or GitHub, I can evaluate how competitive they are for Pakistani tech internships!",
+      "action_type": "NONE",
+      "action_id": null,
+      "action_payload": null,
+      "created_at": "2026-11-15T18:57:08.243Z",
+      "is_fallback": false
+    },
+    {
+      "message_id": 27,
+      "conversation_id": 21,
+      "sender": "user",
+      "content": "What skills am I missing for Frontend Developer?",
+      "action_type": "NONE",
+      "action_payload": null,
+      "created_at": "2026-11-15T18:58:19.859Z"
+    },
+    {
+      "message_id": 28,
+      "conversation_id": 21,
+      "sender": "copilot",
+      "content": "### Skill Gap Intelligence for Frontend Developer\n\nBased on your **Semester 6** records at **NUST**:\n\n1. **Validated Foundation**:\n- **HTML & CSS** (Intermediate, Level 3): Meets or approaches entry baseline.\n- **JavaScript** (Intermediate, Level 3): Meets or approaches entry baseline.\n- **React.js** (Intermediate, Level 3): Meets or approaches entry baseline.\n- **Responsive Design & Tailwind CSS** (Intermediate, Level 3): Meets or approaches entry baseline.\n- **Git & Version Control** (Basic, Level 2): Meets or approaches entry baseline.\n- **SQL & Relational Databases** (Basic, Level 2): Meets or approaches entry baseline.\n- **RESTful API Design** (Basic, Level 2): Meets or approaches entry baseline.\n- **TypeScript** (Basic, Level 2): Meets or approaches entry baseline.\n\n2. **Priority Gaps for the Pakistani Market**:\n- **Next.js** (Missing): Frequently cited in current job postings from Systems Ltd and 10Pearls. Advancing this will directly increase your readiness ratio.\n- **Docker** (Missing): Frequently cited in current job postings from Systems Ltd and 10Pearls. Advancing this will directly increase your readiness ratio.\n- **Automated Testing (Jest/Playwright)** (Missing): Frequently cited in current job postings from Systems Ltd and 10Pearls. Advancing this will directly increase your readiness ratio.\n\n3. **Recommended Next Step**:\nDedicate 4–6 hours this week to build a typed project component and attach it as project evidence in your PathProof profile.",
+      "action_type": "NONE",
+      "action_id": null,
+      "action_payload": null,
+      "created_at": "2026-11-15T18:58:19.861Z",
+      "is_fallback": true
+    },
+    {
+      "message_id": 29,
+      "conversation_id": 22,
+      "sender": "user",
+      "content": "Create a 12-week roadmap for my frontend internship",
+      "action_type": "NONE",
+      "action_payload": null,
+      "created_at": "2026-11-15T18:58:19.873Z"
+    },
+    {
+      "message_id": 30,
+      "conversation_id": 22,
+      "sender": "copilot",
+      "content": "I have analyzed your **Semester 6** standing at **NUST** and generated a personalized 12-week preparation roadmap for **Junior Frontend Developer**.\n\n### Strategic Analysis\n- **Current Strengths**: Your profile reflects solid coursework (Programming Fundamentals, Object Oriented Programming, Data Structures & Algorithms) and self-reported skills (HTML & CSS Level 3, JavaScript Level 3, React.js Level 3).\n- **High-Impact Target**: Advancing your Next.js & TypeScript skills to Level 3 will give you the strongest competitive edge for Pakistani tech firms.\n\nReview the proposed milestones below. You can inspect the full breakdown and save it directly to your dashboard roadmaps.",
+      "action_type": "PROPOSE_ROADMAP",
+      "action_id": 7,
+      "action_payload": {
+        "title": "12-Week Junior Frontend Developer Preparation Roadmap",
+        "target_role": "Junior Frontend Developer",
+        "total_weeks": 12,
+        "milestones": [
+          {
+            "week_number": 1,
+            "title": "TypeScript Foundations & Modern JavaScript",
+            "description": "Strengthen component type safety, interfaces, union types, and strict mode in React.",
+            "estimated_hours": 8,
+            "learning_activities": [
+              "Official TypeScript Handbook",
+              "Refactor 3 React components to strict TypeScript"
+            ],
+            "completion_criteria": "tsc passes with noImplicitAny and 0 type errors."
+          },
+          {
+            "week_number": 4,
+            "title": "Next.js App Router & Server Components",
+            "description": "Master client vs server component boundaries, layout hierarchies, and server actions.",
+            "estimated_hours": 10,
+            "learning_activities": [
+              "Complete Next.js official tutorial",
+              "Implement dynamic product/career dashboard"
+            ],
+            "completion_criteria": "Production build deployed with zero layout shift (CLS < 0.1)."
+          },
+          {
+            "week_number": 8,
+            "title": "State Architecture & API Cache Management",
+            "description": "Implement TanStack Query or Zustand for optimistic UI and server state syncing.",
+            "estimated_hours": 10,
+            "learning_activities": [
+              "Build an e-commerce catalog with search and debounce",
+              "Add error boundaries"
+            ],
+            "completion_criteria": "Smooth loading skeletons and resilient offline recovery."
+          },
+          {
+            "week_number": 12,
+            "title": "Portfolio Capstone Polish & Pakistani Tech Job Prep",
+            "description": "Conduct WCAG AA accessibility audit, bundle optimization, and interactive documentation.",
+            "estimated_hours": 12,
+            "learning_activities": [
+              "Lighthouse performance audit (score >= 90)",
+              "Prepare portfolio README dossier"
+            ],
+            "completion_criteria": "Live project ready for Systems Ltd, 10Pearls, or VentureDive applications."
+          }
+        ]
+      },
+      "created_at": "2026-11-15T18:58:19.873Z",
+      "is_fallback": true
     }
   ],
   "copilot_actions": [
@@ -6447,6 +7439,286 @@
       "status": "PENDING",
       "created_at": "2026-11-15T10:30:02.764Z",
       "confirmed_at": null
+    },
+    {
+      "action_id": 4,
+      "user_id": 2,
+      "conversation_id": 15,
+      "action_type": "PROPOSE_ROADMAP",
+      "payload": {
+        "title": "12-Week Junior Frontend Developer Preparation Roadmap",
+        "target_role": "Junior Frontend Developer",
+        "total_weeks": 12,
+        "milestones": [
+          {
+            "week_number": 1,
+            "title": "TypeScript Foundations & Modern JavaScript",
+            "description": "Strengthen component type safety, interfaces, union types, and strict mode in React.",
+            "estimated_hours": 8,
+            "learning_activities": [
+              "Official TypeScript Handbook",
+              "Refactor 3 React components to strict TypeScript"
+            ],
+            "completion_criteria": "tsc passes with noImplicitAny and 0 type errors."
+          },
+          {
+            "week_number": 4,
+            "title": "Next.js App Router & Server Components",
+            "description": "Master client vs server component boundaries, layout hierarchies, and server actions.",
+            "estimated_hours": 10,
+            "learning_activities": [
+              "Complete Next.js official tutorial",
+              "Implement dynamic product/career dashboard"
+            ],
+            "completion_criteria": "Production build deployed with zero layout shift (CLS < 0.1)."
+          },
+          {
+            "week_number": 8,
+            "title": "State Architecture & API Cache Management",
+            "description": "Implement TanStack Query or Zustand for optimistic UI and server state syncing.",
+            "estimated_hours": 10,
+            "learning_activities": [
+              "Build an e-commerce catalog with search and debounce",
+              "Add error boundaries"
+            ],
+            "completion_criteria": "Smooth loading skeletons and resilient offline recovery."
+          },
+          {
+            "week_number": 12,
+            "title": "Portfolio Capstone Polish & Pakistani Tech Job Prep",
+            "description": "Conduct WCAG AA accessibility audit, bundle optimization, and interactive documentation.",
+            "estimated_hours": 12,
+            "learning_activities": [
+              "Lighthouse performance audit (score >= 90)",
+              "Prepare portfolio README dossier"
+            ],
+            "completion_criteria": "Live project ready for Systems Ltd, 10Pearls, or VentureDive applications."
+          }
+        ]
+      },
+      "status": "CONFIRMED",
+      "created_at": "2026-11-15T18:49:56.753Z",
+      "confirmed_at": "2026-11-15T18:49:56.759Z"
+    },
+    {
+      "action_id": 5,
+      "user_id": 2,
+      "conversation_id": 17,
+      "action_type": "PROPOSE_ROADMAP",
+      "payload": {
+        "title": "12-Week Backend Developer Roadmap (Node.js & TypeScript)",
+        "target_role": "Backend Developer",
+        "total_weeks": 12,
+        "milestones": [
+          {
+            "week_number": 1,
+            "title": "Node.js Runtime & TypeScript Backend Setup",
+            "description": "Understand Node.js event loop, non-blocking I/O, and set up a structured Express.js server using TypeScript.",
+            "estimated_hours": 14,
+            "learning_activities": [
+              "Study Node.js event loop, async/await, and streams",
+              "Configure TypeScript, ESLint, Prettier, and Express.js boilerplate",
+              "Build a modular health-check and logging server"
+            ],
+            "completion_criteria": "A working TypeScript Express boilerplate pushed to GitHub with layered folder structure (routes, controllers, services)."
+          },
+          {
+            "week_number": 2,
+            "title": "Production RESTful API Design & Validation",
+            "description": "Advance from basic REST API design to production-ready endpoints with strict input validation and centralized error handling.",
+            "estimated_hours": 15,
+            "learning_activities": [
+              "Implement pagination, filtering, sorting, and proper HTTP status codes",
+              "Integrate Zod for request body, query, and parameter validation",
+              "Build a global error-handling middleware"
+            ],
+            "completion_criteria": "CRUD API with full Zod validation and consistent JSON error responses."
+          },
+          {
+            "week_number": 3,
+            "title": "Professional Git Workflows & OpenAPI Documentation",
+            "description": "Level up Git skills for team environments and generate interactive API documentation.",
+            "estimated_hours": 12,
+            "learning_activities": [
+              "Practice feature-branching, rebasing, and resolving merge conflicts",
+              "Document endpoints using Swagger/OpenAPI specification",
+              "Write Postman/Insomnia test collections for all endpoints"
+            ],
+            "completion_criteria": "Live Swagger UI endpoint documenting all API routes and a clean Git commit history with PR workflow."
+          },
+          {
+            "week_number": 4,
+            "title": "Advanced PostgreSQL & Query Optimization",
+            "description": "Apply relational database theory to real-world PostgreSQL performance tuning, indexing, and transactions.",
+            "estimated_hours": 15,
+            "learning_activities": [
+              "Set up PostgreSQL locally and practice complex joins and CTEs",
+              "Analyze slow queries using EXPLAIN ANALYZE and add B-tree/composite indexes",
+              "Implement ACID transactions for multi-step data operations"
+            ],
+            "completion_criteria": "SQL schema and benchmark report showing query speed improvement after indexing."
+          },
+          {
+            "week_number": 5,
+            "title": "ORMs, Schema Migrations & Data Access Layer",
+            "description": "Use Prisma or TypeORM with TypeScript to manage database schemas, migrations, and clean data access.",
+            "estimated_hours": 15,
+            "learning_activities": [
+              "Model one-to-many and many-to-many relations in Prisma",
+              "Write and run versioned database migrations and seed scripts",
+              "Refactor raw queries into a type-safe service/repository layer"
+            ],
+            "completion_criteria": "Database-backed API running via Prisma migrations with reproducible seed data."
+          },
+          {
+            "week_number": 6,
+            "title": "Authentication, RBAC & Backend Security",
+            "description": "Implement secure user authentication, role-based access control, and defend against common OWASP API vulnerabilities.",
+            "estimated_hours": 15,
+            "learning_activities": [
+              "Implement password hashing with bcrypt/argon2 and JWT access/refresh token rotation",
+              "Build role-based authorization middleware (Admin, User)",
+              "Configure Helmet, CORS, and Express rate limiting"
+            ],
+            "completion_criteria": "Protected API routes supporting signup, login, token refresh, and role-restricted access."
+          },
+          {
+            "week_number": 7,
+            "title": "Automated Unit & Integration Testing",
+            "description": "Build confidence in code quality through automated testing, a top requirement at Contour Software and Techlogix.",
+            "estimated_hours": 15,
+            "learning_activities": [
+              "Write unit tests for business logic services using Jest",
+              "Write API integration tests using Supertest against a test database",
+              "Measure code coverage and mock external dependencies"
+            ],
+            "completion_criteria": "Test suite achieving at least 75% coverage on core services and auth endpoints."
+          },
+          {
+            "week_number": 8,
+            "title": "Redis Caching & Asynchronous Job Queues",
+            "description": "Improve API scalability and response times using in-memory caching and background workers.",
+            "estimated_hours": 14,
+            "learning_activities": [
+              "Integrate Redis for read-heavy endpoint caching and cache invalidation",
+              "Set up BullMQ to process asynchronous jobs such as email notifications",
+              "Implement retry policies and dead-letter handling for failed jobs"
+            ],
+            "completion_criteria": "API endpoint demonstrating cache hit/miss behavior and an active background worker queue."
+          },
+          {
+            "week_number": 9,
+            "title": "Real-Time Features & Cloud File Storage",
+            "description": "Handle WebSockets for real-time updates and secure file uploads via S3-compatible storage.",
+            "estimated_hours": 14,
+            "learning_activities": [
+              "Build a real-time notification module using Socket.io",
+              "Implement secure file upload validation and pre-signed URLs for S3/Cloudflare R2",
+              "Add structured JSON logging with Pino or Winston"
+            ],
+            "completion_criteria": "Working WebSocket event flow and verified file upload endpoint with structured logs."
+          },
+          {
+            "week_number": 10,
+            "title": "Docker, Docker Compose & CI/CD Pipelines",
+            "description": "Containerize the entire backend stack for consistent deployments, aligning with 10Pearls hiring expectations.",
+            "estimated_hours": 15,
+            "learning_activities": [
+              "Write a multi-stage Dockerfile for the Node.js/TypeScript service",
+              "Orchestrate API, PostgreSQL, and Redis services via Docker Compose",
+              "Set up GitHub Actions to run linting, type-checking, and automated tests on every push"
+            ],
+            "completion_criteria": "Full stack boots cleanly via single docker compose up command and passes GitHub Actions CI."
+          },
+          {
+            "week_number": 11,
+            "title": "Capstone Backend Deployment & Monitoring",
+            "description": "Deploy a portfolio-ready capstone API to the cloud with production environment configuration.",
+            "estimated_hours": 15,
+            "learning_activities": [
+              "Finalize capstone API (e.g., Campus Event & Ticketing or SaaS Task API)",
+              "Deploy to AWS EC2/ECS, Render, or Railway with managed PostgreSQL and Redis",
+              "Write a comprehensive README with architecture diagram and API usage guide"
+            ],
+            "completion_criteria": "Live, publicly accessible HTTPS API with passing CI badge and complete architecture README."
+          },
+          {
+            "week_number": 12,
+            "title": "DSA Refresh, System Design & Interview Prep",
+            "description": "Prepare for technical screenings at top Pakistani software houses with DSA practice and backend system design.",
+            "estimated_hours": 15,
+            "learning_activities": [
+              "Solve 15-20 targeted LeetCode Easy/Medium problems (Arrays, HashMaps, Trees, Graphs)",
+              "Study backend system design fundamentals: load balancing, DB sharding, and rate limiters",
+              "Tailor resume highlighting backend projects and conduct two mock technical interviews"
+            ],
+            "completion_criteria": "Updated backend-focused CV, 15+ solved DSA problems, and completed mock interview review."
+          }
+        ]
+      },
+      "status": "CONFIRMED",
+      "created_at": "2026-11-15T18:51:52.912Z",
+      "confirmed_at": "2026-11-15T18:52:15.679Z"
+    },
+    {
+      "action_id": 7,
+      "user_id": 2,
+      "conversation_id": 22,
+      "action_type": "PROPOSE_ROADMAP",
+      "payload": {
+        "title": "12-Week Junior Frontend Developer Preparation Roadmap",
+        "target_role": "Junior Frontend Developer",
+        "total_weeks": 12,
+        "milestones": [
+          {
+            "week_number": 1,
+            "title": "TypeScript Foundations & Modern JavaScript",
+            "description": "Strengthen component type safety, interfaces, union types, and strict mode in React.",
+            "estimated_hours": 8,
+            "learning_activities": [
+              "Official TypeScript Handbook",
+              "Refactor 3 React components to strict TypeScript"
+            ],
+            "completion_criteria": "tsc passes with noImplicitAny and 0 type errors."
+          },
+          {
+            "week_number": 4,
+            "title": "Next.js App Router & Server Components",
+            "description": "Master client vs server component boundaries, layout hierarchies, and server actions.",
+            "estimated_hours": 10,
+            "learning_activities": [
+              "Complete Next.js official tutorial",
+              "Implement dynamic product/career dashboard"
+            ],
+            "completion_criteria": "Production build deployed with zero layout shift (CLS < 0.1)."
+          },
+          {
+            "week_number": 8,
+            "title": "State Architecture & API Cache Management",
+            "description": "Implement TanStack Query or Zustand for optimistic UI and server state syncing.",
+            "estimated_hours": 10,
+            "learning_activities": [
+              "Build an e-commerce catalog with search and debounce",
+              "Add error boundaries"
+            ],
+            "completion_criteria": "Smooth loading skeletons and resilient offline recovery."
+          },
+          {
+            "week_number": 12,
+            "title": "Portfolio Capstone Polish & Pakistani Tech Job Prep",
+            "description": "Conduct WCAG AA accessibility audit, bundle optimization, and interactive documentation.",
+            "estimated_hours": 12,
+            "learning_activities": [
+              "Lighthouse performance audit (score >= 90)",
+              "Prepare portfolio README dossier"
+            ],
+            "completion_criteria": "Live project ready for Systems Ltd, 10Pearls, or VentureDive applications."
+          }
+        ]
+      },
+      "status": "CONFIRMED",
+      "created_at": "2026-11-15T18:58:19.873Z",
+      "confirmed_at": "2026-11-15T18:58:19.879Z"
     }
   ],
   "student_roadmaps": [
@@ -6736,6 +8008,558 @@
           "completed_at": null
         }
       ]
+    },
+    {
+      "roadmap_id": 5,
+      "user_id": 2,
+      "title": "12-Week Junior Frontend Developer Preparation Roadmap",
+      "career_id": null,
+      "target_role": "Junior Frontend Developer",
+      "total_weeks": 12,
+      "status": "ACTIVE",
+      "created_at": "2026-11-15T18:49:56.759Z",
+      "milestones": [
+        {
+          "milestone_id": 17,
+          "roadmap_id": 5,
+          "week_number": 1,
+          "title": "TypeScript Foundations & Modern JavaScript",
+          "description": "Strengthen component type safety, interfaces, union types, and strict mode in React.",
+          "estimated_hours": 8,
+          "learning_activities": [
+            "Official TypeScript Handbook",
+            "Refactor 3 React components to strict TypeScript"
+          ],
+          "completion_criteria": "tsc passes with noImplicitAny and 0 type errors.",
+          "is_completed": true,
+          "completed_at": "2026-11-15T18:49:56.764Z"
+        },
+        {
+          "milestone_id": 18,
+          "roadmap_id": 5,
+          "week_number": 4,
+          "title": "Next.js App Router & Server Components",
+          "description": "Master client vs server component boundaries, layout hierarchies, and server actions.",
+          "estimated_hours": 10,
+          "learning_activities": [
+            "Complete Next.js official tutorial",
+            "Implement dynamic product/career dashboard"
+          ],
+          "completion_criteria": "Production build deployed with zero layout shift (CLS < 0.1).",
+          "is_completed": false,
+          "completed_at": null
+        },
+        {
+          "milestone_id": 19,
+          "roadmap_id": 5,
+          "week_number": 8,
+          "title": "State Architecture & API Cache Management",
+          "description": "Implement TanStack Query or Zustand for optimistic UI and server state syncing.",
+          "estimated_hours": 10,
+          "learning_activities": [
+            "Build an e-commerce catalog with search and debounce",
+            "Add error boundaries"
+          ],
+          "completion_criteria": "Smooth loading skeletons and resilient offline recovery.",
+          "is_completed": false,
+          "completed_at": null
+        },
+        {
+          "milestone_id": 20,
+          "roadmap_id": 5,
+          "week_number": 12,
+          "title": "Portfolio Capstone Polish & Pakistani Tech Job Prep",
+          "description": "Conduct WCAG AA accessibility audit, bundle optimization, and interactive documentation.",
+          "estimated_hours": 12,
+          "learning_activities": [
+            "Lighthouse performance audit (score >= 90)",
+            "Prepare portfolio README dossier"
+          ],
+          "completion_criteria": "Live project ready for Systems Ltd, 10Pearls, or VentureDive applications.",
+          "is_completed": false,
+          "completed_at": null
+        }
+      ]
+    },
+    {
+      "roadmap_id": 6,
+      "user_id": 2,
+      "title": "12-Week Backend Developer Roadmap (Node.js & TypeScript)",
+      "career_id": null,
+      "target_role": "Backend Developer",
+      "total_weeks": 12,
+      "status": "ACTIVE",
+      "created_at": "2026-11-15T18:52:15.679Z",
+      "milestones": [
+        {
+          "milestone_id": 21,
+          "roadmap_id": 6,
+          "week_number": 1,
+          "title": "Node.js Runtime & TypeScript Backend Setup",
+          "description": "Understand Node.js event loop, non-blocking I/O, and set up a structured Express.js server using TypeScript.",
+          "estimated_hours": 14,
+          "learning_activities": [
+            "Study Node.js event loop, async/await, and streams",
+            "Configure TypeScript, ESLint, Prettier, and Express.js boilerplate",
+            "Build a modular health-check and logging server"
+          ],
+          "completion_criteria": "A working TypeScript Express boilerplate pushed to GitHub with layered folder structure (routes, controllers, services).",
+          "is_completed": false,
+          "completed_at": null
+        },
+        {
+          "milestone_id": 22,
+          "roadmap_id": 6,
+          "week_number": 2,
+          "title": "Production RESTful API Design & Validation",
+          "description": "Advance from basic REST API design to production-ready endpoints with strict input validation and centralized error handling.",
+          "estimated_hours": 15,
+          "learning_activities": [
+            "Implement pagination, filtering, sorting, and proper HTTP status codes",
+            "Integrate Zod for request body, query, and parameter validation",
+            "Build a global error-handling middleware"
+          ],
+          "completion_criteria": "CRUD API with full Zod validation and consistent JSON error responses.",
+          "is_completed": false,
+          "completed_at": null
+        },
+        {
+          "milestone_id": 23,
+          "roadmap_id": 6,
+          "week_number": 3,
+          "title": "Professional Git Workflows & OpenAPI Documentation",
+          "description": "Level up Git skills for team environments and generate interactive API documentation.",
+          "estimated_hours": 12,
+          "learning_activities": [
+            "Practice feature-branching, rebasing, and resolving merge conflicts",
+            "Document endpoints using Swagger/OpenAPI specification",
+            "Write Postman/Insomnia test collections for all endpoints"
+          ],
+          "completion_criteria": "Live Swagger UI endpoint documenting all API routes and a clean Git commit history with PR workflow.",
+          "is_completed": false,
+          "completed_at": null
+        },
+        {
+          "milestone_id": 24,
+          "roadmap_id": 6,
+          "week_number": 4,
+          "title": "Advanced PostgreSQL & Query Optimization",
+          "description": "Apply relational database theory to real-world PostgreSQL performance tuning, indexing, and transactions.",
+          "estimated_hours": 15,
+          "learning_activities": [
+            "Set up PostgreSQL locally and practice complex joins and CTEs",
+            "Analyze slow queries using EXPLAIN ANALYZE and add B-tree/composite indexes",
+            "Implement ACID transactions for multi-step data operations"
+          ],
+          "completion_criteria": "SQL schema and benchmark report showing query speed improvement after indexing.",
+          "is_completed": false,
+          "completed_at": null
+        },
+        {
+          "milestone_id": 25,
+          "roadmap_id": 6,
+          "week_number": 5,
+          "title": "ORMs, Schema Migrations & Data Access Layer",
+          "description": "Use Prisma or TypeORM with TypeScript to manage database schemas, migrations, and clean data access.",
+          "estimated_hours": 15,
+          "learning_activities": [
+            "Model one-to-many and many-to-many relations in Prisma",
+            "Write and run versioned database migrations and seed scripts",
+            "Refactor raw queries into a type-safe service/repository layer"
+          ],
+          "completion_criteria": "Database-backed API running via Prisma migrations with reproducible seed data.",
+          "is_completed": false,
+          "completed_at": null
+        },
+        {
+          "milestone_id": 26,
+          "roadmap_id": 6,
+          "week_number": 6,
+          "title": "Authentication, RBAC & Backend Security",
+          "description": "Implement secure user authentication, role-based access control, and defend against common OWASP API vulnerabilities.",
+          "estimated_hours": 15,
+          "learning_activities": [
+            "Implement password hashing with bcrypt/argon2 and JWT access/refresh token rotation",
+            "Build role-based authorization middleware (Admin, User)",
+            "Configure Helmet, CORS, and Express rate limiting"
+          ],
+          "completion_criteria": "Protected API routes supporting signup, login, token refresh, and role-restricted access.",
+          "is_completed": false,
+          "completed_at": null
+        },
+        {
+          "milestone_id": 27,
+          "roadmap_id": 6,
+          "week_number": 7,
+          "title": "Automated Unit & Integration Testing",
+          "description": "Build confidence in code quality through automated testing, a top requirement at Contour Software and Techlogix.",
+          "estimated_hours": 15,
+          "learning_activities": [
+            "Write unit tests for business logic services using Jest",
+            "Write API integration tests using Supertest against a test database",
+            "Measure code coverage and mock external dependencies"
+          ],
+          "completion_criteria": "Test suite achieving at least 75% coverage on core services and auth endpoints.",
+          "is_completed": false,
+          "completed_at": null
+        },
+        {
+          "milestone_id": 28,
+          "roadmap_id": 6,
+          "week_number": 8,
+          "title": "Redis Caching & Asynchronous Job Queues",
+          "description": "Improve API scalability and response times using in-memory caching and background workers.",
+          "estimated_hours": 14,
+          "learning_activities": [
+            "Integrate Redis for read-heavy endpoint caching and cache invalidation",
+            "Set up BullMQ to process asynchronous jobs such as email notifications",
+            "Implement retry policies and dead-letter handling for failed jobs"
+          ],
+          "completion_criteria": "API endpoint demonstrating cache hit/miss behavior and an active background worker queue.",
+          "is_completed": false,
+          "completed_at": null
+        },
+        {
+          "milestone_id": 29,
+          "roadmap_id": 6,
+          "week_number": 9,
+          "title": "Real-Time Features & Cloud File Storage",
+          "description": "Handle WebSockets for real-time updates and secure file uploads via S3-compatible storage.",
+          "estimated_hours": 14,
+          "learning_activities": [
+            "Build a real-time notification module using Socket.io",
+            "Implement secure file upload validation and pre-signed URLs for S3/Cloudflare R2",
+            "Add structured JSON logging with Pino or Winston"
+          ],
+          "completion_criteria": "Working WebSocket event flow and verified file upload endpoint with structured logs.",
+          "is_completed": false,
+          "completed_at": null
+        },
+        {
+          "milestone_id": 30,
+          "roadmap_id": 6,
+          "week_number": 10,
+          "title": "Docker, Docker Compose & CI/CD Pipelines",
+          "description": "Containerize the entire backend stack for consistent deployments, aligning with 10Pearls hiring expectations.",
+          "estimated_hours": 15,
+          "learning_activities": [
+            "Write a multi-stage Dockerfile for the Node.js/TypeScript service",
+            "Orchestrate API, PostgreSQL, and Redis services via Docker Compose",
+            "Set up GitHub Actions to run linting, type-checking, and automated tests on every push"
+          ],
+          "completion_criteria": "Full stack boots cleanly via single docker compose up command and passes GitHub Actions CI.",
+          "is_completed": false,
+          "completed_at": null
+        },
+        {
+          "milestone_id": 31,
+          "roadmap_id": 6,
+          "week_number": 11,
+          "title": "Capstone Backend Deployment & Monitoring",
+          "description": "Deploy a portfolio-ready capstone API to the cloud with production environment configuration.",
+          "estimated_hours": 15,
+          "learning_activities": [
+            "Finalize capstone API (e.g., Campus Event & Ticketing or SaaS Task API)",
+            "Deploy to AWS EC2/ECS, Render, or Railway with managed PostgreSQL and Redis",
+            "Write a comprehensive README with architecture diagram and API usage guide"
+          ],
+          "completion_criteria": "Live, publicly accessible HTTPS API with passing CI badge and complete architecture README.",
+          "is_completed": false,
+          "completed_at": null
+        },
+        {
+          "milestone_id": 32,
+          "roadmap_id": 6,
+          "week_number": 12,
+          "title": "DSA Refresh, System Design & Interview Prep",
+          "description": "Prepare for technical screenings at top Pakistani software houses with DSA practice and backend system design.",
+          "estimated_hours": 15,
+          "learning_activities": [
+            "Solve 15-20 targeted LeetCode Easy/Medium problems (Arrays, HashMaps, Trees, Graphs)",
+            "Study backend system design fundamentals: load balancing, DB sharding, and rate limiters",
+            "Tailor resume highlighting backend projects and conduct two mock technical interviews"
+          ],
+          "completion_criteria": "Updated backend-focused CV, 15+ solved DSA problems, and completed mock interview review.",
+          "is_completed": false,
+          "completed_at": null
+        }
+      ]
+    },
+    {
+      "roadmap_id": 7,
+      "user_id": 2,
+      "title": "12-Week Node.js & TypeScript Backend Developer Roadmap",
+      "career_id": null,
+      "target_role": "Backend Developer",
+      "total_weeks": 12,
+      "status": "ACTIVE",
+      "created_at": "2026-11-15T18:54:25.174Z",
+      "milestones": [
+        {
+          "milestone_id": 33,
+          "roadmap_id": 7,
+          "week_number": 1,
+          "title": "Node.js Runtime & TypeScript Fundamentals",
+          "description": "Deepen TypeScript skills and master Node.js internals including the event loop, async/await, and environment configuration.",
+          "estimated_hours": 15,
+          "learning_activities": [
+            "Complete TypeScript strict-mode exercises covering generics, interfaces, and utility types",
+            "Study Node.js event loop, non-blocking I/O, and file/stream modules",
+            "Initialize a TypeScript + Express.js starter repository with ESLint and Prettier"
+          ],
+          "completion_criteria": "A working TypeScript-configured Express server with health-check endpoints and clean linting.",
+          "is_completed": false,
+          "completed_at": null
+        },
+        {
+          "milestone_id": 34,
+          "roadmap_id": 7,
+          "week_number": 2,
+          "title": "Layered REST API Architecture & Validation",
+          "description": "Structure scalable backend code using controller-service-repository patterns and robust schema validation.",
+          "estimated_hours": 15,
+          "learning_activities": [
+            "Implement CRUD endpoints following RESTful naming and HTTP status code standards",
+            "Add Zod request validation middleware for params, query, and body payloads",
+            "Build centralized async error-handling middleware"
+          ],
+          "completion_criteria": "A multi-resource REST API with separated business logic, custom error classes, and validated inputs.",
+          "is_completed": false,
+          "completed_at": null
+        },
+        {
+          "milestone_id": 35,
+          "roadmap_id": 7,
+          "week_number": 3,
+          "title": "PostgreSQL Mastery & Query Optimization",
+          "description": "Level up SQL from basic to production-ready by focusing on indexing, transactions, and relational schema design.",
+          "estimated_hours": 15,
+          "learning_activities": [
+            "Design a normalized 3NF relational schema in PostgreSQL for a multi-table domain",
+            "Practice complex JOINs, CTEs, aggregations, and window functions",
+            "Analyze slow queries using EXPLAIN ANALYZE and apply B-tree indexes"
+          ],
+          "completion_criteria": "Documented SQL schema script with optimized queries and verified ACID transaction handling.",
+          "is_completed": false,
+          "completed_at": null
+        },
+        {
+          "milestone_id": 36,
+          "roadmap_id": 7,
+          "week_number": 4,
+          "title": "ORM Integration & Database Migrations",
+          "description": "Connect your TypeScript API to PostgreSQL using Prisma ORM with type-safe queries and versioned migrations.",
+          "estimated_hours": 15,
+          "learning_activities": [
+            "Configure Prisma schema with one-to-many and many-to-many relations",
+            "Run database migrations and write idempotent seed scripts",
+            "Implement pagination, filtering, and sorting in repository methods"
+          ],
+          "completion_criteria": "REST API persisted to PostgreSQL via Prisma with repeatable migrations and seeded test data.",
+          "is_completed": false,
+          "completed_at": null
+        },
+        {
+          "milestone_id": 37,
+          "roadmap_id": 7,
+          "week_number": 5,
+          "title": "Authentication, JWTs & Role-Based Access Control",
+          "description": "Secure APIs with industry-standard authentication flows and permission checks.",
+          "estimated_hours": 15,
+          "learning_activities": [
+            "Implement user registration and login with bcrypt/argon2 password hashing",
+            "Build JWT access and refresh token rotation mechanisms",
+            "Create authorization middleware for Role-Based Access Control (RBAC)"
+          ],
+          "completion_criteria": "Protected API routes enforcing user roles and secure token lifecycle management.",
+          "is_completed": false,
+          "completed_at": null
+        },
+        {
+          "milestone_id": 38,
+          "roadmap_id": 7,
+          "week_number": 6,
+          "title": "API Security Hardening & OpenAPI Documentation",
+          "description": "Protect backend services against common vulnerabilities and document endpoints for frontend teams.",
+          "estimated_hours": 14,
+          "learning_activities": [
+            "Configure Helmet, strict CORS policies, and express-rate-limit",
+            "Review OWASP API Security Top 10 and audit existing endpoints",
+            "Generate interactive Swagger/OpenAPI documentation for all routes"
+          ],
+          "completion_criteria": "Secured API passing security header checks with live Swagger UI documentation.",
+          "is_completed": false,
+          "completed_at": null
+        },
+        {
+          "milestone_id": 39,
+          "roadmap_id": 7,
+          "week_number": 7,
+          "title": "Automated Unit & Integration Testing",
+          "description": "Build confidence in code quality using automated tests aligned with top local software house expectations.",
+          "estimated_hours": 15,
+          "learning_activities": [
+            "Write unit tests for service-layer business logic using Vitest or Jest",
+            "Set up Supertest integration tests against an isolated test database",
+            "Measure code coverage and test edge cases including invalid inputs and auth failures"
+          ],
+          "completion_criteria": "Automated test suite covering core services and API endpoints with at least 75% coverage.",
+          "is_completed": false,
+          "completed_at": null
+        },
+        {
+          "milestone_id": 40,
+          "roadmap_id": 7,
+          "week_number": 8,
+          "title": "Redis Caching & Asynchronous Job Queues",
+          "description": "Improve API latency and scalability using in-memory caching and background workers.",
+          "estimated_hours": 15,
+          "learning_activities": [
+            "Integrate Redis to cache high-read endpoints with proper cache invalidation",
+            "Implement Redis-backed rate limiting",
+            "Set up a BullMQ background worker to process asynchronous tasks like email notifications"
+          ],
+          "completion_criteria": "Demonstrated latency reduction on cached endpoints and a working background job processor.",
+          "is_completed": false,
+          "completed_at": null
+        },
+        {
+          "milestone_id": 41,
+          "roadmap_id": 7,
+          "week_number": 9,
+          "title": "Docker & Multi-Container Orchestration",
+          "description": "Containerize your application stack for consistent development and cloud deployment.",
+          "estimated_hours": 15,
+          "learning_activities": [
+            "Write an optimized multi-stage Dockerfile for the Node.js TypeScript service",
+            "Create a docker-compose.yml linking the API, PostgreSQL, and Redis containers",
+            "Configure container health checks and persistent database volumes"
+          ],
+          "completion_criteria": "Full backend stack starts cleanly with a single docker compose up command.",
+          "is_completed": false,
+          "completed_at": null
+        },
+        {
+          "milestone_id": 42,
+          "roadmap_id": 7,
+          "week_number": 10,
+          "title": "CI/CD Pipelines & Cloud Deployment",
+          "description": "Automate testing workflows and deploy your backend service to a live cloud environment.",
+          "estimated_hours": 15,
+          "learning_activities": [
+            "Create a GitHub Actions workflow to run linting, type-checking, and tests on PRs",
+            "Configure structured logging with Pino or Winston",
+            "Deploy the containerized API and managed PostgreSQL database to Render, Railway, or AWS"
+          ],
+          "completion_criteria": "Live, publicly accessible API URL with green CI/CD checks on GitHub.",
+          "is_completed": false,
+          "completed_at": null
+        },
+        {
+          "milestone_id": 43,
+          "roadmap_id": 7,
+          "week_number": 11,
+          "title": "Capstone Backend Project Polish & Documentation",
+          "description": "Refine your flagship backend project into a portfolio centerpiece ready for recruiter review.",
+          "estimated_hours": 15,
+          "learning_activities": [
+            "Add architecture diagrams, ERDs, and setup instructions to GitHub README",
+            "Export a clean Postman collection with environment variables for reviewers",
+            "Perform end-to-end API testing and fix remaining bugs or edge cases"
+          ],
+          "completion_criteria": "Completed portfolio repository with live API demo, ERD diagram, Postman collection, and documentation.",
+          "is_completed": false,
+          "completed_at": null
+        },
+        {
+          "milestone_id": 44,
+          "roadmap_id": 7,
+          "week_number": 12,
+          "title": "DSA Refresh, SQL Drills & Technical Interview Prep",
+          "description": "Consolidate problem-solving skills and prepare specifically for Pakistani software house backend interviews.",
+          "estimated_hours": 15,
+          "learning_activities": [
+            "Solve 15-20 targeted LeetCode Easy/Medium problems on arrays, hash maps, strings, and trees",
+            "Practice 10 SQL interview queries and core backend system design questions",
+            "Update CV highlighting backend metrics and apply to internships at target firms"
+          ],
+          "completion_criteria": "Completed DSA/SQL practice log, backend-focused CV, and at least 2 mock technical interviews.",
+          "is_completed": false,
+          "completed_at": null
+        }
+      ]
+    },
+    {
+      "roadmap_id": 8,
+      "user_id": 2,
+      "title": "12-Week Junior Frontend Developer Preparation Roadmap",
+      "career_id": null,
+      "target_role": "Junior Frontend Developer",
+      "total_weeks": 12,
+      "status": "ACTIVE",
+      "created_at": "2026-11-15T18:58:19.879Z",
+      "milestones": [
+        {
+          "milestone_id": 45,
+          "roadmap_id": 8,
+          "week_number": 1,
+          "title": "TypeScript Foundations & Modern JavaScript",
+          "description": "Strengthen component type safety, interfaces, union types, and strict mode in React.",
+          "estimated_hours": 8,
+          "learning_activities": [
+            "Official TypeScript Handbook",
+            "Refactor 3 React components to strict TypeScript"
+          ],
+          "completion_criteria": "tsc passes with noImplicitAny and 0 type errors.",
+          "is_completed": true,
+          "completed_at": "2026-11-15T18:58:19.885Z"
+        },
+        {
+          "milestone_id": 46,
+          "roadmap_id": 8,
+          "week_number": 4,
+          "title": "Next.js App Router & Server Components",
+          "description": "Master client vs server component boundaries, layout hierarchies, and server actions.",
+          "estimated_hours": 10,
+          "learning_activities": [
+            "Complete Next.js official tutorial",
+            "Implement dynamic product/career dashboard"
+          ],
+          "completion_criteria": "Production build deployed with zero layout shift (CLS < 0.1).",
+          "is_completed": false,
+          "completed_at": null
+        },
+        {
+          "milestone_id": 47,
+          "roadmap_id": 8,
+          "week_number": 8,
+          "title": "State Architecture & API Cache Management",
+          "description": "Implement TanStack Query or Zustand for optimistic UI and server state syncing.",
+          "estimated_hours": 10,
+          "learning_activities": [
+            "Build an e-commerce catalog with search and debounce",
+            "Add error boundaries"
+          ],
+          "completion_criteria": "Smooth loading skeletons and resilient offline recovery.",
+          "is_completed": false,
+          "completed_at": null
+        },
+        {
+          "milestone_id": 48,
+          "roadmap_id": 8,
+          "week_number": 12,
+          "title": "Portfolio Capstone Polish & Pakistani Tech Job Prep",
+          "description": "Conduct WCAG AA accessibility audit, bundle optimization, and interactive documentation.",
+          "estimated_hours": 12,
+          "learning_activities": [
+            "Lighthouse performance audit (score >= 90)",
+            "Prepare portfolio README dossier"
+          ],
+          "completion_criteria": "Live project ready for Systems Ltd, 10Pearls, or VentureDive applications.",
+          "is_completed": false,
+          "completed_at": null
+        }
+      ]
     }
   ],
   "student_roadmap_milestones": [
@@ -6918,11 +8742,574 @@
       "completion_criteria": "Live project ready for Systems Ltd, 10Pearls, or VentureDive applications.",
       "is_completed": false,
       "completed_at": null
+    },
+    {
+      "milestone_id": 1,
+      "roadmap_id": 1,
+      "week_number": 1,
+      "title": "TypeScript Foundations in React",
+      "description": "Convert React components from PropTypes to typed interfaces and generics.",
+      "estimated_hours": 8,
+      "learning_activities": [
+        "Official TypeScript handbook",
+        "Refactor 2 existing components to .tsx"
+      ],
+      "completion_criteria": "All components compile cleanly with no any types.",
+      "is_completed": true,
+      "completed_at": "2026-11-15T18:58:19.897Z"
+    },
+    {
+      "milestone_id": 2,
+      "roadmap_id": 1,
+      "week_number": 4,
+      "title": "Next.js App Router & Server Components",
+      "description": "Understand client vs server components, routing, and server-side data fetching.",
+      "estimated_hours": 10,
+      "learning_activities": [
+        "Next.js Learn tutorial",
+        "Build a dynamic blog or product catalog"
+      ],
+      "completion_criteria": "Deploy a server-rendered project to Vercel with metadata.",
+      "is_completed": false,
+      "completed_at": null
+    },
+    {
+      "milestone_id": 3,
+      "roadmap_id": 1,
+      "week_number": 8,
+      "title": "State Management & Async API Integration",
+      "description": "Implement TanStack Query or Zustand for optimistic UI and cache synchronization.",
+      "estimated_hours": 10,
+      "learning_activities": [
+        "Build an e-commerce cart with cached REST queries"
+      ],
+      "completion_criteria": "Handle loading skeletons, errors, and retry mechanisms smoothly.",
+      "is_completed": false,
+      "completed_at": null
+    },
+    {
+      "milestone_id": 4,
+      "roadmap_id": 1,
+      "week_number": 12,
+      "title": "Capstone Project Polish & Portfolio Dossier",
+      "description": "Document architecture, write comprehensive README, and deploy with live demo.",
+      "estimated_hours": 12,
+      "learning_activities": [
+        "Add Lighthouse accessibility audit (score >= 90)",
+        "Record demo walkthrough"
+      ],
+      "completion_criteria": "Portfolio project ready for Pakistani tech firm submissions.",
+      "is_completed": false,
+      "completed_at": null
+    },
+    {
+      "milestone_id": 17,
+      "roadmap_id": 5,
+      "week_number": 1,
+      "title": "TypeScript Foundations & Modern JavaScript",
+      "description": "Strengthen component type safety, interfaces, union types, and strict mode in React.",
+      "estimated_hours": 8,
+      "learning_activities": [
+        "Official TypeScript Handbook",
+        "Refactor 3 React components to strict TypeScript"
+      ],
+      "completion_criteria": "tsc passes with noImplicitAny and 0 type errors.",
+      "is_completed": true,
+      "completed_at": "2026-11-15T18:49:56.764Z"
+    },
+    {
+      "milestone_id": 18,
+      "roadmap_id": 5,
+      "week_number": 4,
+      "title": "Next.js App Router & Server Components",
+      "description": "Master client vs server component boundaries, layout hierarchies, and server actions.",
+      "estimated_hours": 10,
+      "learning_activities": [
+        "Complete Next.js official tutorial",
+        "Implement dynamic product/career dashboard"
+      ],
+      "completion_criteria": "Production build deployed with zero layout shift (CLS < 0.1).",
+      "is_completed": false,
+      "completed_at": null
+    },
+    {
+      "milestone_id": 19,
+      "roadmap_id": 5,
+      "week_number": 8,
+      "title": "State Architecture & API Cache Management",
+      "description": "Implement TanStack Query or Zustand for optimistic UI and server state syncing.",
+      "estimated_hours": 10,
+      "learning_activities": [
+        "Build an e-commerce catalog with search and debounce",
+        "Add error boundaries"
+      ],
+      "completion_criteria": "Smooth loading skeletons and resilient offline recovery.",
+      "is_completed": false,
+      "completed_at": null
+    },
+    {
+      "milestone_id": 20,
+      "roadmap_id": 5,
+      "week_number": 12,
+      "title": "Portfolio Capstone Polish & Pakistani Tech Job Prep",
+      "description": "Conduct WCAG AA accessibility audit, bundle optimization, and interactive documentation.",
+      "estimated_hours": 12,
+      "learning_activities": [
+        "Lighthouse performance audit (score >= 90)",
+        "Prepare portfolio README dossier"
+      ],
+      "completion_criteria": "Live project ready for Systems Ltd, 10Pearls, or VentureDive applications.",
+      "is_completed": false,
+      "completed_at": null
+    },
+    {
+      "milestone_id": 21,
+      "roadmap_id": 6,
+      "week_number": 1,
+      "title": "Node.js Runtime & TypeScript Backend Setup",
+      "description": "Understand Node.js event loop, non-blocking I/O, and set up a structured Express.js server using TypeScript.",
+      "estimated_hours": 14,
+      "learning_activities": [
+        "Study Node.js event loop, async/await, and streams",
+        "Configure TypeScript, ESLint, Prettier, and Express.js boilerplate",
+        "Build a modular health-check and logging server"
+      ],
+      "completion_criteria": "A working TypeScript Express boilerplate pushed to GitHub with layered folder structure (routes, controllers, services).",
+      "is_completed": false,
+      "completed_at": null
+    },
+    {
+      "milestone_id": 22,
+      "roadmap_id": 6,
+      "week_number": 2,
+      "title": "Production RESTful API Design & Validation",
+      "description": "Advance from basic REST API design to production-ready endpoints with strict input validation and centralized error handling.",
+      "estimated_hours": 15,
+      "learning_activities": [
+        "Implement pagination, filtering, sorting, and proper HTTP status codes",
+        "Integrate Zod for request body, query, and parameter validation",
+        "Build a global error-handling middleware"
+      ],
+      "completion_criteria": "CRUD API with full Zod validation and consistent JSON error responses.",
+      "is_completed": false,
+      "completed_at": null
+    },
+    {
+      "milestone_id": 23,
+      "roadmap_id": 6,
+      "week_number": 3,
+      "title": "Professional Git Workflows & OpenAPI Documentation",
+      "description": "Level up Git skills for team environments and generate interactive API documentation.",
+      "estimated_hours": 12,
+      "learning_activities": [
+        "Practice feature-branching, rebasing, and resolving merge conflicts",
+        "Document endpoints using Swagger/OpenAPI specification",
+        "Write Postman/Insomnia test collections for all endpoints"
+      ],
+      "completion_criteria": "Live Swagger UI endpoint documenting all API routes and a clean Git commit history with PR workflow.",
+      "is_completed": false,
+      "completed_at": null
+    },
+    {
+      "milestone_id": 24,
+      "roadmap_id": 6,
+      "week_number": 4,
+      "title": "Advanced PostgreSQL & Query Optimization",
+      "description": "Apply relational database theory to real-world PostgreSQL performance tuning, indexing, and transactions.",
+      "estimated_hours": 15,
+      "learning_activities": [
+        "Set up PostgreSQL locally and practice complex joins and CTEs",
+        "Analyze slow queries using EXPLAIN ANALYZE and add B-tree/composite indexes",
+        "Implement ACID transactions for multi-step data operations"
+      ],
+      "completion_criteria": "SQL schema and benchmark report showing query speed improvement after indexing.",
+      "is_completed": false,
+      "completed_at": null
+    },
+    {
+      "milestone_id": 25,
+      "roadmap_id": 6,
+      "week_number": 5,
+      "title": "ORMs, Schema Migrations & Data Access Layer",
+      "description": "Use Prisma or TypeORM with TypeScript to manage database schemas, migrations, and clean data access.",
+      "estimated_hours": 15,
+      "learning_activities": [
+        "Model one-to-many and many-to-many relations in Prisma",
+        "Write and run versioned database migrations and seed scripts",
+        "Refactor raw queries into a type-safe service/repository layer"
+      ],
+      "completion_criteria": "Database-backed API running via Prisma migrations with reproducible seed data.",
+      "is_completed": false,
+      "completed_at": null
+    },
+    {
+      "milestone_id": 26,
+      "roadmap_id": 6,
+      "week_number": 6,
+      "title": "Authentication, RBAC & Backend Security",
+      "description": "Implement secure user authentication, role-based access control, and defend against common OWASP API vulnerabilities.",
+      "estimated_hours": 15,
+      "learning_activities": [
+        "Implement password hashing with bcrypt/argon2 and JWT access/refresh token rotation",
+        "Build role-based authorization middleware (Admin, User)",
+        "Configure Helmet, CORS, and Express rate limiting"
+      ],
+      "completion_criteria": "Protected API routes supporting signup, login, token refresh, and role-restricted access.",
+      "is_completed": false,
+      "completed_at": null
+    },
+    {
+      "milestone_id": 27,
+      "roadmap_id": 6,
+      "week_number": 7,
+      "title": "Automated Unit & Integration Testing",
+      "description": "Build confidence in code quality through automated testing, a top requirement at Contour Software and Techlogix.",
+      "estimated_hours": 15,
+      "learning_activities": [
+        "Write unit tests for business logic services using Jest",
+        "Write API integration tests using Supertest against a test database",
+        "Measure code coverage and mock external dependencies"
+      ],
+      "completion_criteria": "Test suite achieving at least 75% coverage on core services and auth endpoints.",
+      "is_completed": false,
+      "completed_at": null
+    },
+    {
+      "milestone_id": 28,
+      "roadmap_id": 6,
+      "week_number": 8,
+      "title": "Redis Caching & Asynchronous Job Queues",
+      "description": "Improve API scalability and response times using in-memory caching and background workers.",
+      "estimated_hours": 14,
+      "learning_activities": [
+        "Integrate Redis for read-heavy endpoint caching and cache invalidation",
+        "Set up BullMQ to process asynchronous jobs such as email notifications",
+        "Implement retry policies and dead-letter handling for failed jobs"
+      ],
+      "completion_criteria": "API endpoint demonstrating cache hit/miss behavior and an active background worker queue.",
+      "is_completed": false,
+      "completed_at": null
+    },
+    {
+      "milestone_id": 29,
+      "roadmap_id": 6,
+      "week_number": 9,
+      "title": "Real-Time Features & Cloud File Storage",
+      "description": "Handle WebSockets for real-time updates and secure file uploads via S3-compatible storage.",
+      "estimated_hours": 14,
+      "learning_activities": [
+        "Build a real-time notification module using Socket.io",
+        "Implement secure file upload validation and pre-signed URLs for S3/Cloudflare R2",
+        "Add structured JSON logging with Pino or Winston"
+      ],
+      "completion_criteria": "Working WebSocket event flow and verified file upload endpoint with structured logs.",
+      "is_completed": false,
+      "completed_at": null
+    },
+    {
+      "milestone_id": 30,
+      "roadmap_id": 6,
+      "week_number": 10,
+      "title": "Docker, Docker Compose & CI/CD Pipelines",
+      "description": "Containerize the entire backend stack for consistent deployments, aligning with 10Pearls hiring expectations.",
+      "estimated_hours": 15,
+      "learning_activities": [
+        "Write a multi-stage Dockerfile for the Node.js/TypeScript service",
+        "Orchestrate API, PostgreSQL, and Redis services via Docker Compose",
+        "Set up GitHub Actions to run linting, type-checking, and automated tests on every push"
+      ],
+      "completion_criteria": "Full stack boots cleanly via single docker compose up command and passes GitHub Actions CI.",
+      "is_completed": false,
+      "completed_at": null
+    },
+    {
+      "milestone_id": 31,
+      "roadmap_id": 6,
+      "week_number": 11,
+      "title": "Capstone Backend Deployment & Monitoring",
+      "description": "Deploy a portfolio-ready capstone API to the cloud with production environment configuration.",
+      "estimated_hours": 15,
+      "learning_activities": [
+        "Finalize capstone API (e.g., Campus Event & Ticketing or SaaS Task API)",
+        "Deploy to AWS EC2/ECS, Render, or Railway with managed PostgreSQL and Redis",
+        "Write a comprehensive README with architecture diagram and API usage guide"
+      ],
+      "completion_criteria": "Live, publicly accessible HTTPS API with passing CI badge and complete architecture README.",
+      "is_completed": false,
+      "completed_at": null
+    },
+    {
+      "milestone_id": 32,
+      "roadmap_id": 6,
+      "week_number": 12,
+      "title": "DSA Refresh, System Design & Interview Prep",
+      "description": "Prepare for technical screenings at top Pakistani software houses with DSA practice and backend system design.",
+      "estimated_hours": 15,
+      "learning_activities": [
+        "Solve 15-20 targeted LeetCode Easy/Medium problems (Arrays, HashMaps, Trees, Graphs)",
+        "Study backend system design fundamentals: load balancing, DB sharding, and rate limiters",
+        "Tailor resume highlighting backend projects and conduct two mock technical interviews"
+      ],
+      "completion_criteria": "Updated backend-focused CV, 15+ solved DSA problems, and completed mock interview review.",
+      "is_completed": false,
+      "completed_at": null
+    },
+    {
+      "milestone_id": 33,
+      "roadmap_id": 7,
+      "week_number": 1,
+      "title": "Node.js Runtime & TypeScript Fundamentals",
+      "description": "Deepen TypeScript skills and master Node.js internals including the event loop, async/await, and environment configuration.",
+      "estimated_hours": 15,
+      "learning_activities": [
+        "Complete TypeScript strict-mode exercises covering generics, interfaces, and utility types",
+        "Study Node.js event loop, non-blocking I/O, and file/stream modules",
+        "Initialize a TypeScript + Express.js starter repository with ESLint and Prettier"
+      ],
+      "completion_criteria": "A working TypeScript-configured Express server with health-check endpoints and clean linting.",
+      "is_completed": false,
+      "completed_at": null
+    },
+    {
+      "milestone_id": 34,
+      "roadmap_id": 7,
+      "week_number": 2,
+      "title": "Layered REST API Architecture & Validation",
+      "description": "Structure scalable backend code using controller-service-repository patterns and robust schema validation.",
+      "estimated_hours": 15,
+      "learning_activities": [
+        "Implement CRUD endpoints following RESTful naming and HTTP status code standards",
+        "Add Zod request validation middleware for params, query, and body payloads",
+        "Build centralized async error-handling middleware"
+      ],
+      "completion_criteria": "A multi-resource REST API with separated business logic, custom error classes, and validated inputs.",
+      "is_completed": false,
+      "completed_at": null
+    },
+    {
+      "milestone_id": 35,
+      "roadmap_id": 7,
+      "week_number": 3,
+      "title": "PostgreSQL Mastery & Query Optimization",
+      "description": "Level up SQL from basic to production-ready by focusing on indexing, transactions, and relational schema design.",
+      "estimated_hours": 15,
+      "learning_activities": [
+        "Design a normalized 3NF relational schema in PostgreSQL for a multi-table domain",
+        "Practice complex JOINs, CTEs, aggregations, and window functions",
+        "Analyze slow queries using EXPLAIN ANALYZE and apply B-tree indexes"
+      ],
+      "completion_criteria": "Documented SQL schema script with optimized queries and verified ACID transaction handling.",
+      "is_completed": false,
+      "completed_at": null
+    },
+    {
+      "milestone_id": 36,
+      "roadmap_id": 7,
+      "week_number": 4,
+      "title": "ORM Integration & Database Migrations",
+      "description": "Connect your TypeScript API to PostgreSQL using Prisma ORM with type-safe queries and versioned migrations.",
+      "estimated_hours": 15,
+      "learning_activities": [
+        "Configure Prisma schema with one-to-many and many-to-many relations",
+        "Run database migrations and write idempotent seed scripts",
+        "Implement pagination, filtering, and sorting in repository methods"
+      ],
+      "completion_criteria": "REST API persisted to PostgreSQL via Prisma with repeatable migrations and seeded test data.",
+      "is_completed": false,
+      "completed_at": null
+    },
+    {
+      "milestone_id": 37,
+      "roadmap_id": 7,
+      "week_number": 5,
+      "title": "Authentication, JWTs & Role-Based Access Control",
+      "description": "Secure APIs with industry-standard authentication flows and permission checks.",
+      "estimated_hours": 15,
+      "learning_activities": [
+        "Implement user registration and login with bcrypt/argon2 password hashing",
+        "Build JWT access and refresh token rotation mechanisms",
+        "Create authorization middleware for Role-Based Access Control (RBAC)"
+      ],
+      "completion_criteria": "Protected API routes enforcing user roles and secure token lifecycle management.",
+      "is_completed": false,
+      "completed_at": null
+    },
+    {
+      "milestone_id": 38,
+      "roadmap_id": 7,
+      "week_number": 6,
+      "title": "API Security Hardening & OpenAPI Documentation",
+      "description": "Protect backend services against common vulnerabilities and document endpoints for frontend teams.",
+      "estimated_hours": 14,
+      "learning_activities": [
+        "Configure Helmet, strict CORS policies, and express-rate-limit",
+        "Review OWASP API Security Top 10 and audit existing endpoints",
+        "Generate interactive Swagger/OpenAPI documentation for all routes"
+      ],
+      "completion_criteria": "Secured API passing security header checks with live Swagger UI documentation.",
+      "is_completed": false,
+      "completed_at": null
+    },
+    {
+      "milestone_id": 39,
+      "roadmap_id": 7,
+      "week_number": 7,
+      "title": "Automated Unit & Integration Testing",
+      "description": "Build confidence in code quality using automated tests aligned with top local software house expectations.",
+      "estimated_hours": 15,
+      "learning_activities": [
+        "Write unit tests for service-layer business logic using Vitest or Jest",
+        "Set up Supertest integration tests against an isolated test database",
+        "Measure code coverage and test edge cases including invalid inputs and auth failures"
+      ],
+      "completion_criteria": "Automated test suite covering core services and API endpoints with at least 75% coverage.",
+      "is_completed": false,
+      "completed_at": null
+    },
+    {
+      "milestone_id": 40,
+      "roadmap_id": 7,
+      "week_number": 8,
+      "title": "Redis Caching & Asynchronous Job Queues",
+      "description": "Improve API latency and scalability using in-memory caching and background workers.",
+      "estimated_hours": 15,
+      "learning_activities": [
+        "Integrate Redis to cache high-read endpoints with proper cache invalidation",
+        "Implement Redis-backed rate limiting",
+        "Set up a BullMQ background worker to process asynchronous tasks like email notifications"
+      ],
+      "completion_criteria": "Demonstrated latency reduction on cached endpoints and a working background job processor.",
+      "is_completed": false,
+      "completed_at": null
+    },
+    {
+      "milestone_id": 41,
+      "roadmap_id": 7,
+      "week_number": 9,
+      "title": "Docker & Multi-Container Orchestration",
+      "description": "Containerize your application stack for consistent development and cloud deployment.",
+      "estimated_hours": 15,
+      "learning_activities": [
+        "Write an optimized multi-stage Dockerfile for the Node.js TypeScript service",
+        "Create a docker-compose.yml linking the API, PostgreSQL, and Redis containers",
+        "Configure container health checks and persistent database volumes"
+      ],
+      "completion_criteria": "Full backend stack starts cleanly with a single docker compose up command.",
+      "is_completed": false,
+      "completed_at": null
+    },
+    {
+      "milestone_id": 42,
+      "roadmap_id": 7,
+      "week_number": 10,
+      "title": "CI/CD Pipelines & Cloud Deployment",
+      "description": "Automate testing workflows and deploy your backend service to a live cloud environment.",
+      "estimated_hours": 15,
+      "learning_activities": [
+        "Create a GitHub Actions workflow to run linting, type-checking, and tests on PRs",
+        "Configure structured logging with Pino or Winston",
+        "Deploy the containerized API and managed PostgreSQL database to Render, Railway, or AWS"
+      ],
+      "completion_criteria": "Live, publicly accessible API URL with green CI/CD checks on GitHub.",
+      "is_completed": false,
+      "completed_at": null
+    },
+    {
+      "milestone_id": 43,
+      "roadmap_id": 7,
+      "week_number": 11,
+      "title": "Capstone Backend Project Polish & Documentation",
+      "description": "Refine your flagship backend project into a portfolio centerpiece ready for recruiter review.",
+      "estimated_hours": 15,
+      "learning_activities": [
+        "Add architecture diagrams, ERDs, and setup instructions to GitHub README",
+        "Export a clean Postman collection with environment variables for reviewers",
+        "Perform end-to-end API testing and fix remaining bugs or edge cases"
+      ],
+      "completion_criteria": "Completed portfolio repository with live API demo, ERD diagram, Postman collection, and documentation.",
+      "is_completed": false,
+      "completed_at": null
+    },
+    {
+      "milestone_id": 44,
+      "roadmap_id": 7,
+      "week_number": 12,
+      "title": "DSA Refresh, SQL Drills & Technical Interview Prep",
+      "description": "Consolidate problem-solving skills and prepare specifically for Pakistani software house backend interviews.",
+      "estimated_hours": 15,
+      "learning_activities": [
+        "Solve 15-20 targeted LeetCode Easy/Medium problems on arrays, hash maps, strings, and trees",
+        "Practice 10 SQL interview queries and core backend system design questions",
+        "Update CV highlighting backend metrics and apply to internships at target firms"
+      ],
+      "completion_criteria": "Completed DSA/SQL practice log, backend-focused CV, and at least 2 mock technical interviews.",
+      "is_completed": false,
+      "completed_at": null
+    },
+    {
+      "milestone_id": 45,
+      "roadmap_id": 8,
+      "week_number": 1,
+      "title": "TypeScript Foundations & Modern JavaScript",
+      "description": "Strengthen component type safety, interfaces, union types, and strict mode in React.",
+      "estimated_hours": 8,
+      "learning_activities": [
+        "Official TypeScript Handbook",
+        "Refactor 3 React components to strict TypeScript"
+      ],
+      "completion_criteria": "tsc passes with noImplicitAny and 0 type errors.",
+      "is_completed": true,
+      "completed_at": "2026-11-15T18:58:19.885Z"
+    },
+    {
+      "milestone_id": 46,
+      "roadmap_id": 8,
+      "week_number": 4,
+      "title": "Next.js App Router & Server Components",
+      "description": "Master client vs server component boundaries, layout hierarchies, and server actions.",
+      "estimated_hours": 10,
+      "learning_activities": [
+        "Complete Next.js official tutorial",
+        "Implement dynamic product/career dashboard"
+      ],
+      "completion_criteria": "Production build deployed with zero layout shift (CLS < 0.1).",
+      "is_completed": false,
+      "completed_at": null
+    },
+    {
+      "milestone_id": 47,
+      "roadmap_id": 8,
+      "week_number": 8,
+      "title": "State Architecture & API Cache Management",
+      "description": "Implement TanStack Query or Zustand for optimistic UI and server state syncing.",
+      "estimated_hours": 10,
+      "learning_activities": [
+        "Build an e-commerce catalog with search and debounce",
+        "Add error boundaries"
+      ],
+      "completion_criteria": "Smooth loading skeletons and resilient offline recovery.",
+      "is_completed": false,
+      "completed_at": null
+    },
+    {
+      "milestone_id": 48,
+      "roadmap_id": 8,
+      "week_number": 12,
+      "title": "Portfolio Capstone Polish & Pakistani Tech Job Prep",
+      "description": "Conduct WCAG AA accessibility audit, bundle optimization, and interactive documentation.",
+      "estimated_hours": 12,
+      "learning_activities": [
+        "Lighthouse performance audit (score >= 90)",
+        "Prepare portfolio README dossier"
+      ],
+      "completion_criteria": "Live project ready for Systems Ltd, 10Pearls, or VentureDive applications.",
+      "is_completed": false,
+      "completed_at": null
     }
   ],
   "sequences": {
-    "user_id": 6,
-    "profile_id": 5,
+    "user_id": 10,
+    "profile_id": 9,
     "subject_id": 15,
     "student_subject_id": 9,
     "skill_id": 25,
@@ -6931,14 +9318,14 @@
     "career_id": 218,
     "interest_tag_id": 13,
     "evidence_id": 26,
-    "assessment_id": 2,
-    "recommendation_id": 7,
+    "assessment_id": 4,
+    "recommendation_id": 19,
     "comparison_id": 1,
-    "audit_id": 5,
-    "conversation_id": 11,
-    "message_id": 15,
-    "action_id": 4,
-    "roadmap_id": 5,
-    "milestone_id": 17
+    "audit_id": 9,
+    "conversation_id": 23,
+    "message_id": 31,
+    "action_id": 8,
+    "roadmap_id": 9,
+    "milestone_id": 49
   }
 }

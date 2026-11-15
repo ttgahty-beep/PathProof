@@ -55,6 +55,7 @@ export default function App() {
         .getMe()
         .then((u) => setCurrentUser(u))
         .catch(() => {
+          apiClient.clearSession();
           handleQuickSwitch('student');
         });
     } else {
@@ -119,6 +120,9 @@ export default function App() {
   const handleEnterDashboard = (tab?: string) => {
     if (tab) {
       setActiveTab(tab as DashboardTab);
+    }
+    if (!currentUser) {
+      handleQuickSwitch('student');
     }
     setViewMode('workspace');
     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -199,12 +203,39 @@ export default function App() {
             />
           )}
 
-          {activeTab === 'copilot' && currentUser && (
+          {activeTab === 'copilot' && currentUser?.role === 'STUDENT' && (
             <CopilotView
               currentUser={currentUser}
               onNavigateToTab={handleTabChange}
               onOpenReport={handleOpenReport}
             />
+          )}
+
+          {activeTab === 'copilot' && currentUser?.role !== 'STUDENT' && (
+            <div className="bg-white rounded-xl border border-[#E5E4DA] p-8 text-center space-y-4 max-w-lg mx-auto my-8 shadow-xs">
+              <h2 className="text-lg font-bold text-[#173629]">Student Account Required for Copilot</h2>
+              <p className="text-xs text-[#657064]">
+                {currentUser
+                  ? 'You are currently signed in as an Administrator. Switch to a Student persona to use PathProof Copilot Mentor.'
+                  : 'Signing you into your workspace session...'}
+              </p>
+              <div className="flex items-center justify-center gap-3">
+                <button
+                  type="button"
+                  onClick={() => handleQuickSwitch('student')}
+                  className="px-4 py-2 bg-[#173629] hover:bg-[#244B3A] text-white text-xs font-bold rounded-lg transition-colors cursor-pointer"
+                >
+                  Switch to Student (Hamza)
+                </button>
+                <button
+                  type="button"
+                  onClick={() => setShowAuthModal(true)}
+                  className="px-4 py-2 bg-[#EFEEE5] hover:bg-[#E5E4DA] text-[#173629] text-xs font-semibold rounded-lg transition-colors cursor-pointer"
+                >
+                  Sign In
+                </button>
+              </div>
+            </div>
           )}
 
           {activeTab === 'admin' && currentUser && currentUser.role === 'ADMIN' && (

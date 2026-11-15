@@ -4,6 +4,7 @@
  */
 
 import { Router, Request, Response, NextFunction } from 'express';
+import crypto from 'node:crypto';
 import {
   authService,
   studentProfileService,
@@ -29,12 +30,65 @@ import { DatabaseConnectionManager } from '../patterns/singleton/DatabaseConnect
 import { EvidenceFactory, EvidenceType } from '../patterns/factory/EvidenceFactory.ts';
 import { CareerReadinessContext } from '../patterns/strategy/CareerReadinessStrategy.ts';
 
-// In-memory session store (token -> { user: SafeUser, expiresAt: number })
-// Supports Bearer Token / x-session-id as well as Cookie header for iframe safety!
+// In-memory session store + HMAC-signed stateless tokens for Cloud Run instance resilience
 export const sessionStore = new Map<string, { user: SafeUser; expiresAt: number }>();
+const revokedTokens = new Set<string>();
 
-function generateToken(): string {
-  return 'tok_' + Math.random().toString(36).substring(2) + Date.now().toString(36);
+function getSessionSecret(): string {
+  return (
+    process.env.SESSION_SECRET ||
+    process.env.GEMINI_API_KEY ||
+    process.env.MYSQL_PASSWORD ||
+    'pathproof-stateless-session-key-2026'
+  );
+}
+
+function signTokenPayload(payloadB64: string): string {
+  return crypto.createHmac('sha256', getSessionSecret()).update(payloadB64).digest('base64url');
+}
+
+function generateToken(user?: SafeUser, expiresAt = Date.now() + 7 * 24 * 60 * 60 * 1000): string {
+  if (!user) {
+    return 'tok_' + Math.random().toString(36).substring(2) + Date.now().toString(36);
+  }
+  const payload = {
+    uid: user.user_id,
+    email: user.email,
+    role: user.role,
+    exp: expiresAt,
+    jti: crypto.randomBytes(6).toString('hex'),
+  };
+  const payloadB64 = Buffer.from(JSON.stringify(payload), 'utf8').toString('base64url');
+  const sig = signTokenPayload(payloadB64);
+  return `pp_${payloadB64}.${sig}`;
+}
+
+function verifySignedToken(token: string): { uid: number; email: string; role: string; exp: number } | null {
+  if (!token.startsWith('pp_') || !token.includes('.')) return null;
+  const raw = token.slice(3);
+  const dotIdx = raw.indexOf('.');
+  if (dotIdx <= 0) return null;
+  const payloadB64 = raw.slice(0, dotIdx);
+  const providedSig = raw.slice(dotIdx + 1);
+  const expectedSig = signTokenPayload(payloadB64);
+  try {
+    const a = Buffer.from(providedSig, 'utf8');
+    const b = Buffer.from(expectedSig, 'utf8');
+    if (a.length !== b.length || !crypto.timingSafeEqual(a, b)) return null;
+    const decoded = JSON.parse(Buffer.from(payloadB64, 'base64url').toString('utf8'));
+    if (!decoded || typeof decoded.uid !== 'number' || typeof decoded.exp !== 'number') return null;
+    if (decoded.exp < Date.now()) return null;
+    return decoded;
+  } catch {
+    return null;
+  }
+}
+
+function formatSessionCookie(req: Request, token: string, clear = false): string {
+  const isHttps = req.secure || req.headers['x-forwarded-proto'] === 'https';
+  const sameSite = isHttps ? 'SameSite=None; Secure' : 'SameSite=Lax';
+  const expiry = clear ? 'Expires=Thu, 01 Jan 1970 00:00:00 GMT; ' : '';
+  return `pathproof_session=${token}; Path=/; ${expiry}HttpOnly; ${sameSite}`;
 }
 
 // Request extension
@@ -73,9 +127,7 @@ export function requireAuth(req: AuthenticatedRequest, res: Response, next: Next
     });
   }
 
-  const session = sessionStore.get(token);
-  if (!session || session.expiresAt < Date.now()) {
-    if (session) sessionStore.delete(token);
+  if (revokedTokens.has(token)) {
     return res.status(401).json({
       success: false,
       error: { code: 'UNAUTHENTICATED', message: 'Session expired or invalid.' },
@@ -83,8 +135,41 @@ export function requireAuth(req: AuthenticatedRequest, res: Response, next: Next
     });
   }
 
+  let session = sessionStore.get(token);
+  if (session && session.expiresAt < Date.now()) {
+    sessionStore.delete(token);
+    session = undefined;
+  }
+
+  let resolvedUserId = session?.user.user_id;
+
+  // Recover session seamlessly across Cloud Run restarts/instances via signed token
+  if (!session) {
+    const verified = verifySignedToken(token);
+    if (!verified) {
+      return res.status(401).json({
+        success: false,
+        error: { code: 'UNAUTHENTICATED', message: 'Session expired or invalid.' },
+        meta: { requestId: req.requestId },
+      });
+    }
+    const matched =
+      db.tables.users.find((u) => u.user_id === verified.uid) ||
+      db.tables.users.find((u) => u.email.toLowerCase() === String(verified.email || '').toLowerCase());
+    if (!matched) {
+      return res.status(401).json({
+        success: false,
+        error: { code: 'UNAUTHENTICATED', message: 'Session expired or invalid.' },
+        meta: { requestId: req.requestId },
+      });
+    }
+    const safeMatched = authService.toSafeUser(matched);
+    sessionStore.set(token, { user: safeMatched, expiresAt: verified.exp });
+    resolvedUserId = safeMatched.user_id;
+  }
+
   // Verify user still active
-  const freshUser = db.tables.users.find((u) => u.user_id === session.user.user_id);
+  const freshUser = db.tables.users.find((u) => u.user_id === resolvedUserId);
   if (!freshUser || freshUser.account_status === 'DISABLED') {
     sessionStore.delete(token);
     return res.status(403).json({
@@ -153,14 +238,15 @@ export function createApiRouter(): Router {
       const { fullName, email, password, role } = req.body;
       const newUser = authService.registerStudent(fullName, email, password, role);
 
-      // Create session token
-      const token = generateToken();
+      // Create signed session token
+      const expiresAt = Date.now() + 7 * 24 * 60 * 60 * 1000;
+      const token = generateToken(newUser, expiresAt);
       sessionStore.set(token, {
         user: newUser,
-        expiresAt: Date.now() + 7 * 24 * 60 * 60 * 1000,
+        expiresAt,
       });
 
-      res.setHeader('Set-Cookie', `pathproof_session=${token}; Path=/; HttpOnly; SameSite=Lax`);
+      res.setHeader('Set-Cookie', formatSessionCookie(req, token));
       res.status(201).json({
         success: true,
         data: {
@@ -183,13 +269,14 @@ export function createApiRouter(): Router {
 
       const user = authService.authenticate(email, password);
 
-      const token = generateToken();
+      const expiresAt = Date.now() + 7 * 24 * 60 * 60 * 1000;
+      const token = generateToken(user, expiresAt);
       sessionStore.set(token, {
         user,
-        expiresAt: Date.now() + 7 * 24 * 60 * 60 * 1000,
+        expiresAt,
       });
 
-      res.setHeader('Set-Cookie', `pathproof_session=${token}; Path=/; HttpOnly; SameSite=Lax`);
+      res.setHeader('Set-Cookie', formatSessionCookie(req, token));
       res.json({
         success: true,
         data: {
@@ -205,9 +292,12 @@ export function createApiRouter(): Router {
 
   api.post('/auth/logout', requireAuth, (req: AuthenticatedRequest, res) => {
     const token = extractToken(req);
-    if (token) sessionStore.delete(token);
+    if (token) {
+      sessionStore.delete(token);
+      revokedTokens.add(token);
+    }
 
-    res.setHeader('Set-Cookie', `pathproof_session=; Path=/; Expires=Thu, 01 Jan 1970 00:00:00 GMT; HttpOnly; SameSite=Lax`);
+    res.setHeader('Set-Cookie', formatSessionCookie(req, '', true));
     res.json({
       success: true,
       data: { message: 'Logged out successfully.' },
