@@ -181,5 +181,453 @@ PathProof follows a web-based client-server architecture.
                        v
                   USER INTERFACE
 ```
+<p align="center">
+  <strong>Discover Your Potential. Explore Every Career. Build Your Future.</strong>
+</p>
 
-*Conceptual architecture overview
+<p align="center">
+  An intelligent career discovery platform helping students explore global career opportunities, understand professional pathways, and make informed career decisions.
+</p>
+
+<p align="center">
+  <a href="https://github.com/ttgahty-beep/PathProof">GitHub Repository</a> •
+  <a href="https://path-proof-indol.vercel.app/">Live Application</a>
+</p>
+
+📖 About PathProof
+
+Choosing the right career is one of the most important decisions in a student's life. However, many students struggle with limited career awareness, fragmented information, uncertainty about professional requirements, and a lack of personalized guidance.
+
+PathProof aims to address these challenges through an AI-powered career discovery and intelligence platform.
+
+The platform provides a centralized environment where students can explore career opportunities across multiple industries, understand professional pathways, and access intelligent career-related assistance.
+
+PathProof is designed to go beyond traditional career guidance platforms by supporting exploration across a broad range of global professional domains.
+
+🎯 Problem Statement
+
+Students often face challenges such as:
+
+Limited awareness of global career opportunities.
+
+Difficulty identifying suitable professional pathways.
+
+Lack of personalized career guidance.
+
+Uncertainty about required qualifications and skills.
+
+Career information scattered across multiple platforms.
+
+Difficulty comparing different professional opportunities.
+
+PathProof aims to make career exploration more accessible, structured, and informed.
+
+✨ Key Features
+
+🌍 Global Career Discovery: Explore professional opportunities across multiple industries.
+
+🤖 AI-Powered Assistance: Access intelligent career-related guidance.
+
+🧭 Career Exploration: Discover different professional fields and pathways.
+
+🎓 Student-Centered Platform: Designed to support students in career decision-making.
+
+👤 User Authentication: Account-based access and user management.
+
+📚 Career Information: Explore professional requirements, qualifications, and skills.
+
+📊 Career Intelligence: Support informed career exploration and planning.
+
+Refer to the application and technical documentation for the exact implementation status of individual features.
+
+🌐 Supported Career Domains
+
+PathProof is designed to support career exploration across multiple industries.
+
+Domain
+
+Example Careers
+
+Technology & IT
+
+Software Engineer, AI Engineer, Cybersecurity Analyst
+
+Healthcare & Medicine
+
+Doctor, Nurse, Pharmacist
+
+Business & Management
+
+Business Analyst, Manager, Entrepreneur
+
+Engineering
+
+Civil, Mechanical, Electrical Engineer
+
+Economics & Finance
+
+Economist, Financial Analyst
+
+Education
+
+Teacher, Lecturer, Researcher
+
+Law
+
+Lawyer, Legal Advisor
+
+Science & Research
+
+Biologist, Physicist, Chemist
+
+Arts & Design
+
+Graphic Designer, UX Designer
+
+Media & Communication
+
+Journalist, Content Strategist
+
+Agriculture & Environment
+
+Agricultural Scientist, Environmental Specialist
+
+Social Sciences
+
+Psychologist, Sociologist
+
+The career ecosystem is intended to be expandable as new professions and industries are introduced.
+
+🛠️ Technology Stack
+
+Category
+
+Technologies
+
+Frontend
+
+React 19, TypeScript
+
+Build Tool
+
+Vite
+
+Styling
+
+Tailwind CSS
+
+Backend
+
+Node.js, Express.js
+
+AI Integration
+
+Google Gemini API
+
+Database
+
+MySQL
+
+Database Driver
+
+mysql2
+
+Authentication Security
+
+bcrypt
+
+Animations
+
+Motion
+
+Icons
+
+Lucide React
+
+Version Control
+
+Git, GitHub
+
+Deployment
+
+Vercel / configured hosting
+
+🏗️ System Architecture
+
+PathProof follows a web-based client-server architecture.
+
+flowchart TD
+    A[Student / User] --> B[Frontend Application]
+    B --> C[Application Backend]
+    C --> D[Authentication]
+    C --> E[AI Integration]
+    C --> F[API Layer]
+    F --> G[MySQL Database]
+    D --> H[Application Response]
+    E --> H
+    G --> H
+    H --> B
+    B --> I[User Interface]
+
+This is a conceptual overview. Consult the detailed architecture documentation for implementation-specific diagrams and interactions.
+
+📂 Project Documentation
+
+Detailed technical and academic documentation is available in the docs/ directory.
+
+Document
+
+Description
+
+Documentation Index
+
+Complete documentation navigation
+
+Project Documentation
+
+Overview, abstract, problem statement, objectives and scope
+
+System Architecture
+
+Architecture, modules, interactions and data flow
+
+Database Documentation
+
+Database design, tables, relationships and ERD
+
+Team Contribution
+
+Team members and collaboration workflow
+
+Development Guide
+
+Installation, configuration and development
+
+Testing Documentation
+
+Testing strategy and test cases
+
+Security Documentation
+
+Authentication, data protection and security
+
+Software Requirements Specification
+
+Functional and non-functional requirements
+
+📊 System Diagrams
+
+The project documentation may include:
+
+System Architecture Diagram
+
+Use Case Diagram
+
+Entity Relationship Diagram (ERD)
+
+Class Diagram
+
+Activity Diagram
+
+Data Flow Diagram
+
+Authentication Flow Diagram
+
+📁 Repository Structure
+
+PathProof/
+│
+├── .agents/
+├── components/
+│   └── ui/
+├── data/
+├── design-system/
+├── docs/
+│   ├── README.md
+│   ├── PROJECT_DOCUMENTATION.md
+│   ├── SYSTEM_ARCHITECTURE.md
+│   ├── DATABASE_DOCUMENTATION.md
+│   ├── TEAM_CONTRIBUTION.md
+│   ├── DEVELOPMENT_GUIDE.md
+│   ├── TESTING_DOCUMENTATION.md
+│   ├── SECURITY_DOCUMENTATION.md
+│   └── SRS_DOCUMENTATION.md
+├── lib/
+├── public/
+├── scripts/
+├── skills/
+├── sql/
+├── src/
+│
+├── .env.example
+├── .gitignore
+├── DESIGN.md
+├── index.html
+├── package.json
+├── server.ts
+├── tsconfig.json
+└── vite.config.ts
+
+High-level structure; refer to the repository for the complete file listing.
+
+⚙️ Installation and Setup
+
+Prerequisites
+
+Node.js
+
+npm or Bun
+
+Git
+
+MySQL Server
+
+Google Gemini API key (for AI functionality)
+
+1. Clone the Repository
+
+git clone https://github.com/ttgahty-beep/PathProof.git
+
+2. Navigate to the Project
+
+cd PathProof
+
+3. Install Dependencies
+
+Using npm:
+
+npm install
+
+Or using Bun:
+
+bun install
+
+4. Configure Environment Variables
+
+Create a local environment file:
+
+Copy-Item .env.example .env
+
+Configure the required credentials and database settings using the variable names defined in .env.example.
+
+5. Configure MySQL
+
+Start your MySQL server.
+
+Create the required database.
+
+Apply the appropriate SQL scripts from the sql/ directory.
+
+Configure database connection settings.
+
+6. Start the Development Server
+
+npm run dev
+
+7. Open the Application
+
+Use the local URL and port displayed by the development server.
+
+🧪 Testing and Quality Assurance
+
+Before submitting changes, developers should verify:
+
+Authentication functionality.
+
+Career discovery functionality.
+
+AI integration.
+
+Database connectivity.
+
+Input validation.
+
+Application navigation.
+
+Responsive interface behavior.
+
+Run the available project scripts:
+
+npm test
+npm run lint
+npm run build
+
+Run only scripts defined in the current package.json. Testing coverage and results should be documented accurately.
+
+🔐 Security
+
+PathProof follows security-conscious development practices, including:
+
+Password hashing.
+
+Environment-based secret configuration.
+
+Secure API credential handling.
+
+Database access controls.
+
+Input validation.
+
+Protection against accidental exposure of sensitive information.
+
+Never commit .env files, API keys, passwords, or private credentials.
+
+👥 Project Contributors
+
+PathProof is developed as a collaborative software engineering project.
+
+Contributor
+
+GitHub Profile
+
+Role
+
+Ahtesham
+
+@ttgahty-beep
+
+Project Creator & Lead Developer
+
+Salman
+
+@rajasalman242
+
+Team Collaborator
+
+We appreciate the contributions, collaboration, testing, documentation, and development efforts that help improve PathProof.
+
+🔮 Future Enhancements
+
+Potential areas for further development include:
+
+Expanded global career coverage.
+
+More advanced personalized career recommendations.
+
+Enhanced AI-powered career guidance.
+
+Career comparison tools.
+
+Detailed skill-development roadmaps.
+
+Additional educational and professional integrations.
+
+Multilingual career exploration.
+
+Improved career analytics.
+
+🤝 Contributing
+
+Contributions and suggestions are welcome.
+
+Fork or access the repository as an authorized collaborator.
+
+Create a separate feature branch.
+
+Make your changes.
+
+Commit your work with a descriptive message.
+
+Push your branch.
+
+Submit a Pull Request for review.
