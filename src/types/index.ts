@@ -160,6 +160,12 @@ export interface StudentPreference {
   updated_at: string;
 }
 
+export interface StudentCareerInterest {
+  user_id: number;
+  career_id: number;
+  created_at: string;
+}
+
 export interface CareerInterestTag {
   career_id: number;
   interest_tag_id: number;

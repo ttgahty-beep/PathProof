@@ -11,6 +11,7 @@ import {
   skillService,
   preferenceService,
   careerService,
+  careerInterestService,
   evidenceService,
   skillGapService,
   recommendationService,
@@ -441,6 +442,41 @@ export function createApiRouter(): Router {
   // ----------------------------------------------------
   // Career Catalogue & Job Evidence
   // ----------------------------------------------------
+  api.get('/career-categories', requireAuth, (req: AuthenticatedRequest, res) => {
+    const categories = careerService.listCategories();
+    res.json({
+      success: true,
+      data: categories,
+      meta: { requestId: req.requestId },
+    });
+  });
+
+  api.get('/students/me/career-interests', requireAuth, requireStudent, (req: AuthenticatedRequest, res) => {
+    const interests = careerInterestService.getStudentCareerInterests(req.user!.user_id);
+    res.json({
+      success: true,
+      data: interests,
+      meta: { requestId: req.requestId },
+    });
+  });
+
+  api.put('/students/me/career-interests', requireAuth, requireStudent, (req: AuthenticatedRequest, res) => {
+    try {
+      const { careerIds } = req.body;
+      if (!careerIds || !Array.isArray(careerIds)) {
+        throw new ServiceError('careerIds array is required.', 'VALIDATION_ERROR', 400);
+      }
+      const saved = careerInterestService.saveStudentCareerInterests(req.user!.user_id, careerIds.map(Number));
+      res.json({
+        success: true,
+        data: saved,
+        meta: { requestId: req.requestId },
+      });
+    } catch (err: any) {
+      handleError(err, req, res);
+    }
+  });
+
   api.get('/careers', requireAuth, (req: AuthenticatedRequest, res) => {
     const query = req.query.query as string | undefined;
     const categoryId = req.query.categoryId ? Number(req.query.categoryId) : undefined;

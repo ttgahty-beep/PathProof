@@ -19,6 +19,7 @@ import {
   CareerSubject,
   InterestTag,
   StudentPreference,
+  StudentCareerInterest,
   CareerInterestTag,
   JobEvidence,
   JobEvidenceSkill,
@@ -500,7 +501,13 @@ export const preferenceService = {
 // 6. Career Explorer & Details Service
 // ----------------------------------------------------
 export const careerService = {
+  listCategories(includeInactive = false): CareerCategory[] {
+    return db.tables.career_categories.filter((cat) => includeInactive || cat.is_active);
+  },
+
   listCareers(query?: string, categoryId?: number, includeDrafts = false) {
+    const categories = new Map(db.tables.career_categories.map((cat) => [cat.category_id, cat.category_name]));
+
     let list = db.tables.careers.filter((c) => {
       if (!includeDrafts && c.publication_status !== 'PUBLISHED') return false;
       return true;
@@ -516,11 +523,10 @@ export const careerService = {
         (c) =>
           c.career_title.toLowerCase().includes(q) ||
           c.summary.toLowerCase().includes(q) ||
-          c.description.toLowerCase().includes(q)
+          c.description.toLowerCase().includes(q) ||
+          (categories.get(c.category_id) || '').toLowerCase().includes(q)
       );
     }
-
-    const categories = new Map(db.tables.career_categories.map((cat) => [cat.category_id, cat.category_name]));
 
     return list.map((c) => ({
       ...c,
@@ -576,6 +582,62 @@ export const careerService = {
       mappedSubjects,
       mappedTags,
     };
+  },
+};
+
+export const careerInterestService = {
+  getStudentCareerInterests(userId: number) {
+    const careersMap = new Map(db.tables.careers.map((c) => [c.career_id, c]));
+    const categoriesMap = new Map(db.tables.career_categories.map((cat) => [cat.category_id, cat.category_name]));
+
+    return (db.tables.student_career_interests || [])
+      .filter((item) => item.user_id === userId)
+      .map((item) => {
+        const career = careersMap.get(item.career_id);
+        return {
+          ...item,
+          career_title: career?.career_title || `Career #${item.career_id}`,
+          category_id: career?.category_id || 0,
+          category_name: career ? categoriesMap.get(career.category_id) || 'General' : 'General',
+        };
+      });
+  },
+
+  saveStudentCareerInterests(userId: number, careerIds: number[]) {
+    if (!Array.isArray(careerIds)) {
+      throw new ServiceError('careerIds must be an array of career IDs.', 'VALIDATION_ERROR', 400);
+    }
+
+    const distinctIds = Array.from(
+      new Set(
+        careerIds
+          .map((id) => Number(id))
+          .filter((id) => Number.isInteger(id) && id > 0)
+      )
+    );
+
+    for (const id of distinctIds) {
+      const career = db.tables.careers.find((c) => c.career_id === id);
+      if (!career || career.publication_status !== 'PUBLISHED') {
+        throw new ServiceError(`Career ID ${id} does not exist or is not published.`, 'NOT_FOUND', 404);
+      }
+    }
+
+    const now = new Date().toISOString();
+    db.tables.student_career_interests = (db.tables.student_career_interests || []).filter(
+      (item) => item.user_id !== userId
+    );
+
+    const newEntries: StudentCareerInterest[] = distinctIds.map((career_id) => ({
+      user_id: userId,
+      career_id,
+      created_at: now,
+    }));
+
+    db.tables.student_career_interests.push(...newEntries);
+    db.save();
+
+    return this.getStudentCareerInterests(userId);
   },
 };
 
@@ -733,8 +795,17 @@ export const recommendationService = {
       activityRatingsCount
     );
 
-    // Published careers
-    const publishedCareers = db.tables.careers.filter((c) => c.publication_status === 'PUBLISHED');
+    // Published calibrated careers (careers with mapped academic, skill, or interest benchmarks)
+    const calibratedCareerIds = new Set<number>([
+      ...db.tables.career_subjects.map((cs) => cs.career_id),
+      ...db.tables.career_skills.map((cs) => cs.career_id),
+      ...db.tables.career_interest_tags.map((ct) => ct.career_id),
+    ]);
+    const publishedCareers = db.tables.careers.filter(
+      (c) =>
+        c.publication_status === 'PUBLISHED' &&
+        (calibratedCareerIds.size === 0 || calibratedCareerIds.has(c.career_id))
+    );
     if (publishedCareers.length === 0) {
       throw new ServiceError('No published careers available for recommendation.', 'NOT_FOUND', 404);
     }
@@ -1266,6 +1337,10 @@ export const adminService = {
     if (!data.career_title || data.career_title.trim().length < 2) {
       throw new ServiceError('Career title is required.', 'VALIDATION_ERROR', 400);
     }
+    const normalizedTitle = data.career_title.trim().toLowerCase();
+    if (db.tables.careers.some((c) => c.career_title.trim().toLowerCase() === normalizedTitle)) {
+      throw new ServiceError('A career with this title already exists.', 'DUPLICATE_RESOURCE', 409);
+    }
     if (!data.category_id) {
       throw new ServiceError('Career category is required.', 'VALIDATION_ERROR', 400);
     }
@@ -1439,6 +1514,15 @@ export const adminService = {
       ).length;
 
       if (career.publication_status === 'PUBLISHED') {
+        const isUnmappedCatalogRole =
+          career.career_id > 7 &&
+          skillsCount === 0 &&
+          subjectsCount === 0 &&
+          tagsCount === 0 &&
+          evidenceCount === 0;
+        if (isUnmappedCatalogRole) {
+          continue;
+        }
         if (skillsCount < 3) {
           warnings.push({
             level: 'WARNING',

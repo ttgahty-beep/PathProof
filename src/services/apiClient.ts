@@ -12,8 +12,10 @@ import {
   Skill,
   StudentSkill,
   Career,
+  CareerCategory,
   InterestTag,
   StudentPreference,
+  StudentCareerInterest,
   CareerMarketSummary,
   SkillGapAnalysis,
   AppNotification,
@@ -253,6 +255,28 @@ class ApiClient {
   }
 
   // Careers & Evidence
+  public async getCareerCategories(): Promise<CareerCategory[]> {
+    return this.request<CareerCategory[]>('/career-categories');
+  }
+
+  public async getStudentCareerInterests(): Promise<Array<StudentCareerInterest & { career_title: string; category_id: number; category_name: string }>> {
+    return this.request<Array<StudentCareerInterest & { career_title: string; category_id: number; category_name: string }>>(
+      '/students/me/career-interests'
+    );
+  }
+
+  public async saveStudentCareerInterests(
+    careerIds: number[]
+  ): Promise<Array<StudentCareerInterest & { career_title: string; category_id: number; category_name: string }>> {
+    return this.request<Array<StudentCareerInterest & { career_title: string; category_id: number; category_name: string }>>(
+      '/students/me/career-interests',
+      {
+        method: 'PUT',
+        body: JSON.stringify({ careerIds }),
+      }
+    );
+  }
+
   public async getCareers(query?: string, categoryId?: number): Promise<Career[]> {
     const params = new URLSearchParams();
     if (query) params.set('query', query);

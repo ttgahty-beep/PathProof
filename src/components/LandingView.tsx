@@ -140,7 +140,8 @@ export const LandingView: React.FC<LandingViewProps> = ({
 
   const currentDemo = demoRoles.find((r) => r.id === selectedDemoRole) || demoRoles[0];
 
-  const filteredCareers = careers.filter((c) => {
+  const coreLandingCareers = careers.filter((c) => c.career_id <= 6);
+  const filteredCareers = coreLandingCareers.filter((c) => {
     if (activeCategoryFilter === 'ALL') return true;
     return c.category_name === activeCategoryFilter;
   });

@@ -5,6 +5,7 @@
  */
 
 import { DatabaseConnectionManager } from '../src/patterns/singleton/DatabaseConnectionManager.ts';
+import { GLOBAL_CAREER_CATALOG } from '../src/server/careerCatalogData.ts';
 import fs from 'node:fs';
 import path from 'node:path';
 
@@ -138,6 +139,31 @@ export async function runDatabaseSeed(): Promise<{ success: boolean; tablesSeede
       publication_status: 'PUBLISHED',
     },
   ];
+
+  // Append global career categories & roles safely without duplicating existing titles
+  const existingTitles = new Set(careers.map((c) => c.career_title.trim().toLowerCase()));
+  let nextPathId = 7;
+  for (const group of GLOBAL_CAREER_CATALOG) {
+    for (const role of group.roles) {
+      if (existingTitles.has(role.title.trim().toLowerCase())) continue;
+      existingTitles.add(role.title.trim().toLowerCase());
+      const slug = role.title
+        .toLowerCase()
+        .replace(/[^a-z0-9]+/g, '-')
+        .replace(/^-|-$/g, '');
+      const focus = role.focus || `delivering core ${group.category_name.toLowerCase()} outcomes`;
+      careers.push({
+        career_id: nextPathId++,
+        category_name: group.category_name,
+        career_title: role.title,
+        slug,
+        summary: role.summary || `Specializes in ${focus} within the ${group.category_name} domain.`,
+        description: `${role.title} professionals work within ${group.category_name}, focusing on ${focus}.`,
+        salary_range_pkr: group.salary_range_pkr,
+        publication_status: 'PUBLISHED',
+      });
+    }
+  }
 
   const competencies = [
     { competency_id: 1, name: 'React & TypeScript', category: 'Frontend', description: 'Modern typed frontend web development.' },

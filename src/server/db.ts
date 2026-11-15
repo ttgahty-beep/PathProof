@@ -19,6 +19,7 @@ import {
   CareerSubject,
   InterestTag,
   StudentPreference,
+  StudentCareerInterest,
   CareerInterestTag,
   JobEvidence,
   JobEvidenceSkill,
@@ -33,6 +34,7 @@ import {
   StudentRoadmap,
   StudentRoadmapMilestone,
 } from '../types/index.ts';
+import { buildExpandedCareerCatalog } from './careerCatalogData.ts';
 
 export interface DatabaseSchema {
   users: User[];
@@ -47,6 +49,7 @@ export interface DatabaseSchema {
   career_subjects: CareerSubject[];
   interest_tags: InterestTag[];
   student_preferences: StudentPreference[];
+  student_career_interests: StudentCareerInterest[];
   career_interest_tags: CareerInterestTag[];
   job_evidence: JobEvidence[];
   job_evidence_skills: JobEvidenceSkill[];
@@ -107,6 +110,7 @@ class Database {
       career_subjects: [],
       interest_tags: [],
       student_preferences: [],
+      student_career_interests: [],
       career_interest_tags: [],
       job_evidence: [],
       job_evidence_skills: [],
@@ -156,6 +160,7 @@ class Database {
         this.data.copilot_actions = this.data.copilot_actions || [];
         this.data.student_roadmaps = this.data.student_roadmaps || [];
         this.data.student_roadmap_milestones = this.data.student_roadmap_milestones || [];
+        this.data.student_career_interests = this.data.student_career_interests || [];
         if (!this.data.sequences) (this.data as any).sequences = {};
         if (!this.data.sequences.conversation_id) this.data.sequences.conversation_id = 1;
         if (!this.data.sequences.message_id) this.data.sequences.message_id = 1;
@@ -163,6 +168,9 @@ class Database {
         if (!this.data.sequences.roadmap_id) this.data.sequences.roadmap_id = 1;
         if (!this.data.sequences.milestone_id) this.data.sequences.milestone_id = 1;
         this.isLoaded = true;
+        if (this.syncCareerCatalog()) {
+          this.save();
+        }
       } else {
         const dir = path.dirname(DB_FILE_PATH);
         if (!fs.existsSync(dir)) {
@@ -212,6 +220,36 @@ class Database {
   public nextId(sequenceName: keyof DatabaseSchema['sequences']): number {
     const next = this.data.sequences[sequenceName]++;
     return next;
+  }
+
+  private syncCareerCatalog(): boolean {
+    const now = new Date().toISOString();
+    const expanded = buildExpandedCareerCatalog(
+      this.data.career_categories,
+      this.data.careers,
+      now
+    );
+
+    if (expanded.categories.length === 0 && expanded.careers.length === 0) {
+      return false;
+    }
+
+    if (expanded.categories.length > 0) {
+      this.data.career_categories.push(...expanded.categories);
+    }
+    if (expanded.careers.length > 0) {
+      this.data.careers.push(...expanded.careers);
+    }
+
+    this.data.sequences.category_id = Math.max(
+      this.data.sequences.category_id || 1,
+      expanded.nextCategoryId
+    );
+    this.data.sequences.career_id = Math.max(
+      this.data.sequences.career_id || 1,
+      expanded.nextCareerId
+    );
+    return true;
   }
 
   public seedInitialData(): void {
@@ -398,6 +436,7 @@ class Database {
       },
     ];
     this.data.sequences.career_id = 8;
+    this.syncCareerCatalog();
 
     // 5. Academic Subjects
     this.data.academic_subjects = [
